@@ -9,38 +9,33 @@ int start(void){
         pop_queue(i);
     }
     int floor = elev_get_floor_sensor_signal();
-    //motor_dir already set direction up from main() 
         
     while(floor==-1){
         floor = elev_get_floor_sensor_signal();
     }
-
-    elev_set_motor_direction(DIRN_STOP);
-    elevator.dir = DIRN_STOP;
-    set_elevator();
+    set_elev_floor();
+    set_elev_direction(DIRN_STOP);
     return floor;
     
 }
 
-void set_elevator(){
+void set_elev_floor(){
     if (elev_get_floor_sensor_signal() != -1) {
         elevator.floor = elev_get_floor_sensor_signal();
+        floor_light_set();
+
     }
-    if (elevator.floor != -1){
-        elevator.valid_position = true;
-    }
-    else{
-        elevator.valid_position = false;
-    }
+    
 }
 
-void setDirection(elev_motor_direction_t dir){
+void set_elev_direction(elev_motor_direction_t dir){
     elevator.dir = dir;
+    elev_set_motor_direction(dir);
 }
 
 
 void elevator_rest(){
-    if (check_empty_queue()){
+    if (queue_count() == 0){
         elev_set_motor_direction(DIRN_STOP);
     }
 }
@@ -50,14 +45,20 @@ struct Elevator* getElevator() {
 }
 
 void station_stop(elev_motor_direction_t direction){
-    elev_set_motor_direction(DIRN_STOP);
+    
+    set_elev_direction(DIRN_STOP);
+    sleep(1);
+    
 }
 
 void floor_light_set(){
+    int floor = elevator.floor;                //denne slår seg veldig vrang. Prøver å sette lys til -1!!! Programmet krasjer...
+    elev_set_floor_indicator(floor);
+    
 }
 
 
 
-elev_motor_direction_t getDirection(){
+elev_motor_direction_t get_elev_direction(){
     return elevator.dir;
 }

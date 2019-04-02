@@ -1,4 +1,4 @@
-#include "elev.h"
+#include "driver/elev.h"
 #include <stdio.h>
 #include "elevator.h"
 
@@ -12,7 +12,7 @@ int main() {
 
     printf("Press STOP button to stop elevator and exit program.\n");
 
-    elev_set_motor_direction(DIRN_DOWN);
+    set_elev_direction(DIRN_DOWN);
     start();
 
     int first = -1;
@@ -37,29 +37,36 @@ int main() {
     while (1) {
         // Change direction when we reach top/bottom floor
         
-        //set_elevator();
-        first = listen();
-        if (first != -1) {
-            set_target(first);
+        //handling stop button pressed according to standards specified.
+        while(elev_get_stop_signal());
+
+        int floor_order = listen();
+        if(floor_order != -1){
+            
+            set_target();
+            
+            
         }
+
+        set_elev_floor();
+        
         stop_n_kill_button();
+
         
 
-       
+    /* 
        
         if (elev_get_floor_sensor_signal() == N_FLOORS - 1) {
-            elev_set_motor_direction(DIRN_DOWN);
-            getElevator()->dir = DIRN_DOWN;
+            set_elev_direction(DIRN_DOWN);
 
         } else if (elev_get_floor_sensor_signal() == 0) {
-            elev_set_motor_direction(DIRN_UP);
-            getElevator()->dir = DIRN_UP;
+            set_elev_direction(DIRN_UP);
         }
         
-
+*/
         // Stop elevator and exit program if the stop button is pressed
-        if (elev_get_stop_signal()) {
-            elev_set_motor_direction(DIRN_STOP);
+        if (elev_get_obstruction_signal()) {
+            set_elev_direction(DIRN_STOP);
             break;
         }
     }

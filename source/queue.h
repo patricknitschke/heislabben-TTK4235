@@ -2,7 +2,7 @@
 #define QUEUE_H
 
 #include "driver/elev.h"
-#include "driver/elevator.h"
+#include "elevator.h"
 #include "driver/channels.h"
 
 #include <stdbool.h>
@@ -14,14 +14,15 @@ struct Queue{
     int queue[6];
 };
 
-void set_queue(int floor);
+void set_queue(int floor_order);
 struct Queue* get_queue();
-void pop_queue(int floor);
+void pop_queue(int floor_order);
 
 int listen();
 void stop_n_kill_button();
-void set_target(int floor);
-bool check_empty_queue();
+void set_target();
+int find_target();
+int queue_count();
 
 
 
