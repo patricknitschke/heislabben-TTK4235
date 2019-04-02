@@ -1,7 +1,7 @@
 #include "queue.h"
 #include <unistd.h>
 
-struct Queue m_queue;
+Queue m_queue;
 
 //sett inn et element i queue
 void set_queue(int floor_order){
@@ -41,7 +41,6 @@ int listen(void) {
         
     }
     return (-1);
-    
 }
 
 
@@ -91,10 +90,11 @@ int find_target(){
 void stop_n_kill_button(){
     int floor = elev_get_floor_sensor_signal();
     getElevator()->floor = floor;
-    if(floor == 3){
+    
+    if (floor == 3){
         set_elev_direction(DIRN_DOWN);
     }
-    if(floor == 0){
+    if (floor == 0){
         set_elev_direction(DIRN_UP);
     }
 

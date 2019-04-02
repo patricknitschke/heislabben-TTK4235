@@ -7,15 +7,17 @@
 
 #include <stdbool.h>
 
-enum floor_name{ONE_UP,TWO_DOWN,TWO_UP,THREE_DOWN,THREE_UP,FOUR_DOWN};
-
-
-struct Queue{
-    int queue[6];
+enum floor_name {
+	ONE_UP, TWO_DOWN, TWO_UP, THREE_DOWN, THREE_UP, FOUR_DOWN, NUM_FLOOR_NAMES
 };
 
+
+typedef struct Queue {
+    int queue[NUM_FLOOR_NAMES];
+} Queue;
+
 void set_queue(int floor_order);
-struct Queue* get_queue();
+Queue* get_queue();
 void pop_queue(int floor_order);
 
 int listen();

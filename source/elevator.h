@@ -9,13 +9,13 @@
 #include <stdbool.h>
 
 
-struct Elevator{
+typedef struct Elevator {
     int floor;
     bool valid_position;
     elev_motor_direction_t dir;
     bool safety;
     //Queue queue_m;  
-};
+} Elevator;
 
 // Elevator functions
 int start(void);
