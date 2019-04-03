@@ -1,6 +1,9 @@
-#include "driver/elev.h"
+#include "elev.h"
 #include "elevator.h"
 #include "states.h"
+#include "time.h"
+
+
 
 #include <stdio.h>
 
@@ -19,14 +22,17 @@ int main() {
 
     // Declare variables needed for state machine
     state current_state = START_STATE;
-    int first_order = -1;
-    int stack_order = -1;
+    time_t timer= 0;
+
 
     while (current_state != END_STATE) {
+        timer = clock();
         /*  Write code that needs to be checked regardless of state here  */
         
         // Handling stop button pressed according to standards specified.
-        while(elev_get_stop_signal());
+        if(elev_get_stop_signal()){
+            current_state = EMERGENCY;
+        }
 
         // Stop elevator and exit program if the obstruction switch is flipped.
         if (elev_get_obstruction_signal()) {
@@ -45,34 +51,31 @@ int main() {
 
 
             case IDLE: // Do nothing while waiting for queue order.
-                first_order = listen();
-                if (first_order != -1) { 
+                set_elev_direction(DIRN_STOP);
+                if (listen() != -1) { 
                     set_target();
-
-                    stack_order = -1;
                     current_state = DRIVING;
                 }
                 break;
 
 
             case DRIVING: // Main state for most of the time
-                stack_order = listen(); // Checks for other orders while driving
-                if (stack_order != -1) { 
-                   set_target();
-                }
+                listen(); // Checks for other orders while driving
+                set_target();
                 set_elev_floor(); 
                 stop_n_kill_button(); // Picks up hitchhikers and updates queue.
-
-                // If empty queue, transition to IDLE
-                if (queue_count() == 0) {
-                    first_order = -1;
+                 //If empty queue, transition to IDLE
+                if (queue_count() == 0 ) {
                     current_state = IDLE;
                 }
                 break;
 
 
-            case EXTRA:
-                // Do something
+            case EMERGENCY:
+                emergency_stop();
+                while(elev_get_stop_signal());
+                continue_driving();
+                current_state = DRIVING;
                 break;               
 
 

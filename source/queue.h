@@ -1,9 +1,9 @@
 #ifndef QUEUE_H
 #define QUEUE_H
 
-#include "driver/elev.h"
+#include "elev.h"
 #include "elevator.h"
-#include "driver/channels.h"
+#include "channels.h"
 
 #include <stdbool.h>
 
@@ -14,6 +14,7 @@ enum floor_name {
 
 typedef struct Queue {
     int queue[NUM_FLOOR_NAMES];
+    int last_queue_count;
 } Queue;
 
 void set_queue(int floor_order);

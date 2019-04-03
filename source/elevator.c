@@ -1,6 +1,7 @@
 #include "elevator.h"
 #include <unistd.h>
 
+
 Elevator elevator;
 
 Elevator* getElevator() {
@@ -28,6 +29,10 @@ void set_elev_floor() {
     }
 }
 
+int get_elev_floor(){
+    return elevator.floor;
+}
+
 void set_elev_direction(elev_motor_direction_t dir) {
     elevator.dir = dir;
     elev_set_motor_direction(dir);
@@ -43,12 +48,34 @@ void elevator_rest() {
     }
 }
 
-void station_stop() {
-    set_elev_direction(DIRN_STOP);
-    sleep(1);
+void station_stop(elev_motor_direction_t dir, int start_time) {
+    set_elev_direction(DIRN_STOP);    
+    //if(timer_3_seconds(start_time) == 1){
+    set_elev_direction(dir);
+   //} 
 }
 
 void floor_light_set() {
     int floor = elevator.floor;                //denne slår seg veldig vrang. Prøver å sette lys til -1!!! Programmet krasjer...
-    elev_set_floor_indicator(floor);
+    
+    if(floor!=-1){
+        elev_set_floor_indicator(floor);       //dette gjorde susen! Egentlig skal ikke elevator.floor kunne gi -1, men den gjør altså det engang i blant...
+    }
+}
+
+
+void emergency_stop(){
+    elev_set_motor_direction(DIRN_STOP);
+}
+
+void continue_driving(){
+    elev_set_motor_direction(get_elev_direction());
+}
+
+
+int timer_3_seconds(int start_time){
+    if(clock()/CLOCKS_PER_SEC - start_time/CLOCKS_PER_SEC >3){
+        return 1;
+    }
+    return 0;
 }

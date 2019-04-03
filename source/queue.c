@@ -1,8 +1,10 @@
 #include "queue.h"
 #include <unistd.h>
+#include <time.h>
 
 Queue m_queue;
 
+int timer;
 //sett inn et element i queue
 void set_queue(int floor_order){
     m_queue.queue[floor_order] = 1;
@@ -23,7 +25,7 @@ void pop_queue(int floor_order) {
 int listen(void) {
     for (int i = 0; i <= 3; i++) {
 
-        if(i!= 3){
+        if(i!=3){
             if (elev_get_button_signal(BUTTON_CALL_UP,  i)) {
             set_queue(2*i);
             elev_set_button_lamp(BUTTON_CALL_UP, i, 1);
@@ -31,13 +33,14 @@ int listen(void) {
             }
         }        
     
-        if (i != 0) {
+        if (i!=0 ) {
             if (elev_get_button_signal(BUTTON_CALL_DOWN,i)) {
-            set_queue(2*i+1);
+            set_queue(2*i-1);
             elev_set_button_lamp(BUTTON_CALL_DOWN,i,1);
-            return (2*i+1);
+            return (2*i-1);
             }
         }
+       
         
     }
     return (-1);
@@ -48,13 +51,11 @@ int listen(void) {
 void set_target(){
     int target_floor = find_target();
 
-    if (getElevator()->floor > target_floor){
+    if (get_elev_floor() > target_floor){
         set_elev_direction(DIRN_DOWN);
     }
-    else if (getElevator()->floor == target_floor){
-        set_elev_direction(DIRN_STOP);
-    }
-    else{
+    
+    else if (get_elev_floor() < target_floor){
          set_elev_direction(DIRN_UP);
     }
 }
@@ -65,8 +66,8 @@ int find_target(){
     int max = 0;
     
 
-    for (int i = 0; i<3; i++){
-        if (m_queue.queue[2*i+1] == 1){
+    for (int i = 0; i<=3; i++){
+        if (m_queue.queue[2*i-1] == 1){
             if(min<i){
                 min = i;
             }
@@ -74,24 +75,30 @@ int find_target(){
         }
     }
     if(queue_count() == 1){
-         return max;
-    }   
+        return max;
+    }
+   
     if (get_elev_direction() == DIRN_DOWN){
         return min;
     }
     else {
         return max;
     }
+    
+    
+
 
 }
 
 
 //Hvis noen er på veien: Plukk de opp og skru av lyset når de er hentet.
 void stop_n_kill_button(){
-    int floor = elev_get_floor_sensor_signal();
-    getElevator()->floor = floor;
     
-    if (floor == 3){
+    int floor = get_elev_floor();
+    set_elev_floor();
+    int timer_clock = clock();
+
+    if (floor == 3 ){
         set_elev_direction(DIRN_DOWN);
     }
     if (floor == 0){
@@ -103,15 +110,15 @@ void stop_n_kill_button(){
             if (floor == i && m_queue.queue[2*i]) {
             elev_set_button_lamp(BUTTON_CALL_UP,floor,0);
             pop_queue(2*i);
-            station_stop(DIRN_UP);
+            station_stop(DIRN_UP , timer_clock);
             }
         }
 
         if (get_elev_direction() == DIRN_DOWN ) {
-            if (floor == i && m_queue.queue[2*i+1]) {
+            if (floor == i && m_queue.queue[2*i-1]) {
             elev_set_button_lamp(BUTTON_CALL_DOWN,floor,0);
-            pop_queue(2*i+1);
-            station_stop(DIRN_DOWN);
+            pop_queue(2*i-1);
+            station_stop(DIRN_DOWN, timer_clock);
             }
         }
     }
