@@ -3,8 +3,6 @@
 #include "states.h"
 #include "time.h"
 
-
-
 #include <stdio.h>
 
 #define START_STATE START
@@ -22,7 +20,7 @@ int main() {
 
     // Declare variables needed for state machine
     state current_state = START_STATE;
-    time_t timer= 0;
+    time_t timer = 0;
 
 
     while (current_state != END_STATE) {
@@ -51,25 +49,29 @@ int main() {
 
 
             case IDLE: // Do nothing while waiting for queue order.
-                set_elev_direction(DIRN_STOP);
-                if (listen() != -1) { 
-                    set_target();
+                elev_set_motor_direction(DIRN_STOP);
+                //set_elev_direction(DIRN_STOP);
+                listen();
+                if (queue_count() != 0) { 
                     current_state = DRIVING;
                 }
                 break;
 
 
             case DRIVING: // Main state for most of the time
-                listen(); // Checks for other orders while driving
-                set_target();
-                set_elev_floor(); 
-                stop_n_kill_button(); // Picks up hitchhikers and updates queue.
+                listen(); 
+                set_elev_floor();
+                stop_n_kill_button(); // Picks up hitchhikers and updates queue.   
+                
+                if(queue_count()!=0){     
+                    chase_target();// Checks for other orders while driving
+                }
+
                  //If empty queue, transition to IDLE
                 if (queue_count() == 0 ) {
                     current_state = IDLE;
                 }
                 break;
-
 
             case EMERGENCY:
                 emergency_stop();

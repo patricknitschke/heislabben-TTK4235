@@ -23,6 +23,7 @@ void pop_queue(int floor_order) {
 
 //finn ut om noen trykker på heiskallknapp, sett dette inn i queue
 int listen(void) {
+    check_buttons_inside();
     for (int i = 0; i <= 3; i++) {
 
         if(i!=3){
@@ -48,54 +49,74 @@ int listen(void) {
 
 
 //sett målet for hvor heisen skal i en gitt retning. kaller noen på heisen forbi, sett målet her.
-void set_target(){
+void chase_target(){
     int target_floor = find_target();
+    //printf(target_floor);
 
     if (get_elev_floor() > target_floor){
         set_elev_direction(DIRN_DOWN);
     }
     
     else if (get_elev_floor() < target_floor){
-         set_elev_direction(DIRN_UP);
+        set_elev_direction(DIRN_UP);
+    }
+    else{
+        if(get_elev_direction() == DIRN_UP){
+            set_elev_direction(DIRN_DOWN);
+        }
+        else{
+            set_elev_direction(DIRN_UP);
+        }
     }
 }
 
 int find_target(){
-    
     int min = 3;
     int max = 0;
     
+    bool dir_up = false;
+    bool dir_down = false;
 
-    for (int i = 0; i<=3; i++){
-        if (m_queue.queue[2*i-1] == 1){
-            if(min<i){
+    for (int i = 0; i <= 3; i++) {
+        if (m_queue.queue[2*i-1] == 1) {  // Check down orders
+            dir_down = true;
+            if(i<min){
                 min = i;
             }
             max = i;
         }
+
+        if (m_queue.queue[2*i] == 1) { // Check up orders
+            dir_up = true;
+            max = i;
+            if(i<min){
+                min = i;
+            }
+        }
     }
-    if(queue_count() == 1){
-        return max;
+
+    if (queue_count() == 1){
+        if (dir_up) {
+            return max;
+        }
+        else if(dir_down) {
+            return min;
+        }
     }
-   
-    if (get_elev_direction() == DIRN_DOWN){
+    else if (get_elev_direction() == DIRN_DOWN){
         return min;
     }
-    else {
+    else if (get_elev_direction() == DIRN_UP){
         return max;
     }
-    
-    
-
-
+    return (get_elev_floor());
 }
 
 
 //Hvis noen er på veien: Plukk de opp og skru av lyset når de er hentet.
 void stop_n_kill_button(){
-    
-    int floor = get_elev_floor();
     set_elev_floor();
+    int floor = get_elev_floor();
     int timer_clock = clock();
 
     if (floor == 3 ){
@@ -106,18 +127,28 @@ void stop_n_kill_button(){
     }
 
     for (int i = 0; i < 4; i++) {
-        if (get_elev_direction() == DIRN_UP) {
+        if (get_elev_direction() == DIRN_UP || queue_count() == 1) {
             if (floor == i && m_queue.queue[2*i]) {
-            elev_set_button_lamp(BUTTON_CALL_UP,floor,0);
+                elev_set_button_lamp(BUTTON_CALL_UP,floor,0);
+                elev_set_button_lamp(BUTTON_COMMAND,floor,0);
+                if(i!=0){
+                    elev_set_button_lamp(BUTTON_CALL_DOWN,floor,0);
+                }
             pop_queue(2*i);
+            pop_queue(2*i-1);
             station_stop(DIRN_UP , timer_clock);
             }
         }
 
-        if (get_elev_direction() == DIRN_DOWN ) {
+        if (get_elev_direction() == DIRN_DOWN || queue_count() == 1) {
             if (floor == i && m_queue.queue[2*i-1]) {
-            elev_set_button_lamp(BUTTON_CALL_DOWN,floor,0);
+                elev_set_button_lamp(BUTTON_CALL_DOWN,floor,0);
+                elev_set_button_lamp(BUTTON_COMMAND,floor,0);
+                if(i!=3){
+                    elev_set_button_lamp(BUTTON_CALL_UP,floor,0);
+                }
             pop_queue(2*i-1);
+            pop_queue(2*i);
             station_stop(DIRN_DOWN, timer_clock);
             }
         }
@@ -134,6 +165,25 @@ int queue_count(){
     }
     return count;
 }
+
+
+
+void check_buttons_inside(){
+    for(int i = 0;i<4;i++){
+        if(elev_get_button_signal(BUTTON_COMMAND, i)){
+            if(i!=3){
+                set_queue(2*i);
+                
+            }
+            if(i!=0){
+                set_queue(2*i-1);
+            }
+            elev_set_button_lamp(BUTTON_COMMAND, i, 1);
+
+        }
+    }
+}
+
 
 
 
