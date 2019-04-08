@@ -31,10 +31,7 @@ int main() {
         /*  Write code that needs to be checked regardless of state here  */
         current_timer = clock();
         
-        // Handling stop button pressed according to standards specified.
-        if(elev_get_stop_signal()){
-            current_state = EMERGENCY;
-        }
+        // Handling stop button pressed according to standards specified
 
         // Stop elevator and exit program if the obstruction switch is flipped.
         if (elev_get_obstruction_signal()) {
@@ -59,12 +56,21 @@ int main() {
                 if (queue_count() != 0) { 
                     current_state = DRIVING;
                 }
+                if(elev_get_stop_signal() && elev_get_floor_sensor_signal()!=-1){
+
+                    current_state = PICKUP;
+                }
+                
                 break;
 
 
             case DRIVING: // Main state for most of the time
                 listen(); 
                 set_elev_floor(); 
+
+                if(elev_get_stop_signal()){
+                    current_state = EMERGENCY;
+                }
 
                 // As we pick up hitchhiker, transition to PICKUP
                 if(stop_n_kill_button() == 1) {
@@ -107,9 +113,12 @@ int main() {
 
             case EMERGENCY:
                 emergency_stop();
+                if(elev_get_stop_signal()){
+                    elev_set_stop_lamp(1);
+                }
                 while(elev_get_stop_signal());
-                set_elev_direction(DIRN_DOWN);
-                start();
+                elev_set_stop_lamp(0);
+                kill_all_lights();
                 current_state = IDLE;
                 break;               
 

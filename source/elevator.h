@@ -36,4 +36,5 @@ void continue_driving();
 int timer_3_seconds(int start_time, int current_time);
 int pickup(int start_time, int current_time); // returns true when timer completed
 
+void kill_all_lights();
 #endif

@@ -63,6 +63,9 @@ void floor_light_set() {
 
 void emergency_stop(){
     elev_set_motor_direction(DIRN_STOP);
+    for(int i = 0; i<6; i++){
+        pop_queue(i);
+    }
 }
 
 void continue_driving(){
@@ -87,5 +90,18 @@ int pickup(int start_time, int current_time) {
         return 1;
     } else {
         return 0;
+    }
+}
+
+
+void kill_all_lights(){
+    for(int i = 0; i<4; i++){
+        if(i != 3){
+            elev_set_button_lamp(BUTTON_CALL_UP, i, 0);
+        }
+        if(i != 0){
+            elev_set_button_lamp(BUTTON_CALL_DOWN, i, 0);
+        }
+        elev_set_button_lamp(BUTTON_COMMAND,i,0);
     }
 }
