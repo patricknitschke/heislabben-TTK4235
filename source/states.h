@@ -4,7 +4,7 @@
 #include <stdbool.h>
 
 typedef enum state {
-	START, IDLE, DRIVING, EMERGENCY, END
+	START, IDLE, DRIVING, PICKUP, EMERGENCY, END
 } state;
 
 

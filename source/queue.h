@@ -22,7 +22,7 @@ Queue* get_queue();
 void pop_queue(int floor_order);
 
 int listen();
-void stop_n_kill_button();
+int stop_n_kill_button();
 void chase_target();
 int find_target();
 int queue_count();

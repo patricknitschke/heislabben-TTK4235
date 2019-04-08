@@ -20,12 +20,16 @@ int main() {
 
     // Declare variables needed for state machine
     state current_state = START_STATE;
-    time_t timer = 0;
+    int timer_enabled = 0;
+    int timer_completed = 0;
+    int start_timer = 0;
+    int current_timer = 0;
 
 
+    /* Main loop that runs the elevator */
     while (current_state != END_STATE) {
-        timer = clock();
         /*  Write code that needs to be checked regardless of state here  */
+        current_timer = clock();
         
         // Handling stop button pressed according to standards specified.
         if(elev_get_stop_signal()){
@@ -60,24 +64,53 @@ int main() {
 
             case DRIVING: // Main state for most of the time
                 listen(); 
-                set_elev_floor();
-                stop_n_kill_button(); // Picks up hitchhikers and updates queue.   
-                
+                set_elev_floor(); 
+
+                // As we pick up hitchhiker, transition to PICKUP
+                if(stop_n_kill_button() == 1) {
+                    current_state = PICKUP;
+                }
+
                 if(queue_count()!=0){     
                     chase_target();// Checks for other orders while driving
                 }
 
-                 //If empty queue, transition to IDLE
-                if (queue_count() == 0 ) {
-                    current_state = IDLE;
-                }
+               
                 break;
+            
+
+            case PICKUP: //when picking up
+                set_elev_direction(DIRN_STOP);
+                listen();
+                if (!timer_enabled) {
+                    start_timer = clock();
+                    elev_set_door_open_lamp(1);
+                    timer_enabled = 1;
+                }
+                timer_completed = pickup(start_timer, current_timer);
+
+                if (timer_completed) {
+                    if (queue_count() == 0 ) {
+                        current_state = IDLE;
+                    }
+                    else{
+                        current_state = DRIVING;
+                    }
+                    timer_enabled = 0;
+                    elev_set_door_open_lamp(0);
+                }
+                 // If empty queue, transition to IDLE
+            
+                break;
+
+            
 
             case EMERGENCY:
                 emergency_stop();
                 while(elev_get_stop_signal());
-                continue_driving();
-                current_state = DRIVING;
+                set_elev_direction(DIRN_DOWN);
+                start();
+                current_state = IDLE;
                 break;               
 
 

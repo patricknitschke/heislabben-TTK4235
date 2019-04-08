@@ -114,10 +114,10 @@ int find_target(){
 
 
 //Hvis noen er på veien: Plukk de opp og skru av lyset når de er hentet.
-void stop_n_kill_button(){
+int stop_n_kill_button(){
     set_elev_floor();
     int floor = get_elev_floor();
-    int timer_clock = clock();
+    
 
     if (floor == 3 ){
         set_elev_direction(DIRN_DOWN);
@@ -136,7 +136,8 @@ void stop_n_kill_button(){
                 }
             pop_queue(2*i);
             pop_queue(2*i-1);
-            station_stop(DIRN_UP , timer_clock);
+            station_stop(DIRN_UP);
+            return 1;
             }
         }
 
@@ -149,10 +150,12 @@ void stop_n_kill_button(){
                 }
             pop_queue(2*i-1);
             pop_queue(2*i);
-            station_stop(DIRN_DOWN, timer_clock);
+            station_stop(DIRN_DOWN);
+            return 1;
             }
         }
     }
+    return 0;
 }
 
 //sjekk om køen er tom

@@ -48,11 +48,8 @@ void elevator_rest() {
     }
 }
 
-void station_stop(elev_motor_direction_t dir, int start_time) {
+void station_stop(elev_motor_direction_t dir) {
     set_elev_direction(DIRN_STOP);    
-    //if(timer_3_seconds(start_time) == 1){
-    set_elev_direction(dir);
-   //} 
 }
 
 void floor_light_set() {
@@ -73,9 +70,22 @@ void continue_driving(){
 }
 
 
-int timer_3_seconds(int start_time){
-    if(clock()/CLOCKS_PER_SEC - start_time/CLOCKS_PER_SEC >3){
+int timer_3_seconds(int start_time, int current_time){
+    if(current_time/CLOCKS_PER_SEC - start_time/CLOCKS_PER_SEC > 3){
         return 1;
+    } else {
+        return 0;
     }
-    return 0;
+}
+
+// As we pick up a customer, do stuff
+int pickup(int start_time, int current_time) {
+    // Do stuff
+    
+    
+    if (timer_3_seconds(start_time, current_time) == 1) { // Timer completed
+        return 1;
+    } else {
+        return 0;
+    }
 }
