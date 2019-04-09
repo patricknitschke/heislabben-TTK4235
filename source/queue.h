@@ -4,6 +4,7 @@
 #include "elev.h"
 #include "elevator.h"
 #include "channels.h"
+#include "door.h"
 
 #include <stdbool.h>
 

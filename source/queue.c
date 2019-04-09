@@ -61,10 +61,10 @@ void chase_target(){
         set_elev_direction(DIRN_UP);
     }
     else{
-        if(get_elev_direction() == DIRN_UP){
+        if(get_elev_direction() == DIRN_UP && m_queue.queue[N_FLOORS-1] == 0){
             set_elev_direction(DIRN_DOWN);
         }
-        else{
+        else if (get_elev_direction() == DIRN_DOWN && m_queue.queue[0] == 0){
             set_elev_direction(DIRN_UP);
         }
     }
@@ -128,7 +128,7 @@ int stop_n_kill_button(){
     if(elev_get_floor_sensor_signal() != -1){
         for (int i = 0; i < 4; i++) {
             if (get_elev_direction() == DIRN_UP || queue_count() == 1) {
-                if (floor == i && m_queue.queue[2*i]) {
+                if (floor == i && m_queue.queue[2*i]==1) {
                     elev_set_button_lamp(BUTTON_CALL_UP,floor,0);
                     elev_set_button_lamp(BUTTON_COMMAND,floor,0);
                     if(i!=0){
@@ -136,13 +136,12 @@ int stop_n_kill_button(){
                     }
                 pop_queue(2*i);
                 pop_queue(2*i-1);
-                station_stop(DIRN_UP);
                 return 1;
                 }
             }
 
             if (get_elev_direction() == DIRN_DOWN || queue_count() == 1) {
-                if (floor == i && m_queue.queue[2*i-1]) {
+                if (floor == i && m_queue.queue[2*i-1]==1) {
                     elev_set_button_lamp(BUTTON_CALL_DOWN,floor,0);
                     elev_set_button_lamp(BUTTON_COMMAND,floor,0);
                     if(i!=3){
@@ -150,7 +149,6 @@ int stop_n_kill_button(){
                     }
                 pop_queue(2*i-1);
                 pop_queue(2*i);
-                station_stop(DIRN_DOWN);
                 return 1;
                 }
             }

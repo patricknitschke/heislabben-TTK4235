@@ -1,14 +1,14 @@
 #include "elevator.h"
+#include "lights.h"
+#include "door.h"
 #include <unistd.h>
 
+static Elevator elevator;
 
-Elevator elevator;
-
-Elevator* getElevator() {
-    return &elevator;
-}
-
+// Start downwards, stop at defined state
 int start(void){
+    set_elev_direction(DIRN_DOWN);
+
     for (int i = 0; i < 6; i++) {
         pop_queue(i);
     }
@@ -49,59 +49,16 @@ void elevator_rest() {
 }
 
 void station_stop(elev_motor_direction_t dir) {
-    set_elev_direction(DIRN_STOP);    
-}
-
-void floor_light_set() {
-    int floor = elevator.floor;                //denne slår seg veldig vrang. Prøver å sette lys til -1!!! Programmet krasjer...
-    
-    if(floor!=-1){
-        elev_set_floor_indicator(floor);       //dette gjorde susen! Egentlig skal ikke elevator.floor kunne gi -1, men den gjør altså det engang i blant...
-    }
-}
-
-
-void emergency_stop(){
-    elev_set_motor_direction(DIRN_STOP);
-    for(int i = 0; i<6; i++){
-        pop_queue(i);
-    }
+    elev_set_motor_direction(DIRN_STOP);    
 }
 
 void continue_driving(){
     elev_set_motor_direction(get_elev_direction());
 }
 
-
-int timer_3_seconds(int start_time, int current_time){
-    if(current_time/CLOCKS_PER_SEC - start_time/CLOCKS_PER_SEC > 3){
-        return 1;
-    } else {
-        return 0;
-    }
-}
-
-// As we pick up a customer, do stuff
-int pickup(int start_time, int current_time) {
-    // Do stuff
-    
-    
-    if (timer_3_seconds(start_time, current_time) == 1) { // Timer completed
-        return 1;
-    } else {
-        return 0;
-    }
-}
-
-
-void kill_all_lights(){
-    for(int i = 0; i<4; i++){
-        if(i != 3){
-            elev_set_button_lamp(BUTTON_CALL_UP, i, 0);
-        }
-        if(i != 0){
-            elev_set_button_lamp(BUTTON_CALL_DOWN, i, 0);
-        }
-        elev_set_button_lamp(BUTTON_COMMAND,i,0);
+void emergency_stop(){
+    elev_set_motor_direction(DIRN_STOP);
+    for(int i = 0; i<6; i++){
+        pop_queue(i);
     }
 }

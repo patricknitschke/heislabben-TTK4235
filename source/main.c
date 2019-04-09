@@ -1,8 +1,8 @@
 #include "elev.h"
 #include "elevator.h"
 #include "states.h"
-#include "time.h"
-
+#include "lights.h"
+#include "door.h"
 #include <stdio.h>
 
 #define START_STATE START
@@ -20,31 +20,24 @@ int main() {
 
     // Declare variables needed for state machine
     state current_state = START_STATE;
-    int timer_enabled = 0;
-    int timer_completed = 0;
-    int start_timer = 0;
-    int current_timer = 0;
-
 
     /* Main loop that runs the elevator */
     while (current_state != END_STATE) {
         /*  Write code that needs to be checked regardless of state here  */
-        current_timer = clock();
         
-        // Handling stop button pressed according to standards specified
+        
+        
 
-        // Stop elevator and exit program if the obstruction switch is flipped.
+        // Stop elevator and exit program if the obstruction switch is flipped. (this can be modified for the test)
         if (elev_get_obstruction_signal()) {
-            current_state = END_STATE;
+            current_state = END_STATE;// Handling stop button pressed according to standards specified
         }
         
 
         /* Runs the state machine through switch case. */
         switch(current_state) {
             case START: // Sets up elevator and moves to a defined state.
-                set_elev_direction(DIRN_DOWN);
                 start();
-
                 current_state = IDLE;
                 break;
 
@@ -56,9 +49,8 @@ int main() {
                 if (queue_count() != 0) { 
                     current_state = DRIVING;
                 }
-                if(elev_get_stop_signal() && elev_get_floor_sensor_signal()!=-1){
-
-                    current_state = PICKUP;
+                if(emergency() && get_floor_signal() != -1){
+                    current_state = PICKUP; //simply open doors while emergency is ongoing (button pressed)
                 }
                 
                 break;
@@ -67,57 +59,41 @@ int main() {
             case DRIVING: // Main state for most of the time
                 listen(); 
                 set_elev_floor(); 
-
-                if(elev_get_stop_signal()){
+                if(emergency()){
                     current_state = EMERGENCY;
                 }
-
-                // As we pick up hitchhiker, transition to PICKUP
+                chase_target();
+                // As we find a customer, transition to PICKUP
                 if(stop_n_kill_button() == 1) {
                     current_state = PICKUP;
                 }
-
-                if(queue_count()!=0){     
-                    chase_target();// Checks for other orders while driving
-                }
-
-               
+                
                 break;
-            
 
             case PICKUP: //when picking up
-                set_elev_direction(DIRN_STOP);
                 listen();
-                if (!timer_enabled) {
-                    start_timer = clock();
-                    elev_set_door_open_lamp(1);
-                    timer_enabled = 1;
-                }
-                timer_completed = pickup(start_timer, current_timer);
+                open_door(); //Stops motor and starts timer
 
-                if (timer_completed) {
-                    if (queue_count() == 0 ) {
+                if (picked_up()) {
+                    if (queue_count() == 0 ) {  // If empty queue, transition to IDLE
                         current_state = IDLE;
                     }
-                    else{
+                    else {
                         current_state = DRIVING;
                     }
-                    timer_enabled = 0;
-                    elev_set_door_open_lamp(0);
+                    close_door();
                 }
-                 // If empty queue, transition to IDLE
-            
                 break;
 
             
 
             case EMERGENCY:
                 emergency_stop();
-                if(elev_get_stop_signal()){
-                    elev_set_stop_lamp(1);
+                if(emergency()){
+                    set_stoplight(1);
                 }
-                while(elev_get_stop_signal());
-                elev_set_stop_lamp(0);
+                while(emergency());// Handling stop button pressed according to standards specified
+                set_stoplight(0);
                 kill_all_lights();
                 current_state = IDLE;
                 break;               

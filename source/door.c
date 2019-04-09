@@ -52,3 +52,10 @@ void remove_target(int target_floor) {
     }
     elev_set_button_lamp(BUTTON_COMMAND, target_floor,0);
 }
+
+int emergency(){
+    if(elev_get_stop_signal()){
+        return 1;
+    }
+    return 0;
+}
