@@ -41,7 +41,7 @@ void close_door() {
     elev_set_door_open_lamp(0);
 }
 
-/*void remove_target(int target_floor) {
+void remove_target(int target_floor) {
     if(target_floor != 3){
         update_lights(BUTTON_CALL_UP,target_floor,0);
         pop_queue(2*target_floor);
@@ -51,4 +51,11 @@ void close_door() {
         pop_queue(2*target_floor-1);
     }
     elev_set_button_lamp(BUTTON_COMMAND, target_floor,0);
-}*/
+}
+
+int emergency(){
+    if(elev_get_stop_signal()){
+        return 1;
+    }
+    return 0;
+}

@@ -34,3 +34,10 @@ int get_order(elev_button_type_t button, int floor){
 void set_stoplight(int value){
     elev_set_stop_lamp(value);
 }
+
+int get_floor_signal(){
+    if (elev_get_floor_sensor_signal() != -1){
+        return elev_get_floor_sensor_signal();
+    }
+    return -1;
+}

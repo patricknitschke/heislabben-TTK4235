@@ -13,6 +13,7 @@ void set_stoplight(int value);
 
 int get_order(elev_button_type_t button, int floor); // Alias for get button signal
 
+int get_floor_signal();
 
 
 #endif

@@ -5,6 +5,7 @@
 #include "queue.h"
 #include "elev.h"
 #include "time.h"
+#include "lights.h"
 
 enum timer_tag {
     START_TIMER, TIMER_ENABLED, NUM_T_TAGS
@@ -15,7 +16,7 @@ typedef struct Door {
 } Door;
 
 int start_timer();
-int timer_enabled();
+void enable_timer();
 void reset_timer();
 
 void open_door();
@@ -24,7 +25,9 @@ void close_door();
 int check_timer(); 
 int picked_up(); // returns true when timer completed
 
-//void remove_target(int floor);
+void remove_target(int floor);
+
+int emergency();
 
 
 #endif

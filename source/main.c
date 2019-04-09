@@ -25,12 +25,12 @@ int main() {
     while (current_state != END_STATE) {
         /*  Write code that needs to be checked regardless of state here  */
         
-        // Handling stop button pressed according to standards specified
-        //Skriv en stop funksjon som tar inn current_state, gjør forskjellig ting avh. av state
+        
+        
 
-        // Stop elevator and exit program if the obstruction switch is flipped.
+        // Stop elevator and exit program if the obstruction switch is flipped. (this can be modified for the test)
         if (elev_get_obstruction_signal()) {
-            current_state = END_STATE;
+            current_state = END_STATE;// Handling stop button pressed according to standards specified
         }
         
 
@@ -49,8 +49,8 @@ int main() {
                 if (queue_count() != 0) { 
                     current_state = DRIVING;
                 }
-                if(elev_get_stop_signal() && elev_get_floor_sensor_signal()!=-1){
-                    current_state = PICKUP;
+                if(emergency() && get_floor_signal() != -1){
+                    current_state = PICKUP; //simply open doors while emergency is ongoing (button pressed)
                 }
                 
                 break;
@@ -59,15 +59,15 @@ int main() {
             case DRIVING: // Main state for most of the time
                 listen(); 
                 set_elev_floor(); 
-                if(elev_get_stop_signal()){
+                if(emergency()){
                     current_state = EMERGENCY;
                 }
-                
+                chase_target();
                 // As we find a customer, transition to PICKUP
-                if(find_customer() == 1) {
+                if(stop_n_kill_button() == 1) {
                     current_state = PICKUP;
                 }
-                stop_n_kill_button();
+                
                 break;
 
             case PICKUP: //when picking up
@@ -92,7 +92,7 @@ int main() {
                 if(elev_get_stop_signal()){
                     set_stoplight(1);
                 }
-                while(elev_get_stop_signal());
+                while(elev_get_stop_signal());// Handling stop button pressed according to standards specified
                 set_stoplight(0);
                 kill_all_lights();
                 current_state = IDLE;
