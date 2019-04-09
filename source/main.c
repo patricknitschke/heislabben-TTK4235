@@ -89,10 +89,10 @@ int main() {
 
             case EMERGENCY:
                 emergency_stop();
-                if(elev_get_stop_signal()){
+                if(emergency()){
                     set_stoplight(1);
                 }
-                while(elev_get_stop_signal());// Handling stop button pressed according to standards specified
+                while(emergency());// Handling stop button pressed according to standards specified
                 set_stoplight(0);
                 kill_all_lights();
                 current_state = IDLE;
