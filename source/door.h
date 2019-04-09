@@ -24,7 +24,7 @@ void close_door();
 int check_timer(); 
 int picked_up(); // returns true when timer completed
 
-void remove_target(int floor);
+//void remove_target(int floor);
 
 
 #endif
