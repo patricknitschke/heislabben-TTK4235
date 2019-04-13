@@ -25,8 +25,11 @@ int main() {
     while (current_state != END_STATE) {
         /*  Write code that needs to be checked regardless of state here  */
         
-        
-        
+        listen();
+
+        if(emergency()) {
+             current_state = EMERGENCY;
+        }
 
         // Stop elevator and exit program if the obstruction switch is flipped. (this can be modified for the test)
         if (elev_get_obstruction_signal()) {
@@ -43,35 +46,23 @@ int main() {
 
 
             case IDLE: // Do nothing while waiting for queue order.
-                elev_set_motor_direction(DIRN_STOP);
-                //set_elev_direction(DIRN_STOP);
-                listen();
                 if (queue_count() != 0) { 
                     current_state = DRIVING;
                 }
-                if(emergency() && get_floor_signal() != -1){
-                    current_state = PICKUP; //simply open doors while emergency is ongoing (button pressed)
-                }
-                
                 break;
 
 
             case DRIVING: // Main state for most of the time
-                listen(); 
-                set_elev_floor(); 
-                if(emergency()){
-                    current_state = EMERGENCY;
-                }
-                chase_target();
+                set_elev_floor();
+
                 // As we find a customer, transition to PICKUP
                 if(stop_n_kill_button() == 1) {
                     current_state = PICKUP;
                 }
-                
+                chase_target();
                 break;
 
             case PICKUP: //when picking up
-                listen();
                 open_door(); //Stops motor and starts timer
 
                 if (picked_up()) {
@@ -89,15 +80,22 @@ int main() {
 
             case EMERGENCY:
                 emergency_stop();
-                if(emergency()){
-                    set_stoplight(1);
+                set_stoplight(1);
+                kill_all_lights();
+                if (check_valid_floor()) {
+                    open_door();
                 }
+
                 while(emergency());// Handling stop button pressed according to standards specified
                 set_stoplight(0);
-                kill_all_lights();
-                current_state = IDLE;
+                
+                if (check_door_open()) {
+                    reset_timer();
+                    current_state = PICKUP;
+                } else {
+                    current_state = IDLE;
+                }
                 break;               
-
 
             case END: // Stops the state machine
                 set_elev_direction(DIRN_STOP);

@@ -13,6 +13,7 @@ enum timer_tag {
 
 typedef struct Door {
     int door_timer[NUM_T_TAGS];
+    int door_is_open;
 } Door;
 
 int start_timer();
@@ -22,10 +23,10 @@ void reset_timer();
 void open_door();
 void close_door();
 
+int check_door_open();
+
 int check_timer(); 
 int picked_up(); // returns true when timer completed
-
-void remove_target(int floor);
 
 int emergency();
 

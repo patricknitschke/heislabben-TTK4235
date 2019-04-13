@@ -13,20 +13,20 @@
 typedef struct Elevator {
     int floor;
     elev_motor_direction_t dir;
+    elev_motor_direction_t dir_previous;
 } Elevator;
 
 // Elevator functions
 int start(void);
+int check_valid_floor(void);
 void set_elev_floor();
 int get_elev_floor();
+float get_elev_floor_in_between();
 void set_elev_direction(elev_motor_direction_t dir);
 elev_motor_direction_t get_elev_direction();
+elev_motor_direction_t get_elev_previous_direction();
 
 
 void emergency_stop();
-
-void station_stop(elev_motor_direction_t direction); // Stops motor, maintains direction
-void continue_driving(); // Continue in same direction
-
 
 #endif

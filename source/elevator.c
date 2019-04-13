@@ -2,14 +2,15 @@
 #include "lights.h"
 #include "door.h"
 #include <unistd.h>
+#include <stdio.h>
 
-static Elevator elevator;
+static Elevator m_elevator;
 
 // Start downwards, stop at defined state
 int start(void){
     set_elev_direction(DIRN_DOWN);
 
-    for (int i = 0; i < 6; i++) {
+    for (int i = 0; i < N_FLOOR_NAMES; i++) {
         pop_queue(i);
     }
     int floor = elev_get_floor_sensor_signal();
@@ -22,43 +23,56 @@ int start(void){
     return floor;
 }
 
+int check_valid_floor(void) {
+    return (elev_get_floor_sensor_signal() != -1);
+}
+
 void set_elev_floor() {
     if (elev_get_floor_sensor_signal() != -1) {
-        elevator.floor = elev_get_floor_sensor_signal();
+        m_elevator.floor = elev_get_floor_sensor_signal();
         floor_light_set();
     }
 }
 
 int get_elev_floor(){
-    return elevator.floor;
+    return m_elevator.floor;
 }
 
-void set_elev_direction(elev_motor_direction_t dir) {
-    elevator.dir = dir;
-    elev_set_motor_direction(dir);
-}
-
-elev_motor_direction_t get_elev_direction() {
-    return elevator.dir;
-}
-
-void elevator_rest() {
-    if (queue_count() == 0){
-        elev_set_motor_direction(DIRN_STOP);
+float get_elev_floor_in_between() {
+    if (get_elev_previous_direction() == DIRN_UP) {
+        return (get_elev_floor()+0.5);
+    } 
+    else if (get_elev_previous_direction() == DIRN_DOWN) {
+        return (get_elev_floor()-0.5);
+    } 
+    else {
+        return (float)get_elev_floor();
     }
 }
 
-void station_stop(elev_motor_direction_t dir) {
-    elev_set_motor_direction(DIRN_STOP);    
+void set_elev_direction(elev_motor_direction_t dir) {
+    if ((m_elevator.dir == -dir && check_valid_floor()) || m_elevator.dir == DIRN_STOP) {
+         elev_set_motor_direction(dir);
+    } else if (dir == DIRN_STOP) {
+        elev_set_motor_direction(dir);
+    }
+    m_elevator.dir = dir;
+    if (m_elevator.dir != DIRN_STOP && check_valid_floor()) {
+        m_elevator.dir_previous = m_elevator.dir;
+    }
 }
 
-void continue_driving(){
-    elev_set_motor_direction(get_elev_direction());
+elev_motor_direction_t get_elev_direction() {
+    return m_elevator.dir;
+}
+
+elev_motor_direction_t get_elev_previous_direction() {
+    return m_elevator.dir_previous;
 }
 
 void emergency_stop(){
-    elev_set_motor_direction(DIRN_STOP);
-    for(int i = 0; i<6; i++){
+    set_elev_direction(DIRN_STOP);
+    for(int i = 0; i < N_FLOOR_NAMES; i++){
         pop_queue(i);
     }
 }
