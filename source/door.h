@@ -28,7 +28,4 @@ int check_door_open();
 int check_timer(); 
 int picked_up(); // returns true when timer completed
 
-int emergency();
-
-
 #endif

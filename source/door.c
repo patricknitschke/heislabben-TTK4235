@@ -46,10 +46,3 @@ void close_door() {
 int check_door_open() {
     return m_door.door_is_open;
 }
-
-int emergency(){
-    if(elev_get_stop_signal()){
-        return 1;
-    }
-    return 0;
-}

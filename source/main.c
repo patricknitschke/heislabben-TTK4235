@@ -40,7 +40,7 @@ int main() {
         /* Runs the state machine through switch case. */
         switch(current_state) {
             case START: // Sets up elevator and moves to a defined state.
-                start();
+                init_elevator();
                 current_state = IDLE;
                 break;
 

@@ -7,7 +7,7 @@
 static Elevator m_elevator;
 
 // Start downwards, stop at defined state
-int start(void){
+int init_elevator(void) {
     set_elev_direction(DIRN_DOWN);
 
     for (int i = 0; i < N_FLOOR_NAMES; i++) {
@@ -27,23 +27,23 @@ int check_valid_floor(void) {
     return (elev_get_floor_sensor_signal() != -1);
 }
 
-void set_elev_floor() {
+void set_elev_floor(void) {
     if (elev_get_floor_sensor_signal() != -1) {
         m_elevator.floor = elev_get_floor_sensor_signal();
         floor_light_set();
     }
 }
 
-int get_elev_floor(){
+int get_elev_floor(void) {
     return m_elevator.floor;
 }
 
-float get_elev_floor_in_between() {
+float get_elev_floor_in_between(void) {
     if (get_elev_previous_direction() == DIRN_UP) {
-        return (get_elev_floor()+0.5);
+        return (get_elev_floor() + 0.5);
     } 
     else if (get_elev_previous_direction() == DIRN_DOWN) {
-        return (get_elev_floor()-0.5);
+        return (get_elev_floor() - 0.5);
     } 
     else {
         return (float)get_elev_floor();
@@ -51,26 +51,35 @@ float get_elev_floor_in_between() {
 }
 
 void set_elev_direction(elev_motor_direction_t dir) {
-    if ((m_elevator.dir == -dir && check_valid_floor()) || m_elevator.dir == DIRN_STOP) {
+    if (m_elevator.dir == -dir && check_valid_floor()) {
          elev_set_motor_direction(dir);
-    } else if (dir == DIRN_STOP) {
+    }
+    else if (m_elevator.dir == DIRN_STOP) {
+        elev_set_motor_direction(dir)
+    } 
+    else if (dir == DIRN_STOP) {
         elev_set_motor_direction(dir);
     }
+    
     m_elevator.dir = dir;
     if (m_elevator.dir != DIRN_STOP && check_valid_floor()) {
         m_elevator.dir_previous = m_elevator.dir;
     }
 }
 
-elev_motor_direction_t get_elev_direction() {
+elev_motor_direction_t get_elev_direction(void) {
     return m_elevator.dir;
 }
 
-elev_motor_direction_t get_elev_previous_direction() {
+elev_motor_direction_t get_elev_previous_direction(void) {
     return m_elevator.dir_previous;
 }
 
-void emergency_stop(){
+int emergency(void) {
+    return elev_get_stop_signal();
+
+
+void emergency_stop(void) {
     set_elev_direction(DIRN_STOP);
     for(int i = 0; i < N_FLOOR_NAMES; i++){
         pop_queue(i);
