@@ -63,7 +63,7 @@ void elevator_set_direction(elev_motor_direction_t dir) {
     }
 
     m_elevator.dir = dir;
-    if (m_elevator.dir != DIRN_STOP && elevator_check_valid_floor()) {  // Previous direction before stop. Otherwise the same.
+    if (m_elevator.dir != DIRN_STOP && elevator_check_valid_floor()) {  // dir_previous registers direction before stop, otherwise the same as dir.
         m_elevator.dir_previous = m_elevator.dir;
     }
 }

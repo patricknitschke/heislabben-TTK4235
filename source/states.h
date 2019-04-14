@@ -1,3 +1,8 @@
+/** @file
+*@brief This file contains the states in the FSM and their functions.
+*
+*/
+
 #ifndef STATES_H
 #define STATES_H
 #include "elevator.h"
@@ -36,7 +41,7 @@ state state_pickup(void);
 state state_emergency(void);
 
 
-// Stops the motor and exits the FSM.
+// Exits the FSM as while loop criteria fails.
 state state_end(void);
 
 

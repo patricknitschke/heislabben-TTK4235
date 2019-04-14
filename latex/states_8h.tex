@@ -1,0 +1,64 @@
+\hypertarget{states_8h}{}\section{source/states.h File Reference}
+\label{states_8h}\index{source/states.\+h@{source/states.\+h}}
+
+
+This file contains the states in the F\+SM and their functions.  
+
+
+{\ttfamily \#include \char`\"{}elevator.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}queue.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}lights.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}door.\+h\char`\"{}}\\*
+Include dependency graph for states.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef enum state {\bfseries state}\hypertarget{states_8h_a9f34354b149588b399cf9448e20069be}{}\label{states_8h_a9f34354b149588b399cf9448e20069be}
+
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum {\bfseries state} \{ \\*
+{\bfseries S\+T\+A\+RT}, 
+{\bfseries I\+D\+LE}, 
+{\bfseries D\+R\+I\+V\+I\+NG}, 
+{\bfseries P\+I\+C\+K\+UP}, 
+\\*
+{\bfseries E\+M\+E\+R\+G\+E\+N\+CY}, 
+{\bfseries E\+ND}
+ \}\hypertarget{states_8h_adc6e5733fc3c22f0a7b2914188c49c90}{}\label{states_8h_adc6e5733fc3c22f0a7b2914188c49c90}
+
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+state {\bfseries state\+\_\+pending\+\_\+emergency} (state current\+\_\+state)\hypertarget{states_8h_aef6441779abf5c61cf7d756abd088bce}{}\label{states_8h_aef6441779abf5c61cf7d756abd088bce}
+
+\item 
+state {\bfseries state\+\_\+start} (void)\hypertarget{states_8h_a0bc53252d6deea62ee6029e971f5087a}{}\label{states_8h_a0bc53252d6deea62ee6029e971f5087a}
+
+\item 
+state {\bfseries state\+\_\+idle} (void)\hypertarget{states_8h_a170cb59be6707eea55c4e41cd75ec225}{}\label{states_8h_a170cb59be6707eea55c4e41cd75ec225}
+
+\item 
+state {\bfseries state\+\_\+driving} (void)\hypertarget{states_8h_aee5b17293a7966a3e5e7bd4de1efe2eb}{}\label{states_8h_aee5b17293a7966a3e5e7bd4de1efe2eb}
+
+\item 
+state {\bfseries state\+\_\+pickup} (void)\hypertarget{states_8h_a4cfe686c0dd1623de8f3fa7255c47841}{}\label{states_8h_a4cfe686c0dd1623de8f3fa7255c47841}
+
+\item 
+state {\bfseries state\+\_\+emergency} (void)\hypertarget{states_8h_add0c6077def6202b9730114a4543caad}{}\label{states_8h_add0c6077def6202b9730114a4543caad}
+
+\item 
+state {\bfseries state\+\_\+end} (void)\hypertarget{states_8h_af5a0983f3a289493459ed1c632cb480c}{}\label{states_8h_af5a0983f3a289493459ed1c632cb480c}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This file contains the states in the F\+SM and their functions. 
+

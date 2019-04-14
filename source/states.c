@@ -12,7 +12,9 @@ state state_pending_emergency(state current_state) {
 /* State definitions below */
 
 state state_start(void) {
-    elevator_init_hardware();
+    if (!elevator_init_hardware()) {
+        return END;
+    }
 	elevator_init();
 	queue_init();
     door_init();
@@ -80,6 +82,5 @@ state state_emergency(void) {
 }
 
 state state_end(void) {
-	elevator_set_direction(DIRN_STOP);
 	return END;
 }

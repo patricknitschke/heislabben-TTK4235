@@ -1,3 +1,8 @@
+/** @file
+*@brief This file contains the elevator module and its functions.
+*
+*/
+
 #ifndef ELEVATOR_H
 #define ELEVATOR_H
 #include "elev.h"
@@ -5,7 +10,14 @@
 #include "lights.h"
 #include "door.h"
 
-// A struct that holds information regarding the elevators position and direction.
+
+/**
+*@brief A struct that holds information regarding the elevators position and direction.
+*
+*@param floor Current or last registered floor of the elevator.
+*@param dir Current direction of the elevator.
+*@param dir_previous Remembers the previous direction of the elevator before it stops.
+*/
 typedef struct Elevator {
     int floor;
     elev_motor_direction_t dir;
@@ -13,7 +25,11 @@ typedef struct Elevator {
 } Elevator;
 
 
-// Initialises hardware.
+/**
+*@brief Initialises the elevator hardware.
+*
+*@return 1 on successful initialisation, 0 if it fails.
+*/
 int elevator_init_hardware(void);
 
 
@@ -37,7 +53,11 @@ int elevator_get_floor(void);
 float elevator_get_floor_in_between(void);
 
 
-// Sets both elevator direction and motor direction to the same direction.
+/**
+*@brief Sets both elevator direction and motor direction to the same direction.
+*
+*@param[in] dir Direction to set the motor and @p m_elevator.dir to.
+*/
 void elevator_set_direction(elev_motor_direction_t dir);
 
 

@@ -1,0 +1,95 @@
+\hypertarget{queue_8h}{}\section{source/queue.h File Reference}
+\label{queue_8h}\index{source/queue.\+h@{source/queue.\+h}}
+
+
+This file contains the queue module and its functions.  
+
+
+{\ttfamily \#include \char`\"{}elevator.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}lights.\+h\char`\"{}}\\*
+Include dependency graph for queue.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structQueue}{Queue}
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef enum order\+\_\+t {\bfseries floor\+\_\+order\+\_\+t}\hypertarget{queue_8h_a0f40cd2591af055e3a665595a615b164}{}\label{queue_8h_a0f40cd2591af055e3a665595a615b164}
+
+\item 
+typedef struct \hyperlink{structQueue}{Queue} {\bfseries Queue}\hypertarget{queue_8h_ad359c9a9ed21445fd95e01a05429c767}{}\label{queue_8h_ad359c9a9ed21445fd95e01a05429c767}
+
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum {\bfseries order\+\_\+t} \{ \\*
+{\bfseries O\+N\+E\+\_\+\+UP}, 
+{\bfseries T\+W\+O\+\_\+\+D\+O\+WN}, 
+{\bfseries T\+W\+O\+\_\+\+UP}, 
+{\bfseries T\+H\+R\+E\+E\+\_\+\+D\+O\+WN}, 
+\\*
+{\bfseries T\+H\+R\+E\+E\+\_\+\+UP}, 
+{\bfseries F\+O\+U\+R\+\_\+\+D\+O\+WN}, 
+{\bfseries N\+\_\+\+O\+R\+D\+E\+R\+\_\+\+T\+A\+GS}
+ \}\hypertarget{queue_8h_a6c7dd10fb53eaa1cb9705e4ee36f5fcb}{}\label{queue_8h_a6c7dd10fb53eaa1cb9705e4ee36f5fcb}
+
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void {\bfseries queue\+\_\+init} (void)\hypertarget{queue_8h_ac19ac10c04e65b54e2c03aa726d1535a}{}\label{queue_8h_ac19ac10c04e65b54e2c03aa726d1535a}
+
+\item 
+void {\bfseries queue\+\_\+set\+\_\+target\+\_\+floor} (int target)\hypertarget{queue_8h_a4e2fc21e8d5d427c8fcd4bb649c5a1b5}{}\label{queue_8h_a4e2fc21e8d5d427c8fcd4bb649c5a1b5}
+
+\item 
+void {\bfseries queue\+\_\+set} (int floor\+\_\+order)\hypertarget{queue_8h_abd3016ad280546c8f3c846723e4a188b}{}\label{queue_8h_abd3016ad280546c8f3c846723e4a188b}
+
+\item 
+void {\bfseries queue\+\_\+pop} (int floor\+\_\+order)\hypertarget{queue_8h_afd9348275ef56340298946118d8f76f7}{}\label{queue_8h_afd9348275ef56340298946118d8f76f7}
+
+\item 
+int {\bfseries queue\+\_\+count} (void)\hypertarget{queue_8h_a5c4a556280790be948ff1c85ea3d96fa}{}\label{queue_8h_a5c4a556280790be948ff1c85ea3d96fa}
+
+\item 
+int {\bfseries queue\+\_\+get\+\_\+order} (elev\+\_\+button\+\_\+type\+\_\+t button, int floor)\hypertarget{queue_8h_ab4173bf4447b44e40db1f42073c984c1}{}\label{queue_8h_ab4173bf4447b44e40db1f42073c984c1}
+
+\item 
+int {\bfseries queue\+\_\+check\+\_\+order\+\_\+above\+\_\+floor} (int floor)\hypertarget{queue_8h_a77b5b6bf5997fd3b8fcbd0b69e3bffaa}{}\label{queue_8h_a77b5b6bf5997fd3b8fcbd0b69e3bffaa}
+
+\item 
+int {\bfseries queue\+\_\+check\+\_\+order\+\_\+below\+\_\+floor} (int floor)\hypertarget{queue_8h_a0728a25d8c99bf55038e14edc7f3897a}{}\label{queue_8h_a0728a25d8c99bf55038e14edc7f3897a}
+
+\item 
+void {\bfseries queue\+\_\+clear\+\_\+orders\+\_\+at\+\_\+floor} (int floor)\hypertarget{queue_8h_a51e76147f4af2a6ee29645d6792fbc69}{}\label{queue_8h_a51e76147f4af2a6ee29645d6792fbc69}
+
+\item 
+void {\bfseries queue\+\_\+check\+\_\+buttons\+\_\+inside} (void)\hypertarget{queue_8h_af5e29e564af5c4211d168a5026cb3a58}{}\label{queue_8h_af5e29e564af5c4211d168a5026cb3a58}
+
+\item 
+void {\bfseries queue\+\_\+check\+\_\+buttons\+\_\+outside} (void)\hypertarget{queue_8h_a6bf2e0a467946d97e6cf6d9e4c7104f1}{}\label{queue_8h_a6bf2e0a467946d97e6cf6d9e4c7104f1}
+
+\item 
+void {\bfseries queue\+\_\+listen\+\_\+and\+\_\+find} (void)\hypertarget{queue_8h_aed4677e40c26592eecfe19be5f1d8284}{}\label{queue_8h_aed4677e40c26592eecfe19be5f1d8284}
+
+\item 
+void {\bfseries queue\+\_\+find\+\_\+target} (void)\hypertarget{queue_8h_ae1f1f6105b668e5722bd779a25a2439d}{}\label{queue_8h_ae1f1f6105b668e5722bd779a25a2439d}
+
+\item 
+void {\bfseries queue\+\_\+chase\+\_\+target} (void)\hypertarget{queue_8h_afcaaf32f82f3bf5dce6a3a2266f2d832}{}\label{queue_8h_afcaaf32f82f3bf5dce6a3a2266f2d832}
+
+\item 
+int {\bfseries queue\+\_\+stop\+\_\+n\+\_\+serve\+\_\+order} (void)\hypertarget{queue_8h_a6246a25fc3b07b678c031c3dd798e077}{}\label{queue_8h_a6246a25fc3b07b678c031c3dd798e077}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This file contains the queue module and its functions. 
+

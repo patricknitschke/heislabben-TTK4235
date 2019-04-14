@@ -1,0 +1,124 @@
+\hypertarget{elevator_8h}{}\section{source/elevator.h File Reference}
+\label{elevator_8h}\index{source/elevator.\+h@{source/elevator.\+h}}
+
+
+This file contains the elevator module and its functions.  
+
+
+{\ttfamily \#include \char`\"{}elev.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}queue.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}lights.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}door.\+h\char`\"{}}\\*
+Include dependency graph for elevator.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structElevator}{Elevator}
+\begin{DoxyCompactList}\small\item\em A struct that holds information regarding the elevators position and direction. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \hyperlink{structElevator}{Elevator} \hyperlink{elevator_8h_a05b0ff2a7bd8a4106457415054c8599d}{Elevator}
+\begin{DoxyCompactList}\small\item\em A struct that holds information regarding the elevators position and direction. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{elevator_8h_a7ba7c2e8b5c4c2b9500a3057a9b14b5c}{elevator\+\_\+init\+\_\+hardware} (void)
+\begin{DoxyCompactList}\small\item\em Initialises the elevator hardware. \end{DoxyCompactList}\item 
+int {\bfseries elevator\+\_\+init} (void)\hypertarget{elevator_8h_a72f8870a61fccfad8e3656b9e50a7033}{}\label{elevator_8h_a72f8870a61fccfad8e3656b9e50a7033}
+
+\item 
+int {\bfseries elevator\+\_\+check\+\_\+valid\+\_\+floor} (void)\hypertarget{elevator_8h_acb97ee8f025fa914dad7ed6b7469cc6a}{}\label{elevator_8h_acb97ee8f025fa914dad7ed6b7469cc6a}
+
+\item 
+void {\bfseries elevator\+\_\+set\+\_\+floor} (void)\hypertarget{elevator_8h_a7d886ddadbe6a437b1a3f84141920d40}{}\label{elevator_8h_a7d886ddadbe6a437b1a3f84141920d40}
+
+\item 
+int {\bfseries elevator\+\_\+get\+\_\+floor} (void)\hypertarget{elevator_8h_abe303923a974cdc1e39d7e007bde33c2}{}\label{elevator_8h_abe303923a974cdc1e39d7e007bde33c2}
+
+\item 
+float {\bfseries elevator\+\_\+get\+\_\+floor\+\_\+in\+\_\+between} (void)\hypertarget{elevator_8h_a32ba683542285b342b0d69074e42af6d}{}\label{elevator_8h_a32ba683542285b342b0d69074e42af6d}
+
+\item 
+void \hyperlink{elevator_8h_a936d5c58852b61169f3b15e078061236}{elevator\+\_\+set\+\_\+direction} (elev\+\_\+motor\+\_\+direction\+\_\+t dir)
+\begin{DoxyCompactList}\small\item\em Sets both elevator direction and motor direction to the same direction. \end{DoxyCompactList}\item 
+elev\+\_\+motor\+\_\+direction\+\_\+t {\bfseries elevator\+\_\+get\+\_\+direction} (void)\hypertarget{elevator_8h_a89587d153eeb2922a72542fd5754b73f}{}\label{elevator_8h_a89587d153eeb2922a72542fd5754b73f}
+
+\item 
+elev\+\_\+motor\+\_\+direction\+\_\+t {\bfseries elevator\+\_\+get\+\_\+previous\+\_\+direction} (void)\hypertarget{elevator_8h_a18b0a6da9c67db4b512b4dbe1dc8b6b2}{}\label{elevator_8h_a18b0a6da9c67db4b512b4dbe1dc8b6b2}
+
+\item 
+int {\bfseries elevator\+\_\+emergency} (void)\hypertarget{elevator_8h_ae1e4669e5c0b7d3b8a0ab9433db494b2}{}\label{elevator_8h_ae1e4669e5c0b7d3b8a0ab9433db494b2}
+
+\item 
+void {\bfseries elevator\+\_\+emergency\+\_\+stop} (void)\hypertarget{elevator_8h_aea32519dd364ace950d75d98de9ac55a}{}\label{elevator_8h_aea32519dd364ace950d75d98de9ac55a}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This file contains the elevator module and its functions. 
+
+
+
+\subsection{Typedef Documentation}
+\index{elevator.\+h@{elevator.\+h}!Elevator@{Elevator}}
+\index{Elevator@{Elevator}!elevator.\+h@{elevator.\+h}}
+\subsubsection[{\texorpdfstring{Elevator}{Elevator}}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf Elevator}  {\bf Elevator}}\hypertarget{elevator_8h_a05b0ff2a7bd8a4106457415054c8599d}{}\label{elevator_8h_a05b0ff2a7bd8a4106457415054c8599d}
+
+
+A struct that holds information regarding the elevators position and direction. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em floor} & Current or last registered floor of the elevator. \\
+\hline
+{\em dir} & Current direction of the elevator. \\
+\hline
+{\em dir\+\_\+previous} & Remembers the previous direction of the elevator before it stops. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Function Documentation}
+\index{elevator.\+h@{elevator.\+h}!elevator\+\_\+init\+\_\+hardware@{elevator\+\_\+init\+\_\+hardware}}
+\index{elevator\+\_\+init\+\_\+hardware@{elevator\+\_\+init\+\_\+hardware}!elevator.\+h@{elevator.\+h}}
+\subsubsection[{\texorpdfstring{elevator\+\_\+init\+\_\+hardware(void)}{elevator_init_hardware(void)}}]{\setlength{\rightskip}{0pt plus 5cm}int elevator\+\_\+init\+\_\+hardware (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{elevator_8h_a7ba7c2e8b5c4c2b9500a3057a9b14b5c}{}\label{elevator_8h_a7ba7c2e8b5c4c2b9500a3057a9b14b5c}
+
+
+Initialises the elevator hardware. 
+
+\begin{DoxyReturn}{Returns}
+1 on successful initialisation, 0 if it fails. 
+\end{DoxyReturn}
+
+
+Definition at line 7 of file elevator.\+c.
+
+\index{elevator.\+h@{elevator.\+h}!elevator\+\_\+set\+\_\+direction@{elevator\+\_\+set\+\_\+direction}}
+\index{elevator\+\_\+set\+\_\+direction@{elevator\+\_\+set\+\_\+direction}!elevator.\+h@{elevator.\+h}}
+\subsubsection[{\texorpdfstring{elevator\+\_\+set\+\_\+direction(elev\+\_\+motor\+\_\+direction\+\_\+t dir)}{elevator_set_direction(elev_motor_direction_t dir)}}]{\setlength{\rightskip}{0pt plus 5cm}void elevator\+\_\+set\+\_\+direction (
+\begin{DoxyParamCaption}
+\item[{elev\+\_\+motor\+\_\+direction\+\_\+t}]{dir}
+\end{DoxyParamCaption}
+)}\hypertarget{elevator_8h_a936d5c58852b61169f3b15e078061236}{}\label{elevator_8h_a936d5c58852b61169f3b15e078061236}
+
+
+Sets both elevator direction and motor direction to the same direction. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em dir} & Direction to set the motor and {\ttfamily m\+\_\+elevator.\+dir} to. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 54 of file elevator.\+c.
+
