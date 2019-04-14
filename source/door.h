@@ -2,8 +2,6 @@
 #define DOOR_H
 
 #include "elevator.h"
-#include "queue.h"
-#include "elev.h"
 #include "time.h"
 #include "lights.h"
 

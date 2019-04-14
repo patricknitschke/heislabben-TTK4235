@@ -1,8 +1,10 @@
 #include "elev.h"
-#include "elevator.h"
 #include "states.h"
+#include "elevator.h"
+#include "queue.h"
 #include "lights.h"
 #include "door.h"
+
 #include <stdio.h>
 
 #define START_STATE START
@@ -31,12 +33,6 @@ int main() {
              current_state = EMERGENCY;
         }
 
-         // Stop elevator and exit program if the obstruction switch is flipped. (this can be modified for the test)
-        if (elev_get_obstruction_signal()) {
-            current_state = END_STATE;// Handling stop button pressed according to standards specified
-        }
-        
-
         /* Runs the state machine through switch case. */
         switch(current_state) {
             case START: // Sets up elevator and moves to a defined state.
@@ -54,7 +50,7 @@ int main() {
 
             case DRIVING: // Main state for most of the time
                 set_elev_floor();
-                if(stop_n_kill_button() == 1) { // As we find a customer, transition to PICKUP
+                if(stop_n_serve_order() == 1) { // As we find a customer, transition to PICKUP
                     current_state = PICKUP;
                 }
                 chase_target();
@@ -76,7 +72,7 @@ int main() {
             case EMERGENCY:
                 elevator_emergency_stop();
                 set_stoplight(1);
-                kill_all_lights();
+                shut_all_lights();
                 if (check_valid_floor()) {
                     open_door();
                 }
@@ -102,3 +98,11 @@ int main() {
 
     return 0;
 }
+
+
+/*
+printf in chase target
+printf in emergency state
+
+press order same floor, 6 seconds. Because you press, but it registers 2 orders.
+*/

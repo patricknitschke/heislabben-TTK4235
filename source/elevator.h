@@ -1,12 +1,8 @@
 #ifndef ELEVATOR_H
 #define ELEVATOR_H
 #include "elev.h"
-#include "channels.h"
-#include "io.h"
 #include "queue.h"
-#include <time.h>
-#include <stdbool.h>
-
+#include "lights.h"
 
 // A struct that holds information regarding the elevators position and direction.
 typedef struct Elevator {

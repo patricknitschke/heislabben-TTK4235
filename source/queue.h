@@ -1,10 +1,7 @@
 #ifndef QUEUE_H
 #define QUEUE_H
-#include "elev.h"
 #include "elevator.h"
-#include "channels.h"
-#include "door.h"
-
+#include "lights.h"
 
 // Queue order tags for variables in queue array.
 typedef enum order_t {
@@ -37,6 +34,10 @@ void pop_queue(int floor_order);
 
 // Returns zero if queue empty, non-zero if not.
 int queue_count(void);
+
+
+// Checks for order by checking button signal.
+int get_order(elev_button_type_t button, int floor); 
 
 
 // Returns true if there exists an order above given floor.
@@ -72,7 +73,7 @@ void chase_target(void);
 
 
 // Updates the queue and lights when the elevator reaches a floor with an order. 
-int stop_n_kill_button(void);
+int stop_n_serve_order(void);
 
 
 #endif

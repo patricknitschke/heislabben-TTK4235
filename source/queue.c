@@ -1,5 +1,4 @@
 #include "queue.h"
-#include <unistd.h>
 #include <stdio.h>
 
 static Queue m_queue;
@@ -23,12 +22,6 @@ void pop_queue(int floor_order) {
     m_queue.queue[floor_order] = 0;
 }
 
-void clear_orders_at_floor(int floor) {
-    clear_lights_at_floor(floor);
-    pop_queue(2*floor);
-    pop_queue(2*floor-1);
-}
-
 int queue_count(void) {
     int count = 0;
     for (int i = 0; i < N_ORDER_TAGS; i++) {
@@ -37,6 +30,10 @@ int queue_count(void) {
         }
     }
     return count;
+}
+
+int get_order(elev_button_type_t button, int floor) {
+    return elev_get_button_signal(button, floor);
 }
 
 int check_order_above_floor(int floor) {
@@ -57,16 +54,22 @@ int check_order_below_floor(int floor) {
     return 0;
 }
 
+void clear_orders_at_floor(int floor) {
+    pop_queue(2*floor);
+    pop_queue(2*floor-1);
+    shut_lights_at_floor(floor);
+}
+
 void check_buttons_inside(void) {
     for (int i = 0; i < N_FLOORS; i++) {
-        if (elev_get_button_signal(BUTTON_COMMAND, i)) {
+        if (get_order(BUTTON_COMMAND, i)) {
             if (i != N_FLOORS-1) {
                 set_queue(2*i);
             }
             if (i != 0) {
                 set_queue(2*i-1);
             }
-            elev_set_button_lamp(BUTTON_COMMAND, i, 1);
+            set_lamp(BUTTON_COMMAND, i, 1);
         }
     }
 }
@@ -74,15 +77,15 @@ void check_buttons_inside(void) {
 void check_buttons_outside(void) {
     for (int i = 0; i < N_FLOORS; i++) {
         if (i != N_FLOORS-1) {
-            if (elev_get_button_signal(BUTTON_CALL_UP, i)) {
+            if (get_order(BUTTON_CALL_UP, i)) {
                 set_queue(2*i);
-                elev_set_button_lamp(BUTTON_CALL_UP, i, 1);
+                set_lamp(BUTTON_CALL_UP, i, 1);
             }
         }        
         if (i != 0) {
-            if (elev_get_button_signal(BUTTON_CALL_DOWN,i)) {
+            if (get_order(BUTTON_CALL_DOWN, i)) {
                 set_queue(2*i-1);
-                elev_set_button_lamp(BUTTON_CALL_DOWN,i,1);
+                set_lamp(BUTTON_CALL_DOWN, i, 1);
             }
         }
     }
@@ -136,11 +139,12 @@ void find_target(void) {
 
 void chase_target(void) {
     int target_floor = m_queue.target_floor;
+
     printf("Target: %dnd floor.\n", target_floor);
     printf("Current direction: %d.\n", get_elev_direction());
     printf("Previous direction: %d.\n", get_elev_previous_direction());
 
-    float current_floor = (float)get_elev_floor();  // Float used to distinguish legitimate and in between floors. Used in case of emergency and elevator in between floors.
+    float current_floor = (float)get_elev_floor();  // Float used to distinguish legitimate and in between floors. Used in emergency when elevator is in between floors.
     if (!check_valid_floor()) {
         current_floor = get_elev_floor_in_between();  // current_floor basically is get_elev_floor() ± 0.5 depending on previous direction
     }
@@ -155,9 +159,9 @@ void chase_target(void) {
     }
 }
 
-int stop_n_kill_button(void) {
+int stop_n_serve_order(void) {
     int current_floor = get_elev_floor();
-    if(elev_get_floor_sensor_signal() != -1){
+    if (elev_get_floor_sensor_signal() != -1) {
         if (current_floor == N_FLOORS-1) {
             set_elev_direction(DIRN_DOWN);
         }
@@ -174,7 +178,7 @@ int stop_n_kill_button(void) {
         */
         int up_order_at_floor = m_queue.queue[2*current_floor];
         int down_order_at_floor = m_queue.queue[2*current_floor-1];
-
+        
         if ((get_elev_previous_direction() == DIRN_UP
             && (up_order_at_floor == 1 || (check_order_above_floor(current_floor) == 0 && down_order_at_floor == 1)))
             || (get_elev_previous_direction() == DIRN_DOWN 
