@@ -4,21 +4,21 @@
 static Queue m_queue;
 
 
-void init_queue(void) {
+void queue_init(void) {
     for (int i = 0; i < N_ORDER_TAGS; i++) {
-        pop_queue(i);
+        queue_pop(i);
     }
 }
 
-void set_target_floor(int target) {
+void queue_set_target_floor(int target) {
     m_queue.target_floor = target;
 }
 
-void set_queue(int floor_order) {
+void queue_set(int floor_order) {
     m_queue.queue[floor_order] = 1;
 }
 
-void pop_queue(int floor_order) {
+void queue_pop(int floor_order) {
     m_queue.queue[floor_order] = 0;
 }
 
@@ -32,11 +32,11 @@ int queue_count(void) {
     return count;
 }
 
-int get_order(elev_button_type_t button, int floor) {
+int queue_get_order(elev_button_type_t button, int floor) {
     return elev_get_button_signal(button, floor);
 }
 
-int check_order_above_floor(int floor) {
+int queue_check_order_above_floor(int floor) {
     for (int i = 2*floor+1; i < N_ORDER_TAGS; i++) { // Start checking above floor
         if (m_queue.queue[i] == 1) {
             return 1;
@@ -45,7 +45,7 @@ int check_order_above_floor(int floor) {
     return 0;
 }
 
-int check_order_below_floor(int floor) {
+int queue_check_order_below_floor(int floor) {
         for (int i = 2*(floor-1); i > -1; i--) { // Start checking below floor
         if (m_queue.queue[i] == 1) {
             return 1;
@@ -54,50 +54,50 @@ int check_order_below_floor(int floor) {
     return 0;
 }
 
-void clear_orders_at_floor(int floor) {
-    pop_queue(2*floor);
-    pop_queue(2*floor-1);
-    shut_lights_at_floor(floor);
+void queue_clear_orders_at_floor(int floor) {
+    queue_pop(2*floor);
+    queue_pop(2*floor-1);
+    light_shut_at_floor(floor);
 }
 
-void check_buttons_inside(void) {
+void queue_check_buttons_inside(void) {
     for (int i = 0; i < N_FLOORS; i++) {
-        if (get_order(BUTTON_COMMAND, i)) {
+        if (queue_get_order(BUTTON_COMMAND, i)) {
             if (i != N_FLOORS-1) {
-                set_queue(2*i);
+                queue_set(2*i);
             }
             if (i != 0) {
-                set_queue(2*i-1);
+                queue_set(2*i-1);
             }
-            set_lamp(BUTTON_COMMAND, i, 1);
+            light_set_lamp(BUTTON_COMMAND, i, 1);
         }
     }
 }
 
-void check_buttons_outside(void) {
+void queue_check_buttons_outside(void) {
     for (int i = 0; i < N_FLOORS; i++) {
         if (i != N_FLOORS-1) {
-            if (get_order(BUTTON_CALL_UP, i)) {
-                set_queue(2*i);
-                set_lamp(BUTTON_CALL_UP, i, 1);
+            if (queue_get_order(BUTTON_CALL_UP, i)) {
+                queue_set(2*i);
+                light_set_lamp(BUTTON_CALL_UP, i, 1);
             }
         }        
         if (i != 0) {
-            if (get_order(BUTTON_CALL_DOWN, i)) {
-                set_queue(2*i-1);
-                set_lamp(BUTTON_CALL_DOWN, i, 1);
+            if (queue_get_order(BUTTON_CALL_DOWN, i)) {
+                queue_set(2*i-1);
+                light_set_lamp(BUTTON_CALL_DOWN, i, 1);
             }
         }
     }
 }
 
-void listen_and_find(void) {
-    check_buttons_inside();
-    check_buttons_outside();
-    find_target();
+void queue_listen_and_find(void) {
+    queue_check_buttons_inside();
+    queue_check_buttons_outside();
+    queue_find_target();
 }
 
-void find_target(void) {
+void queue_find_target(void) {
     int min = N_FLOORS-1;   // Aims to find a target furthest away
     int max = 0;
     int check_up_order = 0;
@@ -120,53 +120,53 @@ void find_target(void) {
     }
     if (queue_count() == 1) {   // If queue_count == 1, max == min.
         if (check_up_order) {
-            set_target_floor(max);
+            queue_set_target_floor(max);
         }
         else if (check_down_order) {
-            set_target_floor(min);
+            queue_set_target_floor(min);
         }
     }
-    else if (get_elev_previous_direction() == DIRN_UP) {    // Furthest target above
-        set_target_floor(max);
+    else if (elevator_get_previous_direction() == DIRN_UP) {    // Furthest target above
+        queue_set_target_floor(max);
     }
-    else if (get_elev_previous_direction() == DIRN_DOWN) {  // Furthest target below
-        set_target_floor(min);
+    else if (elevator_get_previous_direction() == DIRN_DOWN) {  // Furthest target below
+        queue_set_target_floor(min);
     }
     else {
-        set_target_floor(get_elev_floor());
+        queue_set_target_floor(elevator_get_floor());
     }
 }
 
-void chase_target(void) {
+void queue_chase_target(void) {
     int target_floor = m_queue.target_floor;
 
     printf("Target: %dnd floor.\n", target_floor);
-    printf("Current direction: %d.\n", get_elev_direction());
-    printf("Previous direction: %d.\n", get_elev_previous_direction());
+    printf("Current direction: %d.\n", elevator_get_direction());
+    printf("Previous direction: %d.\n", elevator_get_previous_direction());
 
-    float current_floor = (float)get_elev_floor();  // Float used to distinguish legitimate and in between floors. Used in emergency when elevator is in between floors.
-    if (!check_valid_floor()) {
-        current_floor = get_elev_floor_in_between();  // current_floor basically is get_elev_floor() ± 0.5 depending on previous direction
+    float current_floor = (float)elevator_get_floor();  // Float used to distinguish legitimate and in between floors. Used in emergency when elevator is in between floors.
+    if (!elevator_check_valid_floor()) {
+        current_floor = elevator_get_floor_in_between();  // current_floor basically is get_elev_floor() ± 0.5 depending on previous direction
     }
     if (current_floor > target_floor) {     // If above target, go down
-        set_elev_direction(DIRN_DOWN);
+        elevator_set_direction(DIRN_DOWN);
     }
     else if (current_floor < target_floor) {    // If below target, go up
-        set_elev_direction(DIRN_UP);
+        elevator_set_direction(DIRN_UP);
     }
     else {
-        set_elev_direction(DIRN_STOP);
+        elevator_set_direction(DIRN_STOP);
     }
 }
 
-int stop_n_serve_order(void) {
-    int current_floor = get_elev_floor();
-    if (elev_get_floor_sensor_signal() != -1) {
+int queue_stop_n_serve_order(void) {
+    int current_floor = elevator_get_floor();
+    if (elevator_check_valid_floor()) {
         if (current_floor == N_FLOORS-1) {
-            set_elev_direction(DIRN_DOWN);
+            elevator_set_direction(DIRN_DOWN);
         }
         if (current_floor == 0) {
-            set_elev_direction(DIRN_UP);
+            elevator_set_direction(DIRN_UP);
         }       
 
         /* Serves the customer if:
@@ -179,13 +179,13 @@ int stop_n_serve_order(void) {
         int up_order_at_floor = m_queue.queue[2*current_floor];
         int down_order_at_floor = m_queue.queue[2*current_floor-1];
         
-        if ((get_elev_previous_direction() == DIRN_UP
-            && (up_order_at_floor == 1 || (check_order_above_floor(current_floor) == 0 && down_order_at_floor == 1)))
-            || (get_elev_previous_direction() == DIRN_DOWN 
-            && (down_order_at_floor == 1 || (check_order_below_floor(current_floor) == 0 && up_order_at_floor == 1)))
+        if ((elevator_get_previous_direction() == DIRN_UP
+            && (up_order_at_floor == 1 || (queue_check_order_above_floor(current_floor) == 0 && down_order_at_floor == 1)))
+            || (elevator_get_previous_direction() == DIRN_DOWN 
+            && (down_order_at_floor == 1 || (queue_check_order_below_floor(current_floor) == 0 && up_order_at_floor == 1)))
             || queue_count() == 0) {
 
-            clear_orders_at_floor(current_floor);
+            queue_clear_orders_at_floor(current_floor);
             return 1;
         }
     }

@@ -20,30 +20,30 @@ typedef struct Door {
 
 
 // Sets TIMER_ENABLED to TRUE, START_TIMER to start time. 
-void enable_timer();
+void door_enable_timer();
 
 
 // Sets TIMER_ENABLED to FALSE.
-void reset_timer();
+void door_reset_timer();
 
 
 // Enables timer and turns on door lamp.
-void open_door();
+void door_open();
 
 
 // Resets timer and turns off door lamp.
-void close_door();
+void door_close();
 
 
 // Returns true if door is open.
-int check_door_open();
+int door_check_open();
 
 
 // Returns true if timer completed.
-int check_timer(); 
+int door_check_timer(); 
 
 
 // Returns check_timer() - true if timer completed.
-int picked_up();
+int door_picked_up();
 
 #endif

@@ -7,46 +7,46 @@
 static Elevator m_elevator;
 
 // Start downwards, stop at defined state
-int init_elevator(void) {
-    set_elev_direction(DIRN_DOWN);
+int elevator_init(void) {
+    elevator_set_direction(DIRN_DOWN);
     int floor = elev_get_floor_sensor_signal();
     while (floor == -1) {
         floor = elev_get_floor_sensor_signal();
     }
-    set_elev_floor();
-    set_elev_direction(DIRN_STOP);
+    elevator_set_floor();
+    elevator_set_direction(DIRN_STOP);
     return floor;
 }
 
-int check_valid_floor(void) {
+int elevator_check_valid_floor(void) {
     return (elev_get_floor_sensor_signal() != -1);
 }
 
-void set_elev_floor(void) {
+void elevator_set_floor(void) {
     if (elev_get_floor_sensor_signal() != -1) {
         m_elevator.floor = elev_get_floor_sensor_signal();
-        floor_light_set();
+        light_set_floor_indicator();
     }
 }
 
-int get_elev_floor(void) {
+int elevator_get_floor(void) {
     return m_elevator.floor;
 }
 
-float get_elev_floor_in_between(void) {
-    if (get_elev_previous_direction() == DIRN_UP) {
-        return (get_elev_floor() + 0.5);
+float elevator_get_floor_in_between(void) {
+    if (elevator_get_previous_direction() == DIRN_UP) {
+        return (elevator_get_floor() + 0.5);
     } 
-    else if (get_elev_previous_direction() == DIRN_DOWN) {
-        return (get_elev_floor() - 0.5);
+    else if (elevator_get_previous_direction() == DIRN_DOWN) {
+        return (elevator_get_floor() - 0.5);
     } 
     else {
-        return (float)get_elev_floor();
+        return (float)elevator_get_floor();
     }
 }
 
-void set_elev_direction(elev_motor_direction_t dir) {
-    if (m_elevator.dir == -dir && check_valid_floor()) {
+void elevator_set_direction(elev_motor_direction_t dir) {
+    if (m_elevator.dir == -dir && elevator_check_valid_floor()) {
          elev_set_motor_direction(dir);
     }
     else if (m_elevator.dir == DIRN_STOP) {
@@ -57,26 +57,26 @@ void set_elev_direction(elev_motor_direction_t dir) {
     }
 
     m_elevator.dir = dir;
-    if (m_elevator.dir != DIRN_STOP && check_valid_floor()) {
+    if (m_elevator.dir != DIRN_STOP && elevator_check_valid_floor()) {
         m_elevator.dir_previous = m_elevator.dir;
     }
 }
 
-elev_motor_direction_t get_elev_direction(void) {
+elev_motor_direction_t elevator_get_direction(void) {
     return m_elevator.dir;
 }
 
-elev_motor_direction_t get_elev_previous_direction(void) {
+elev_motor_direction_t elevator_get_previous_direction(void) {
     return m_elevator.dir_previous;
 }
 
-int emergency(void) {
+int elevator_emergency(void) {
     return elev_get_stop_signal();
 }
 
 void elevator_emergency_stop(void) {
-    set_elev_direction(DIRN_STOP);
+    elevator_set_direction(DIRN_STOP);
     for (int i = 0; i < N_ORDER_TAGS; i++){
-        pop_queue(i);
+        queue_pop(i);
     }
 }

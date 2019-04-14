@@ -27,71 +27,33 @@ int main() {
     while (current_state != END_STATE) {
         /*  Write code that needs to be checked regardless of state here  */
         
-        listen_and_find();
-
-        if(emergency()) {
-             current_state = EMERGENCY;
-        }
+        queue_listen_and_find();
+        current_state = state_pending_emergency(current_state);
 
         /* Runs the state machine through switch case. */
         switch(current_state) {
-            case START: // Sets up elevator and moves to a defined state.
-                init_elevator();
-                current_state = IDLE;
+            case START: // Sets up elevator and queue, and moves to a defined state.
+                current_state = state_start();
                 break;
-
 
             case IDLE: // Do nothing while waiting for queue order.
-                if (queue_count() != 0) { 
-                    current_state = DRIVING;
-                }
+                current_state = state_idle();
                 break;
-
 
             case DRIVING: // Main state for most of the time
-                set_elev_floor();
-                if(stop_n_serve_order() == 1) { // As we find a customer, transition to PICKUP
-                    current_state = PICKUP;
-                }
-                chase_target();
+                current_state = state_driving();
                 break;
 
-            case PICKUP: //when picking up
-                open_door(); //Stops motor and starts timer
-                if (picked_up()) {
-                    if (queue_count() == 0 ) {  // If empty queue, transition to IDLE
-                        current_state = IDLE;
-                    }
-                    else {
-                        current_state = DRIVING;
-                    }
-                    close_door();
-                }
+            case PICKUP: // When picking up customer
+                current_state = state_pickup();
                 break;
 
-            case EMERGENCY:
-                elevator_emergency_stop();
-                set_stoplight(1);
-                shut_all_lights();
-                if (check_valid_floor()) {
-                    open_door();
-                }
-
-                while(emergency());// Handling stop button pressed according to standards specified
-                set_stoplight(0);
-                printf("Current direction: %d.\n", get_elev_direction());
-                printf("Previous direction: %d.\n", get_elev_previous_direction());
-                
-                if (check_door_open()) {
-                    reset_timer();
-                    current_state = PICKUP;
-                } else {
-                    current_state = IDLE;
-                }
+            case EMERGENCY: // Empty queue and shut off all lights
+                current_state = state_emergency();
                 break;               
 
             case END: // Stops the state machine
-                set_elev_direction(DIRN_STOP);
+                current_state = state_end();
                 break;
         }
     }
