@@ -13,23 +13,20 @@ void kill_all_lights(){  //ICE - Turn off all lights
 }
 
 
-void update_lights(elev_button_type_t button, int floor, int value){
+void update_lamp(elev_button_type_t button, int floor, int value){
     elev_set_button_lamp(button, floor, value);
 }
 
-
-void floor_light_set() {            //set floor light
+void floor_light_set() {
     int floor = get_elev_floor();                
-    
-    if(floor!=-1){
-        elev_set_floor_indicator(floor);      //to keep the program from crashing
+    if (floor != -1) {  // Double redundancy
+        elev_set_floor_indicator(floor);      
     }
 }
 
 int get_order(elev_button_type_t button, int floor){
     return elev_get_button_signal(button, floor);
 }
-
 
 void set_stoplight(int value){
     elev_set_stop_lamp(value);
@@ -40,4 +37,14 @@ int get_floor_signal(){
         return elev_get_floor_sensor_signal();
     }
     return -1;
+}
+
+void clear_lights_at_floor(int floor) {
+    if (floor != N_FLOORS-1) {
+        elev_set_button_lamp(BUTTON_CALL_UP, floor, 0);
+    }
+    if (floor != 0) {
+        elev_set_button_lamp(BUTTON_CALL_DOWN, floor, 0);
+    }
+    elev_set_button_lamp(BUTTON_COMMAND, floor, 0);
 }

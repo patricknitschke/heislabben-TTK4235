@@ -25,13 +25,13 @@ int main() {
     while (current_state != END_STATE) {
         /*  Write code that needs to be checked regardless of state here  */
         
-        listen();
+        listen_and_find();
 
         if(emergency()) {
              current_state = EMERGENCY;
         }
 
-        // Stop elevator and exit program if the obstruction switch is flipped. (this can be modified for the test)
+         // Stop elevator and exit program if the obstruction switch is flipped. (this can be modified for the test)
         if (elev_get_obstruction_signal()) {
             current_state = END_STATE;// Handling stop button pressed according to standards specified
         }
@@ -54,9 +54,7 @@ int main() {
 
             case DRIVING: // Main state for most of the time
                 set_elev_floor();
-
-                // As we find a customer, transition to PICKUP
-                if(stop_n_kill_button() == 1) {
+                if(stop_n_kill_button() == 1) { // As we find a customer, transition to PICKUP
                     current_state = PICKUP;
                 }
                 chase_target();
@@ -64,7 +62,6 @@ int main() {
 
             case PICKUP: //when picking up
                 open_door(); //Stops motor and starts timer
-
                 if (picked_up()) {
                     if (queue_count() == 0 ) {  // If empty queue, transition to IDLE
                         current_state = IDLE;
@@ -76,10 +73,8 @@ int main() {
                 }
                 break;
 
-            
-
             case EMERGENCY:
-                emergency_stop();
+                elevator_emergency_stop();
                 set_stoplight(1);
                 kill_all_lights();
                 if (check_valid_floor()) {
@@ -88,6 +83,8 @@ int main() {
 
                 while(emergency());// Handling stop button pressed according to standards specified
                 set_stoplight(0);
+                printf("Current direction: %d.\n", get_elev_direction());
+                printf("Previous direction: %d.\n", get_elev_previous_direction());
                 
                 if (check_door_open()) {
                     reset_timer();

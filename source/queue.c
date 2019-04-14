@@ -1,44 +1,46 @@
 #include "queue.h"
 #include <unistd.h>
-#include <time.h>
 #include <stdio.h>
 
 static Queue m_queue;
 
-int timer;
-//sett inn et element i queue
-void set_queue(int floor_order){
+
+void init_queue(void) {
+    for (int i = 0; i < N_ORDER_TAGS; i++) {
+        pop_queue(i);
+    }
+}
+
+void set_target_floor(int target) {
+    m_queue.target_floor = target;
+}
+
+void set_queue(int floor_order) {
     m_queue.queue[floor_order] = 1;
 }
 
-//ta ut når ekspedert
 void pop_queue(int floor_order) {
     m_queue.queue[floor_order] = 0;
 }
 
+void clear_orders_at_floor(int floor) {
+    clear_lights_at_floor(floor);
+    pop_queue(2*floor);
+    pop_queue(2*floor-1);
+}
 
-//finn ut om noen trykker på heiskallknapp, sett dette inn i queue
-void listen(void) {
-    check_buttons_inside();
-    for (int i = 0; i <= 3; i++) {
-        if(i!=3){
-            if (elev_get_button_signal(BUTTON_CALL_UP,  i)) {
-            set_queue(2*i);
-            elev_set_button_lamp(BUTTON_CALL_UP, i, 1);
-            }
-        }        
-        if (i!=0) {
-            if (elev_get_button_signal(BUTTON_CALL_DOWN,i)) {
-            set_queue(2*i-1);
-            elev_set_button_lamp(BUTTON_CALL_DOWN,i,1);
-            
-            }
+int queue_count(void) {
+    int count = 0;
+    for (int i = 0; i < N_ORDER_TAGS; i++) {
+        if (m_queue.queue[i]) {
+            count += 1;
         }
     }
+    return count;
 }
 
 int check_order_above_floor(int floor) {
-    for (int i = 2*floor+1; i < N_FLOOR_NAMES; i++) { //Start checking above floor
+    for (int i = 2*floor+1; i < N_ORDER_TAGS; i++) { // Start checking above floor
         if (m_queue.queue[i] == 1) {
             return 1;
         }
@@ -47,7 +49,7 @@ int check_order_above_floor(int floor) {
 }
 
 int check_order_below_floor(int floor) {
-        for (int i = 2*(floor-1); i > -1; i--) { //Start checking below floor
+        for (int i = 2*(floor-1); i > -1; i--) { // Start checking below floor
         if (m_queue.queue[i] == 1) {
             return 1;
         }
@@ -55,152 +57,133 @@ int check_order_below_floor(int floor) {
     return 0;
 }
 
-
-//sett målet for hvor heisen skal i en gitt retning. kaller noen på heisen forbi, sett målet her.
-void chase_target(){
-    int target_floor = find_target();
-    float current_floor = (float)get_elev_floor();
-
-    if (!check_valid_floor()) {
-        current_floor = get_elev_floor_in_between();
+void check_buttons_inside(void) {
+    for (int i = 0; i < N_FLOORS; i++) {
+        if (elev_get_button_signal(BUTTON_COMMAND, i)) {
+            if (i != N_FLOORS-1) {
+                set_queue(2*i);
+            }
+            if (i != 0) {
+                set_queue(2*i-1);
+            }
+            elev_set_button_lamp(BUTTON_COMMAND, i, 1);
+        }
     }
+}
 
-    printf("Target: %d\n", target_floor);
-    printf("Current: %f\n", current_floor);
+void check_buttons_outside(void) {
+    for (int i = 0; i < N_FLOORS; i++) {
+        if (i != N_FLOORS-1) {
+            if (elev_get_button_signal(BUTTON_CALL_UP, i)) {
+                set_queue(2*i);
+                elev_set_button_lamp(BUTTON_CALL_UP, i, 1);
+            }
+        }        
+        if (i != 0) {
+            if (elev_get_button_signal(BUTTON_CALL_DOWN,i)) {
+                set_queue(2*i-1);
+                elev_set_button_lamp(BUTTON_CALL_DOWN,i,1);
+            }
+        }
+    }
+}
 
-    if (current_floor > target_floor){
+void listen_and_find(void) {
+    check_buttons_inside();
+    check_buttons_outside();
+    find_target();
+}
+
+void find_target(void) {
+    int min = N_FLOORS-1;   // Aims to find a target furthest away
+    int max = 0;
+    int check_up_order = 0;
+    int check_down_order = 0;
+    for (int i = 0; i < N_FLOORS; i++) {
+        if (m_queue.queue[2*i] == 1 && i != N_FLOORS -1) {  // Check up orders
+            check_up_order = 1;
+            max = i;
+            if (i < min) {
+                min = i;
+            }
+        }
+        if (m_queue.queue[2*i-1] == 1 && i != 0) {  // Check down orders
+            check_down_order = 1;
+            if (i < min){
+                min = i;
+            }
+            max = i;
+        }
+    }
+    if (queue_count() == 1) {   // If queue_count == 1, max == min.
+        if (check_up_order) {
+            set_target_floor(max);
+        }
+        else if (check_down_order) {
+            set_target_floor(min);
+        }
+    }
+    else if (get_elev_previous_direction() == DIRN_UP) {    // Furthest target above
+        set_target_floor(max);
+    }
+    else if (get_elev_previous_direction() == DIRN_DOWN) {  // Furthest target below
+        set_target_floor(min);
+    }
+    else {
+        set_target_floor(get_elev_floor());
+    }
+}
+
+void chase_target(void) {
+    int target_floor = m_queue.target_floor;
+    printf("Target: %dnd floor.\n", target_floor);
+    printf("Current direction: %d.\n", get_elev_direction());
+    printf("Previous direction: %d.\n", get_elev_previous_direction());
+
+    float current_floor = (float)get_elev_floor();  // Float used to distinguish legitimate and in between floors. Used in case of emergency and elevator in between floors.
+    if (!check_valid_floor()) {
+        current_floor = get_elev_floor_in_between();  // current_floor basically is get_elev_floor() ± 0.5 depending on previous direction
+    }
+    if (current_floor > target_floor) {     // If above target, go down
         set_elev_direction(DIRN_DOWN);
     }
-    else if (current_floor < target_floor){
+    else if (current_floor < target_floor) {    // If below target, go up
         set_elev_direction(DIRN_UP);
     }
     else {
-        if(get_elev_direction() == DIRN_UP && check_order_above_floor(current_floor) == 0){
-            set_elev_direction(DIRN_DOWN);
-        }
-        else if (get_elev_direction() == DIRN_DOWN && check_order_below_floor(current_floor) == 0){
-            set_elev_direction(DIRN_UP);
-        }
+        set_elev_direction(DIRN_STOP);
     }
 }
 
-int find_target(){
-    int min = N_FLOORS-1;
-    int max = 0;
-    
-    int up_order = 0;
-    int down_order = 0;
-
-    for (int i = 0; i < 4; i++) {
-        if (m_queue.queue[2*i] == 1 && i != N_FLOORS -1) { // Check up orders
-            up_order = 1;
-            max = i;
-            if(i < min){
-                min = i;
-            }
-        }
-
-        if (m_queue.queue[2*i-1] == 1 && i != 0) {  // Check down orders
-            down_order = 1;
-            if(i < min){
-                min = i;
-            }
-            max = i;
-        }
-    }
-
-    if (queue_count() == 1) {
-        if (up_order) {
-            return max;
-        }
-        else if(down_order) {
-            return min;
-        }
-    }
-    else if (get_elev_previous_direction() == DIRN_UP){
-        return max;
-    }
-    else if (get_elev_previous_direction() == DIRN_DOWN){
-        return min;
-    }
-    return get_elev_floor();
-}
-
-
-//Hvis noen er på veien: Plukk de opp og skru av lyset når de er hentet.
-int stop_n_kill_button(){
-    int floor = get_elev_floor();
+int stop_n_kill_button(void) {
+    int current_floor = get_elev_floor();
     if(elev_get_floor_sensor_signal() != -1){
-        if (floor == 3) {
+        if (current_floor == N_FLOORS-1) {
             set_elev_direction(DIRN_DOWN);
         }
-        if (floor == 0) {
+        if (current_floor == 0) {
             set_elev_direction(DIRN_UP);
         }       
-        for (int i = 0; i < 4; i++) {
-            if (get_elev_direction() == DIRN_UP || queue_count() == 1) {
-                int up_order = m_queue.queue[2*i];
-                if (floor == i && up_order == 1 && i != N_FLOORS-1) {
-                    elev_set_button_lamp(BUTTON_CALL_UP,floor,0);
-                    elev_set_button_lamp(BUTTON_COMMAND,floor,0);
-                    if(i != 0){
-                        elev_set_button_lamp(BUTTON_CALL_DOWN,floor,0);
-                    }
-                    pop_queue(2*i);
-                    pop_queue(2*i-1);
-                    return 1;
-                }
-            }
 
-            if (get_elev_direction() == DIRN_DOWN || queue_count() == 1) {
-                int down_order = m_queue.queue[2*i-1];
-                if (floor == i && down_order == 1 && i != 0) {
-                    elev_set_button_lamp(BUTTON_CALL_DOWN,floor,0);
-                    elev_set_button_lamp(BUTTON_COMMAND,floor,0);
-                    if(i != 3){
-                        elev_set_button_lamp(BUTTON_CALL_UP,floor,0);
-                    }
-                    pop_queue(2*i-1);
-                    pop_queue(2*i);
-                    return 1;
-                }
-            }
+        /* Serves the customer if:
+            1. Direction is up and same direction order
+            2. Direction is up and no orders above
+            3. Direction is down and same direction order
+            4. Direction is down and no orders below
+            5. Last order in queue
+        */
+        int up_order_at_floor = m_queue.queue[2*current_floor];
+        int down_order_at_floor = m_queue.queue[2*current_floor-1];
+
+        if ((get_elev_previous_direction() == DIRN_UP
+            && (up_order_at_floor == 1 || (check_order_above_floor(current_floor) == 0 && down_order_at_floor == 1)))
+            || (get_elev_previous_direction() == DIRN_DOWN 
+            && (down_order_at_floor == 1 || (check_order_below_floor(current_floor) == 0 && up_order_at_floor == 1)))
+            || queue_count() == 0) {
+
+            clear_orders_at_floor(current_floor);
+            return 1;
         }
     }
     return 0;
 }
-
-//sjekk om køen er tom
-int queue_count(){
-    int count = 0;
-    for (int i = 0; i<6; i++){
-        if (m_queue.queue[i]){
-            count +=1;
-        }
-    }
-    return count;
-}
-
-
-
-void check_buttons_inside(){
-    for(int i = 0;i<4;i++){
-        if(elev_get_button_signal(BUTTON_COMMAND, i)){
-            if(i!=3){
-                set_queue(2*i);
-                
-            }
-            if(i!=0){
-                set_queue(2*i-1);
-            }
-            elev_set_button_lamp(BUTTON_COMMAND, i, 1);
-
-        }
-    }
-}
-
-
-
-
-
-

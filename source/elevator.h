@@ -13,6 +13,7 @@ typedef struct Elevator {
     int floor;
     elev_motor_direction_t dir;
     elev_motor_direction_t dir_previous;
+    int emergency_situation;
 } Elevator;
 
 
@@ -53,6 +54,6 @@ int emergency(void);
 
 
 // Stops motor and emptys current queue if stop button pressed.
-void emergency_stop(void);
+void elevator_emergency_stop(void);
 
 #endif

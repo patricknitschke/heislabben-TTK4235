@@ -9,7 +9,7 @@
 
 
 // Timer tags for variables in door_timer array.
-enum timer_tag {
+enum timer_t {
     START_TIMER, TIMER_ENABLED, NUM_T_TAGS
 };
 

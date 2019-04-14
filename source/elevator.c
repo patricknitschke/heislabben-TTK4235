@@ -9,12 +9,7 @@ static Elevator m_elevator;
 // Start downwards, stop at defined state
 int init_elevator(void) {
     set_elev_direction(DIRN_DOWN);
-
-    for (int i = 0; i < N_FLOOR_NAMES; i++) {
-        pop_queue(i);
-    }
     int floor = elev_get_floor_sensor_signal();
-        
     while (floor == -1) {
         floor = elev_get_floor_sensor_signal();
     }
@@ -55,12 +50,12 @@ void set_elev_direction(elev_motor_direction_t dir) {
          elev_set_motor_direction(dir);
     }
     else if (m_elevator.dir == DIRN_STOP) {
-        elev_set_motor_direction(dir)
+        elev_set_motor_direction(dir);
     } 
     else if (dir == DIRN_STOP) {
         elev_set_motor_direction(dir);
     }
-    
+
     m_elevator.dir = dir;
     if (m_elevator.dir != DIRN_STOP && check_valid_floor()) {
         m_elevator.dir_previous = m_elevator.dir;
@@ -77,11 +72,11 @@ elev_motor_direction_t get_elev_previous_direction(void) {
 
 int emergency(void) {
     return elev_get_stop_signal();
+}
 
-
-void emergency_stop(void) {
+void elevator_emergency_stop(void) {
     set_elev_direction(DIRN_STOP);
-    for(int i = 0; i < N_FLOOR_NAMES; i++){
+    for (int i = 0; i < N_ORDER_TAGS; i++){
         pop_queue(i);
     }
 }
