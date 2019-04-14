@@ -2,24 +2,7 @@
 
 static Door m_door;
 
-
-int check_timer(){
-    if(clock() - m_door.door_timer[START_TIMER] > 3*CLOCKS_PER_SEC) {
-        return 1;
-    } else {
-        return 0;
-    }
-}
-
-int picked_up() {
-    if (check_timer()) { // Timer completed
-        return 1;
-    } else {
-        return 0;
-    }
-}
-
-void enable_timer() {
+void enable_timer(void) {
     if (!m_door.door_timer[TIMER_ENABLED]) { 
         m_door.door_timer[START_TIMER] = clock();
         m_door.door_timer[TIMER_ENABLED] = 1;
@@ -45,4 +28,12 @@ void close_door() {
 
 int check_door_open() {
     return m_door.door_is_open;
+}
+
+int check_timer() {
+    return (clock() - m_door.door_timer[START_TIMER] > 3*CLOCKS_PER_SEC);
+}
+
+int picked_up() {
+    return check_timer();
 }
