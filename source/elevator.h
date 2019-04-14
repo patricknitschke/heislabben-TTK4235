@@ -3,6 +3,7 @@
 #include "elev.h"
 #include "queue.h"
 #include "lights.h"
+#include "door.h"
 
 // A struct that holds information regarding the elevators position and direction.
 typedef struct Elevator {
@@ -10,6 +11,10 @@ typedef struct Elevator {
     elev_motor_direction_t dir;
     elev_motor_direction_t dir_previous;
 } Elevator;
+
+
+// Initialises hardware.
+int elevator_init_hardware(void);
 
 
 // Start downwards, stop at defined state.

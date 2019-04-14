@@ -12,8 +12,10 @@ state state_pending_emergency(state current_state) {
 /* State definitions below */
 
 state state_start(void) {
+    elevator_init_hardware();
 	elevator_init();
 	queue_init();
+    door_init();
     return IDLE;
 }
 

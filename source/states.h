@@ -1,8 +1,5 @@
 #ifndef STATES_H
 #define STATES_H
-
-#include "elev.h"
-#include "states.h"
 #include "elevator.h"
 #include "queue.h"
 #include "lights.h"

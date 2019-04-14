@@ -8,6 +8,7 @@ void queue_init(void) {
     for (int i = 0; i < N_ORDER_TAGS; i++) {
         queue_pop(i);
     }
+    m_queue.target_floor = elevator_get_floor();
 }
 
 void queue_set_target_floor(int target) {
@@ -139,14 +140,10 @@ void queue_find_target(void) {
 
 void queue_chase_target(void) {
     int target_floor = m_queue.target_floor;
-
-    printf("Target: %dnd floor.\n", target_floor);
-    printf("Current direction: %d.\n", elevator_get_direction());
-    printf("Previous direction: %d.\n", elevator_get_previous_direction());
-
     float current_floor = (float)elevator_get_floor();  // Float used to distinguish legitimate and in between floors. Used in emergency when elevator is in between floors.
+    
     if (!elevator_check_valid_floor()) {
-        current_floor = elevator_get_floor_in_between();  // current_floor basically is get_elev_floor() ± 0.5 depending on previous direction
+        current_floor = elevator_get_floor_in_between();  // current_floor is basically get_elev_floor() ± 0.5 depending on previous direction
     }
     if (current_floor > target_floor) {     // If above target, go down
         elevator_set_direction(DIRN_DOWN);
@@ -184,7 +181,7 @@ int queue_stop_n_serve_order(void) {
             || (elevator_get_previous_direction() == DIRN_DOWN 
             && (down_order_at_floor == 1 || (queue_check_order_below_floor(current_floor) == 0 && up_order_at_floor == 1)))
             || queue_count() == 0) {
-
+            
             queue_clear_orders_at_floor(current_floor);
             return 1;
         }

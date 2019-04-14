@@ -1,12 +1,18 @@
 #include "elevator.h"
-#include "lights.h"
-#include "door.h"
-#include <unistd.h>
 #include <stdio.h>
 
 static Elevator m_elevator;
 
-// Start downwards, stop at defined state
+
+int elevator_init_hardware(void) {
+    if (!elev_init()) {
+        printf("Unable to initialize elevator hardware!\n");
+        return 0;
+    }
+    printf("Press STOP button to stop elevator and exit program.\n");
+    return 1;
+}
+
 int elevator_init(void) {
     elevator_set_direction(DIRN_DOWN);
     int floor = elev_get_floor_sensor_signal();
@@ -33,7 +39,7 @@ int elevator_get_floor(void) {
     return m_elevator.floor;
 }
 
-float elevator_get_floor_in_between(void) {
+float elevator_get_floor_in_between(void) {     // Used in emergencies when stopped between floors.
     if (elevator_get_previous_direction() == DIRN_UP) {
         return (elevator_get_floor() + 0.5);
     } 
@@ -57,7 +63,7 @@ void elevator_set_direction(elev_motor_direction_t dir) {
     }
 
     m_elevator.dir = dir;
-    if (m_elevator.dir != DIRN_STOP && elevator_check_valid_floor()) {
+    if (m_elevator.dir != DIRN_STOP && elevator_check_valid_floor()) {  // Previous direction before stop. Otherwise the same.
         m_elevator.dir_previous = m_elevator.dir;
     }
 }
