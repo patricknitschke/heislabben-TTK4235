@@ -1,10 +1,11 @@
 var indexSectionsWithContent =
 {
-  0: "delqs",
+  0: "defloqs",
   1: "deq",
   2: "delqs",
-  3: "el",
-  4: "e"
+  3: "elq",
+  4: "efq",
+  5: "o"
 };
 
 var indexSectionNames =
@@ -13,7 +14,8 @@ var indexSectionNames =
   1: "classes",
   2: "files",
   3: "functions",
-  4: "typedefs"
+  4: "typedefs",
+  5: "enums"
 };
 
 var indexSectionLabels =
@@ -22,6 +24,7 @@ var indexSectionLabels =
   1: "Data Structures",
   2: "Files",
   3: "Functions",
-  4: "Typedefs"
+  4: "Typedefs",
+  5: "Enumerations"
 };
 

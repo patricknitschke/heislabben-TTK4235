@@ -8,76 +8,165 @@
 #include "elevator.h"
 #include "lights.h"
 
-// Queue order tags for variables in queue array.
+
+/**
+*@brief Queue order tags for variables in @p queue array.
+*
+*These tags correspond to the order buttons outside the elevator. In the case of an order from the
+*inside of the elevator, the order is treated as a floor_order_t in @b both directions.
+*
+*/
 typedef enum order_t {
 	ONE_UP, TWO_DOWN, TWO_UP, THREE_DOWN, THREE_UP, FOUR_DOWN, N_ORDER_TAGS
 } floor_order_t;
 
 
-// A struct that contains an array with queue orders and a target floor to chase.
+/** 
+*@brief Contains an array with orders and a target floor for the elevator to chase.
+*
+*@param queue Array that holds the orders.
+*@param target_floor The floor that the elevator aims to reach.
+*
+*@sa ::queue_find_target and ::queue_stop_n_serve_order for more description on @p target_floor.
+*/
 typedef struct Queue {
     int queue[N_ORDER_TAGS];
     int target_floor;
 } Queue;
 
 
-// Initialises queue array by setting it to zero.
+/** 
+*@brief Initialises the queue module variables.
+*
+*The @p queue orders are set to 0. @n
+*@p target_floor is set to the elevator's current floor.
+*/
 void queue_init(void);
 
 
-// Sets a target floor in Queue module.
+/** 
+*@brief Sets a target floor in the queue module.
+*
+*@param[in] target A floor to set the queue's @p target_floor to.
+*/
 void queue_set_target_floor(int target);
 
 
-// Places order in queue.
+/** 
+*@brief Places an order in @p queue.
+*
+*@param[in] floor_order An index in @p queue that is to be set to 1.
+*/
 void queue_set(int floor_order);
 
 
-// Removes order from queue.
+/** 
+*@brief Removes an order from @p queue.
+*
+*@param[in] floor_order An index in @p queue that is to be set to 0.
+*/
 void queue_pop(int floor_order);
 
 
-// Returns zero if queue empty, non-zero if not.
+/** 
+*@brief Counts the number of orders in @p queue and returns it.
+*
+*@returns 0 if @p queue empty. Otherwise, the number of orders in @p queue. 
+*/
 int queue_count(void);
 
-
-// Checks for order by checking button signal.
+ 
+/** 
+*@brief Checks for an order by monitoring the button signals.
+*
+*@param button Type of button to check. Either BUTTON_CALL_UP, BUTTON_CALL_DOWN or BUTTON_COMMAND.
+*@param floor Floor of the button to check.
+*
+*@returns 1 if the @p button on @p floor is pressed. 0 if not.
+*/
 int queue_get_order(elev_button_type_t button, int floor); 
 
 
-// Returns true if there exists an order above given floor.
+/** 
+*@brief Checks if there is an order above @p floor.
+*
+*@returns 1 if there @p queue has an order above @p floor. 0 if not.
+*/
 int queue_check_order_above_floor(int floor);
 
 
-// Returns true if there exists an order below given floor.
+/** 
+*@brief Checks if there is an order below @p floor.
+*
+*@returns 1 if there @p queue has an order below @p floor. 0 if not.
+*/
 int queue_check_order_below_floor(int floor);
 
 
-// Clear the orders from queue and turn off the lights at a particular floor.
+/** 
+*@brief Clear the orders from @p queue and turn off the lights at @p floor.
+*
+*@param floor Floor at which to clear orders from @p queue and turn off lights.
+*/
 void queue_clear_orders_at_floor(int floor);
 
 
-// Performs a check on all command buttons inside the elevator and updates the queue.
+/** 
+*@brief Performs a check on all command buttons inside the elevator and updates @p queue.
+*
+*/
 void queue_check_buttons_inside(void);
 
 
-// Performs a check on all buttons outside the elevator and updates the queue.
+/** 
+*@brief Performs a check on all buttons outside the elevator and updates @p queue.
+*
+*/
 void queue_check_buttons_outside(void);
 
 
-// Continuously checks for orders and updates the queue and target floor.
+/** 
+*@brief Performs a check for all orders and updates @p queue and @p target_floor.
+*
+*/
 void queue_listen_and_find(void);
 
 
-// Finds and sets a target floor based on the current queue. Targets the floor furthest away with an order.
+/** 
+*@brief Finds and sets @p target_floor based on @p queue. 
+*
+*The function targets the floor furthest away with an order in the same direction. This allows 
+*::queue_stop_n_serve_order to serve customers which are on the way to its targeted floor.
+*/
 void queue_find_target(void);
 
 
-// Sets elevator direction according to the target floor.
+/** 
+*@brief Sets the elevator direction according to @p target_floor.
+*
+*If @p target_floor is greater than the elevator floor, direction is set upwards and vice versa. If the
+*@p target_floor is the same as the current floor, the elevator stops.
+*/
 void queue_chase_target(void);
 
 
-// Updates the queue and lights when the elevator reaches a floor with an order. 
+/** 
+*@brief Identifies when to serve a customer and serves a customer if certain conditions are met.
+*
+*If any of the below conditons are satisfied, ::queue_clear_orders_at_floor is called to remove orders 
+*and turn off lights at the elevator's current floor.
+*
+*Condtions to which a customer can be served:
+*@li Direction is up and same direction order exists
+*@li Direction is up and no orders above
+*@li Direction is down and same direction order exists
+*@li Direction is down and no orders below
+*@li Last order in @p queue.
+*
+*
+*@returns 1 if the conditions to serve a customer are met. 0 otherwise.
+*@note If the elevator is not on a valid floor, the function will always return 0.
+*/
 int queue_stop_n_serve_order(void);
 
 

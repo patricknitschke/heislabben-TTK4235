@@ -1,11 +1,11 @@
 \hypertarget{lights_8h}{}\section{source/lights.h File Reference}
-\label{lights_8h}\index{source/lights.\+h@{source/lights.\+h}}
+\label{lights_8h}\index{source/lights.h@{source/lights.h}}
 
 
 This file contains functions that control the lights.  
 
 
-{\ttfamily \#include \char`\"{}elevator.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}elevator.\+h\char`\"{}}\newline
 Include dependency graph for lights.\+h\+:
 % FIG 0
 This graph shows which files directly or indirectly include this file\+:
@@ -13,19 +13,18 @@ This graph shows which files directly or indirectly include this file\+:
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \hyperlink{lights_8h_a021177e0383b3159e9976ce6341a8029}{light\+\_\+set\+\_\+floor\+\_\+indicator} (void)\hypertarget{lights_8h_a021177e0383b3159e9976ce6341a8029}{}\label{lights_8h_a021177e0383b3159e9976ce6341a8029}
-
+void \mbox{\hyperlink{lights_8h_a021177e0383b3159e9976ce6341a8029}{light\+\_\+set\+\_\+floor\+\_\+indicator}} (void)
 \begin{DoxyCompactList}\small\item\em Updates the floor lamp to the current floor. \end{DoxyCompactList}\item 
-void \hyperlink{lights_8h_adf4b073a7fa1a767dd98f64d590b3f87}{light\+\_\+set\+\_\+lamp} (elev\+\_\+button\+\_\+type\+\_\+t button, int floor, int value)
+void \mbox{\hyperlink{lights_8h_adf4b073a7fa1a767dd98f64d590b3f87}{light\+\_\+set\+\_\+lamp}} (elev\+\_\+button\+\_\+type\+\_\+t button, int floor, int value)
 \begin{DoxyCompactList}\small\item\em Turn a button lamp on or off. Essentially an alias for elev\+\_\+set\+\_\+button\+\_\+lamp(). \end{DoxyCompactList}\item 
-void {\bfseries light\+\_\+shut\+\_\+at\+\_\+floor} (int floor)\hypertarget{lights_8h_a67ba29732fba6dbb35f4587c27a19f44}{}\label{lights_8h_a67ba29732fba6dbb35f4587c27a19f44}
-
+\mbox{\Hypertarget{lights_8h_a67ba29732fba6dbb35f4587c27a19f44}\label{lights_8h_a67ba29732fba6dbb35f4587c27a19f44}} 
+void {\bfseries light\+\_\+shut\+\_\+at\+\_\+floor} (int floor)
 \item 
-void {\bfseries light\+\_\+shut\+\_\+all} (void)\hypertarget{lights_8h_a68a0761c3a85e3a6333419dedbb9e172}{}\label{lights_8h_a68a0761c3a85e3a6333419dedbb9e172}
-
+\mbox{\Hypertarget{lights_8h_a68a0761c3a85e3a6333419dedbb9e172}\label{lights_8h_a68a0761c3a85e3a6333419dedbb9e172}} 
+void {\bfseries light\+\_\+shut\+\_\+all} (void)
 \item 
-void {\bfseries light\+\_\+set\+\_\+stop\+\_\+lamp} (int value)\hypertarget{lights_8h_aa386361204dbc12e313ee754c50b0a2f}{}\label{lights_8h_aa386361204dbc12e313ee754c50b0a2f}
-
+\mbox{\Hypertarget{lights_8h_aa386361204dbc12e313ee754c50b0a2f}\label{lights_8h_aa386361204dbc12e313ee754c50b0a2f}} 
+void {\bfseries light\+\_\+set\+\_\+stop\+\_\+lamp} (int value)
 \end{DoxyCompactItemize}
 
 
@@ -35,26 +34,37 @@ This file contains functions that control the lights.
 
 
 \subsection{Function Documentation}
-\index{lights.\+h@{lights.\+h}!light\+\_\+set\+\_\+lamp@{light\+\_\+set\+\_\+lamp}}
-\index{light\+\_\+set\+\_\+lamp@{light\+\_\+set\+\_\+lamp}!lights.\+h@{lights.\+h}}
-\subsubsection[{\texorpdfstring{light\+\_\+set\+\_\+lamp(elev\+\_\+button\+\_\+type\+\_\+t button, int floor, int value)}{light_set_lamp(elev_button_type_t button, int floor, int value)}}]{\setlength{\rightskip}{0pt plus 5cm}void light\+\_\+set\+\_\+lamp (
-\begin{DoxyParamCaption}
-\item[{elev\+\_\+button\+\_\+type\+\_\+t}]{button, }
-\item[{int}]{floor, }
-\item[{int}]{value}
-\end{DoxyParamCaption}
-)}\hypertarget{lights_8h_adf4b073a7fa1a767dd98f64d590b3f87}{}\label{lights_8h_adf4b073a7fa1a767dd98f64d590b3f87}
+\mbox{\Hypertarget{lights_8h_a021177e0383b3159e9976ce6341a8029}\label{lights_8h_a021177e0383b3159e9976ce6341a8029}} 
+\index{lights.h@{lights.h}!light\_set\_floor\_indicator@{light\_set\_floor\_indicator}}
+\index{light\_set\_floor\_indicator@{light\_set\_floor\_indicator}!lights.h@{lights.h}}
+\subsubsection{\texorpdfstring{light\_set\_floor\_indicator()}{light\_set\_floor\_indicator()}}
+{\footnotesize\ttfamily void light\+\_\+set\+\_\+floor\+\_\+indicator (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Updates the floor lamp to the current floor. 
+
+
+
+Definition at line 3 of file lights.\+c.
+
+\mbox{\Hypertarget{lights_8h_adf4b073a7fa1a767dd98f64d590b3f87}\label{lights_8h_adf4b073a7fa1a767dd98f64d590b3f87}} 
+\index{lights.h@{lights.h}!light\_set\_lamp@{light\_set\_lamp}}
+\index{light\_set\_lamp@{light\_set\_lamp}!lights.h@{lights.h}}
+\subsubsection{\texorpdfstring{light\_set\_lamp()}{light\_set\_lamp()}}
+{\footnotesize\ttfamily void light\+\_\+set\+\_\+lamp (\begin{DoxyParamCaption}\item[{elev\+\_\+button\+\_\+type\+\_\+t}]{button,  }\item[{int}]{floor,  }\item[{int}]{value }\end{DoxyParamCaption})}
+
 
 
 Turn a button lamp on or off. Essentially an alias for elev\+\_\+set\+\_\+button\+\_\+lamp(). 
 
 
 \begin{DoxyParams}[1]{Parameters}
-\mbox{\tt in}  & {\em button} & Button lamp type to set to {\ttfamily value}. \\
+\mbox{\texttt{ in}}  & {\em button} & Button lamp type. Either B\+U\+T\+T\+O\+N\+\_\+\+C\+A\+L\+L\+\_\+\+UP, B\+U\+T\+T\+O\+N\+\_\+\+C\+A\+L\+L\+\_\+\+D\+O\+WN or B\+U\+T\+T\+O\+N\+\_\+\+C\+O\+M\+M\+A\+ND. \\
 \hline
-\mbox{\tt in}  & {\em floor} & Floor in which {\ttfamily button} is to be set. \\
+\mbox{\texttt{ in}}  & {\em floor} & Floor in which the button is to be set. \\
 \hline
-\mbox{\tt in}  & {\em value} & Value to set the button lamp to. Either 1 or 0. \\
+\mbox{\texttt{ in}}  & {\em value} & Value to set the button lamp to. Either 1 or 0. \\
 \hline
 \end{DoxyParams}
 

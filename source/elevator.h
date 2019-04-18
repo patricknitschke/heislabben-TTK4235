@@ -17,6 +17,8 @@
 *@param floor Current or last registered floor of the elevator.
 *@param dir Current direction of the elevator.
 *@param dir_previous Remembers the previous direction of the elevator before it stops.
+*
+*@note dir_previous is never set to DIRN_STOP.
 */
 typedef struct Elevator {
     int floor;
@@ -33,47 +35,94 @@ typedef struct Elevator {
 int elevator_init_hardware(void);
 
 
-// Start downwards, stop at defined state.
-int elevator_init(void);
+/**
+*@brief Initialises the elevator variables and moves the elevator downwards
+*until it reaches a defined state.
+*
+*@p floor is set to the current floor. @n
+*@p dir is set to DIRN_STOP. @n
+*@p dir_previous is set to DIRN_DOWN.
+*/
+void elevator_init(void);
 
 
-// Returns true if elevator is on a floor.
+/**
+*@brief Used to check if the elevator is on a floor.
+*
+*@return 1 if the elevator is on a floor, 0 otherwise.
+*/
 int elevator_check_valid_floor(void);
 
 
-// Updates elevator floor to current floor, if legitimate.
+/**
+*@brief Uses the elevator floor sensor to set the elevator floor variable, @p floor, to the current floor.
+*
+*@p floor is only set when the elevator is on a valid floor.
+*/
 void elevator_set_floor(void);
 
 
-// Returns last visited floor.
+/**
+*@brief Gets the elevator floor variable.
+*
+*@return Elevator's current or last visited floor, @p floor.
+*/
 int elevator_get_floor(void);
 
 
-// Returns the last visited floor ± 0.5, depending on the previous direction.
+/**
+*@brief Gets the elevator floor variable and adds ± 0.5, depending on the elevator's
+*previous direction.
+*
+*@return @p floor + 0.5, when @p dir_previous is DIRN_UP.@n
+*@p floor - 0.5, when @p dir_previous is DIRN_DOWN.
+*
+*This is useful in case of emergencies when the elevator is stopped in between floors and needs
+*to serve an order that was at its previous floor.
+*/
 float elevator_get_floor_in_between(void);
 
 
 /**
 *@brief Sets both elevator direction and motor direction to the same direction.
 *
-*@param[in] dir Direction to set the motor and @p m_elevator.dir to.
+*@param[in] dir Direction to set the motor and elevator variable, @p dir to.
+*
+*@p dir_previous will mirror @p dir unless @p dir is DIRN_STOP. This will allow @p dir_previous
+*to remember the previous direction in case the elevator stops.
+*
 */
 void elevator_set_direction(elev_motor_direction_t dir);
 
 
-// Returns the elevator direction.
+/**
+*@brief Gets the elevator's current direction, @p dir.
+*
+*@return Current elevator direction, @p dir.
+*/
 elev_motor_direction_t elevator_get_direction(void);
 
 
-// Returns the last recorded elevator direction, before the elevator stops.
+/**
+*@brief Gets the elevator's previous direction, @p dir_previous.
+*
+*@return Previous elevator direction, @p dir_previous.
+*/
 elev_motor_direction_t elevator_get_previous_direction(void);
 
 
-// Returns true if stop button pressed.
+/**
+*@brief Checks for an emergency through the stop button status.
+*
+*@return 1 if stop button pressed, 0 otherwise.
+*/
 int elevator_emergency(void);
 
 
-// Stops motor and emptys current queue if stop button pressed.
+/**
+*@brief  Stops the elevator, sets @p dir to DIRN_STOP and empties the queue.
+*
+*/
 void elevator_emergency_stop(void);
 
 #endif

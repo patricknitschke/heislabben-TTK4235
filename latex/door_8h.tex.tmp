@@ -1,12 +1,12 @@
 \hypertarget{door_8h}{}\section{source/door.h File Reference}
-\label{door_8h}\index{source/door.\+h@{source/door.\+h}}
+\label{door_8h}\index{source/door.h@{source/door.h}}
 
 
 This file contains the queue module and its functions.  
 
 
-{\ttfamily \#include \char`\"{}elevator.\+h\char`\"{}}\\*
-{\ttfamily \#include \char`\"{}time.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}elevator.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}time.\+h\char`\"{}}\newline
 Include dependency graph for door.\+h\+:
 % FIG 0
 This graph shows which files directly or indirectly include this file\+:
@@ -14,49 +14,49 @@ This graph shows which files directly or indirectly include this file\+:
 \subsection*{Data Structures}
 \begin{DoxyCompactItemize}
 \item 
-struct \hyperlink{structDoor}{Door}
+struct \mbox{\hyperlink{structDoor}{Door}}
 \end{DoxyCompactItemize}
 \subsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
-typedef struct \hyperlink{structDoor}{Door} {\bfseries Door}\hypertarget{door_8h_a0d75795cc05e18d8b798ffa10de24f3d}{}\label{door_8h_a0d75795cc05e18d8b798ffa10de24f3d}
-
+\mbox{\Hypertarget{door_8h_a0d75795cc05e18d8b798ffa10de24f3d}\label{door_8h_a0d75795cc05e18d8b798ffa10de24f3d}} 
+typedef struct \mbox{\hyperlink{structDoor}{Door}} {\bfseries Door}
 \end{DoxyCompactItemize}
 \subsection*{Enumerations}
 \begin{DoxyCompactItemize}
 \item 
+\mbox{\Hypertarget{door_8h_a764f517e2e45ad48bcd8b88590ab5276}\label{door_8h_a764f517e2e45ad48bcd8b88590ab5276}} 
 enum {\bfseries timer\+\_\+t} \{ {\bfseries S\+T\+A\+R\+T\+\_\+\+T\+I\+M\+ER}, 
 {\bfseries T\+I\+M\+E\+R\+\_\+\+E\+N\+A\+B\+L\+ED}, 
 {\bfseries N\+U\+M\+\_\+\+T\+\_\+\+T\+A\+GS}
- \}\hypertarget{door_8h_a764f517e2e45ad48bcd8b88590ab5276}{}\label{door_8h_a764f517e2e45ad48bcd8b88590ab5276}
-
+ \}
 \end{DoxyCompactItemize}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-void {\bfseries door\+\_\+init} (void)\hypertarget{door_8h_a2d0de401f47aafdfe2dba172332748de}{}\label{door_8h_a2d0de401f47aafdfe2dba172332748de}
-
+\mbox{\Hypertarget{door_8h_a2d0de401f47aafdfe2dba172332748de}\label{door_8h_a2d0de401f47aafdfe2dba172332748de}} 
+void {\bfseries door\+\_\+init} (void)
 \item 
-void {\bfseries door\+\_\+enable\+\_\+timer} (void)\hypertarget{door_8h_aaf21268ad90861ac0407bba35c83ce62}{}\label{door_8h_aaf21268ad90861ac0407bba35c83ce62}
-
+\mbox{\Hypertarget{door_8h_aaf21268ad90861ac0407bba35c83ce62}\label{door_8h_aaf21268ad90861ac0407bba35c83ce62}} 
+void {\bfseries door\+\_\+enable\+\_\+timer} (void)
 \item 
-void {\bfseries door\+\_\+reset\+\_\+timer} (void)\hypertarget{door_8h_a22af8e3b0c2d67b0f2d280509fe7b89e}{}\label{door_8h_a22af8e3b0c2d67b0f2d280509fe7b89e}
-
+\mbox{\Hypertarget{door_8h_a22af8e3b0c2d67b0f2d280509fe7b89e}\label{door_8h_a22af8e3b0c2d67b0f2d280509fe7b89e}} 
+void {\bfseries door\+\_\+reset\+\_\+timer} (void)
 \item 
-void {\bfseries door\+\_\+open} (void)\hypertarget{door_8h_a702fef97d6171ba25eece93f99b20c29}{}\label{door_8h_a702fef97d6171ba25eece93f99b20c29}
-
+\mbox{\Hypertarget{door_8h_a702fef97d6171ba25eece93f99b20c29}\label{door_8h_a702fef97d6171ba25eece93f99b20c29}} 
+void {\bfseries door\+\_\+open} (void)
 \item 
-void {\bfseries door\+\_\+close} (void)\hypertarget{door_8h_ae7995dcc50dbd1aeeace40b95d32e2d4}{}\label{door_8h_ae7995dcc50dbd1aeeace40b95d32e2d4}
-
+\mbox{\Hypertarget{door_8h_ae7995dcc50dbd1aeeace40b95d32e2d4}\label{door_8h_ae7995dcc50dbd1aeeace40b95d32e2d4}} 
+void {\bfseries door\+\_\+close} (void)
 \item 
-int {\bfseries door\+\_\+check\+\_\+open} (void)\hypertarget{door_8h_ab44b064e84827293b35fea9e3a778df6}{}\label{door_8h_ab44b064e84827293b35fea9e3a778df6}
-
+\mbox{\Hypertarget{door_8h_ab44b064e84827293b35fea9e3a778df6}\label{door_8h_ab44b064e84827293b35fea9e3a778df6}} 
+int {\bfseries door\+\_\+check\+\_\+open} (void)
 \item 
-int {\bfseries door\+\_\+check\+\_\+timer} (void)\hypertarget{door_8h_a2adfbc4914704e15ac593d4f965783f5}{}\label{door_8h_a2adfbc4914704e15ac593d4f965783f5}
-
+\mbox{\Hypertarget{door_8h_a2adfbc4914704e15ac593d4f965783f5}\label{door_8h_a2adfbc4914704e15ac593d4f965783f5}} 
+int {\bfseries door\+\_\+check\+\_\+timer} (void)
 \item 
-int {\bfseries door\+\_\+picked\+\_\+up} (void)\hypertarget{door_8h_a178466f511769579894312351089f705}{}\label{door_8h_a178466f511769579894312351089f705}
-
+\mbox{\Hypertarget{door_8h_a178466f511769579894312351089f705}\label{door_8h_a178466f511769579894312351089f705}} 
+int {\bfseries door\+\_\+picked\+\_\+up} (void)
 \end{DoxyCompactItemize}
 
 

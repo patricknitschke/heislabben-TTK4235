@@ -1,12 +1,12 @@
 \hypertarget{queue_8h}{}\section{source/queue.h File Reference}
-\label{queue_8h}\index{source/queue.\+h@{source/queue.\+h}}
+\label{queue_8h}\index{source/queue.h@{source/queue.h}}
 
 
 This file contains the queue module and its functions.  
 
 
-{\ttfamily \#include \char`\"{}elevator.\+h\char`\"{}}\\*
-{\ttfamily \#include \char`\"{}lights.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}elevator.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}lights.\+h\char`\"{}}\newline
 Include dependency graph for queue.\+h\+:
 % FIG 0
 This graph shows which files directly or indirectly include this file\+:
@@ -14,82 +14,377 @@ This graph shows which files directly or indirectly include this file\+:
 \subsection*{Data Structures}
 \begin{DoxyCompactItemize}
 \item 
-struct \hyperlink{structQueue}{Queue}
-\end{DoxyCompactItemize}
+struct \mbox{\hyperlink{structQueue}{Queue}}
+\begin{DoxyCompactList}\small\item\em Contains an array with orders and a target floor for the elevator to chase. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
-typedef enum order\+\_\+t {\bfseries floor\+\_\+order\+\_\+t}\hypertarget{queue_8h_a0f40cd2591af055e3a665595a615b164}{}\label{queue_8h_a0f40cd2591af055e3a665595a615b164}
-
-\item 
-typedef struct \hyperlink{structQueue}{Queue} {\bfseries Queue}\hypertarget{queue_8h_ad359c9a9ed21445fd95e01a05429c767}{}\label{queue_8h_ad359c9a9ed21445fd95e01a05429c767}
-
-\end{DoxyCompactItemize}
+typedef enum \mbox{\hyperlink{queue_8h_a6c7dd10fb53eaa1cb9705e4ee36f5fcb}{order\+\_\+t}} \mbox{\hyperlink{queue_8h_a0f40cd2591af055e3a665595a615b164}{floor\+\_\+order\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{structQueue}{Queue}} order tags for variables in {\ttfamily queue} array. \end{DoxyCompactList}\item 
+typedef struct \mbox{\hyperlink{structQueue}{Queue}} \mbox{\hyperlink{queue_8h_ad359c9a9ed21445fd95e01a05429c767}{Queue}}
+\begin{DoxyCompactList}\small\item\em Contains an array with orders and a target floor for the elevator to chase. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Enumerations}
 \begin{DoxyCompactItemize}
 \item 
-enum {\bfseries order\+\_\+t} \{ \\*
+enum \mbox{\hyperlink{queue_8h_a6c7dd10fb53eaa1cb9705e4ee36f5fcb}{order\+\_\+t}} \{ \newline
 {\bfseries O\+N\+E\+\_\+\+UP}, 
 {\bfseries T\+W\+O\+\_\+\+D\+O\+WN}, 
 {\bfseries T\+W\+O\+\_\+\+UP}, 
 {\bfseries T\+H\+R\+E\+E\+\_\+\+D\+O\+WN}, 
-\\*
+\newline
 {\bfseries T\+H\+R\+E\+E\+\_\+\+UP}, 
 {\bfseries F\+O\+U\+R\+\_\+\+D\+O\+WN}, 
 {\bfseries N\+\_\+\+O\+R\+D\+E\+R\+\_\+\+T\+A\+GS}
- \}\hypertarget{queue_8h_a6c7dd10fb53eaa1cb9705e4ee36f5fcb}{}\label{queue_8h_a6c7dd10fb53eaa1cb9705e4ee36f5fcb}
-
-\end{DoxyCompactItemize}
+ \}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{structQueue}{Queue}} order tags for variables in {\ttfamily queue} array. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-void {\bfseries queue\+\_\+init} (void)\hypertarget{queue_8h_ac19ac10c04e65b54e2c03aa726d1535a}{}\label{queue_8h_ac19ac10c04e65b54e2c03aa726d1535a}
-
-\item 
-void {\bfseries queue\+\_\+set\+\_\+target\+\_\+floor} (int target)\hypertarget{queue_8h_a4e2fc21e8d5d427c8fcd4bb649c5a1b5}{}\label{queue_8h_a4e2fc21e8d5d427c8fcd4bb649c5a1b5}
-
-\item 
-void {\bfseries queue\+\_\+set} (int floor\+\_\+order)\hypertarget{queue_8h_abd3016ad280546c8f3c846723e4a188b}{}\label{queue_8h_abd3016ad280546c8f3c846723e4a188b}
-
-\item 
-void {\bfseries queue\+\_\+pop} (int floor\+\_\+order)\hypertarget{queue_8h_afd9348275ef56340298946118d8f76f7}{}\label{queue_8h_afd9348275ef56340298946118d8f76f7}
-
-\item 
-int {\bfseries queue\+\_\+count} (void)\hypertarget{queue_8h_a5c4a556280790be948ff1c85ea3d96fa}{}\label{queue_8h_a5c4a556280790be948ff1c85ea3d96fa}
-
-\item 
-int {\bfseries queue\+\_\+get\+\_\+order} (elev\+\_\+button\+\_\+type\+\_\+t button, int floor)\hypertarget{queue_8h_ab4173bf4447b44e40db1f42073c984c1}{}\label{queue_8h_ab4173bf4447b44e40db1f42073c984c1}
-
-\item 
-int {\bfseries queue\+\_\+check\+\_\+order\+\_\+above\+\_\+floor} (int floor)\hypertarget{queue_8h_a77b5b6bf5997fd3b8fcbd0b69e3bffaa}{}\label{queue_8h_a77b5b6bf5997fd3b8fcbd0b69e3bffaa}
-
-\item 
-int {\bfseries queue\+\_\+check\+\_\+order\+\_\+below\+\_\+floor} (int floor)\hypertarget{queue_8h_a0728a25d8c99bf55038e14edc7f3897a}{}\label{queue_8h_a0728a25d8c99bf55038e14edc7f3897a}
-
-\item 
-void {\bfseries queue\+\_\+clear\+\_\+orders\+\_\+at\+\_\+floor} (int floor)\hypertarget{queue_8h_a51e76147f4af2a6ee29645d6792fbc69}{}\label{queue_8h_a51e76147f4af2a6ee29645d6792fbc69}
-
-\item 
-void {\bfseries queue\+\_\+check\+\_\+buttons\+\_\+inside} (void)\hypertarget{queue_8h_af5e29e564af5c4211d168a5026cb3a58}{}\label{queue_8h_af5e29e564af5c4211d168a5026cb3a58}
-
-\item 
-void {\bfseries queue\+\_\+check\+\_\+buttons\+\_\+outside} (void)\hypertarget{queue_8h_a6bf2e0a467946d97e6cf6d9e4c7104f1}{}\label{queue_8h_a6bf2e0a467946d97e6cf6d9e4c7104f1}
-
-\item 
-void {\bfseries queue\+\_\+listen\+\_\+and\+\_\+find} (void)\hypertarget{queue_8h_aed4677e40c26592eecfe19be5f1d8284}{}\label{queue_8h_aed4677e40c26592eecfe19be5f1d8284}
-
-\item 
-void {\bfseries queue\+\_\+find\+\_\+target} (void)\hypertarget{queue_8h_ae1f1f6105b668e5722bd779a25a2439d}{}\label{queue_8h_ae1f1f6105b668e5722bd779a25a2439d}
-
-\item 
-void {\bfseries queue\+\_\+chase\+\_\+target} (void)\hypertarget{queue_8h_afcaaf32f82f3bf5dce6a3a2266f2d832}{}\label{queue_8h_afcaaf32f82f3bf5dce6a3a2266f2d832}
-
-\item 
-int {\bfseries queue\+\_\+stop\+\_\+n\+\_\+serve\+\_\+order} (void)\hypertarget{queue_8h_a6246a25fc3b07b678c031c3dd798e077}{}\label{queue_8h_a6246a25fc3b07b678c031c3dd798e077}
-
-\end{DoxyCompactItemize}
+void \mbox{\hyperlink{queue_8h_ac19ac10c04e65b54e2c03aa726d1535a}{queue\+\_\+init}} (void)
+\begin{DoxyCompactList}\small\item\em Initialises the queue module variables. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{queue_8h_a4e2fc21e8d5d427c8fcd4bb649c5a1b5}{queue\+\_\+set\+\_\+target\+\_\+floor}} (int target)
+\begin{DoxyCompactList}\small\item\em Sets a target floor in the queue module. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{queue_8h_abd3016ad280546c8f3c846723e4a188b}{queue\+\_\+set}} (int floor\+\_\+order)
+\begin{DoxyCompactList}\small\item\em Places an order in {\ttfamily queue}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{queue_8h_afd9348275ef56340298946118d8f76f7}{queue\+\_\+pop}} (int floor\+\_\+order)
+\begin{DoxyCompactList}\small\item\em Removes an order from {\ttfamily queue}. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{queue_8h_a5c4a556280790be948ff1c85ea3d96fa}{queue\+\_\+count}} (void)
+\begin{DoxyCompactList}\small\item\em Counts the number of orders in {\ttfamily queue} and returns it. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{queue_8h_ab4173bf4447b44e40db1f42073c984c1}{queue\+\_\+get\+\_\+order}} (elev\+\_\+button\+\_\+type\+\_\+t button, int floor)
+\begin{DoxyCompactList}\small\item\em Checks for an order by monitoring the button signals. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{queue_8h_a77b5b6bf5997fd3b8fcbd0b69e3bffaa}{queue\+\_\+check\+\_\+order\+\_\+above\+\_\+floor}} (int floor)
+\begin{DoxyCompactList}\small\item\em Checks if there is an order above {\ttfamily floor}. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{queue_8h_a0728a25d8c99bf55038e14edc7f3897a}{queue\+\_\+check\+\_\+order\+\_\+below\+\_\+floor}} (int floor)
+\begin{DoxyCompactList}\small\item\em Checks if there is an order below {\ttfamily floor}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{queue_8h_a51e76147f4af2a6ee29645d6792fbc69}{queue\+\_\+clear\+\_\+orders\+\_\+at\+\_\+floor}} (int floor)
+\begin{DoxyCompactList}\small\item\em Clear the orders from {\ttfamily queue} and turn off the lights at {\ttfamily floor}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{queue_8h_af5e29e564af5c4211d168a5026cb3a58}{queue\+\_\+check\+\_\+buttons\+\_\+inside}} (void)
+\begin{DoxyCompactList}\small\item\em Performs a check on all command buttons inside the elevator and updates {\ttfamily queue}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{queue_8h_a6bf2e0a467946d97e6cf6d9e4c7104f1}{queue\+\_\+check\+\_\+buttons\+\_\+outside}} (void)
+\begin{DoxyCompactList}\small\item\em Performs a check on all buttons outside the elevator and updates {\ttfamily queue}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{queue_8h_aed4677e40c26592eecfe19be5f1d8284}{queue\+\_\+listen\+\_\+and\+\_\+find}} (void)
+\begin{DoxyCompactList}\small\item\em Performs a check for all orders and updates {\ttfamily queue} and {\ttfamily target\+\_\+floor}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{queue_8h_ae1f1f6105b668e5722bd779a25a2439d}{queue\+\_\+find\+\_\+target}} (void)
+\begin{DoxyCompactList}\small\item\em Finds and sets {\ttfamily target\+\_\+floor} based on {\ttfamily queue}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{queue_8h_afcaaf32f82f3bf5dce6a3a2266f2d832}{queue\+\_\+chase\+\_\+target}} (void)
+\begin{DoxyCompactList}\small\item\em Sets the elevator direction according to {\ttfamily target\+\_\+floor}. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{queue_8h_a6246a25fc3b07b678c031c3dd798e077}{queue\+\_\+stop\+\_\+n\+\_\+serve\+\_\+order}} (void)
+\begin{DoxyCompactList}\small\item\em Identifies when to serve a customer and serves a customer if certain conditions are met. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
 This file contains the queue module and its functions. 
+
+
+
+\subsection{Typedef Documentation}
+\mbox{\Hypertarget{queue_8h_a0f40cd2591af055e3a665595a615b164}\label{queue_8h_a0f40cd2591af055e3a665595a615b164}} 
+\index{queue.h@{queue.h}!floor\_order\_t@{floor\_order\_t}}
+\index{floor\_order\_t@{floor\_order\_t}!queue.h@{queue.h}}
+\subsubsection{\texorpdfstring{floor\_order\_t}{floor\_order\_t}}
+{\footnotesize\ttfamily typedef enum \mbox{\hyperlink{queue_8h_a6c7dd10fb53eaa1cb9705e4ee36f5fcb}{order\+\_\+t}}  \mbox{\hyperlink{queue_8h_a0f40cd2591af055e3a665595a615b164}{floor\+\_\+order\+\_\+t}}}
+
+
+
+\mbox{\hyperlink{structQueue}{Queue}} order tags for variables in {\ttfamily queue} array. 
+
+These tags correspond to the order buttons outside the elevator. In the case of an order from the inside of the elevator, the order is treated as an floor\+\_\+order\+\_\+t in {\bfseries{both}} directions. \mbox{\Hypertarget{queue_8h_ad359c9a9ed21445fd95e01a05429c767}\label{queue_8h_ad359c9a9ed21445fd95e01a05429c767}} 
+\index{queue.h@{queue.h}!Queue@{Queue}}
+\index{Queue@{Queue}!queue.h@{queue.h}}
+\subsubsection{\texorpdfstring{Queue}{Queue}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structQueue}{Queue}}  \mbox{\hyperlink{structQueue}{Queue}}}
+
+
+
+Contains an array with orders and a target floor for the elevator to chase. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em queue} & Array that holds the orders. \\
+\hline
+{\em target\+\_\+floor} & The floor that the elevator aims to reach.\\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{queue_8h_ae1f1f6105b668e5722bd779a25a2439d}{queue\+\_\+find\+\_\+target}} and \mbox{\hyperlink{queue_8h_a6246a25fc3b07b678c031c3dd798e077}{queue\+\_\+stop\+\_\+n\+\_\+serve\+\_\+order}} for more description on {\ttfamily target\+\_\+floor}. 
+\end{DoxySeeAlso}
+
+
+\subsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{queue_8h_a6c7dd10fb53eaa1cb9705e4ee36f5fcb}\label{queue_8h_a6c7dd10fb53eaa1cb9705e4ee36f5fcb}} 
+\index{queue.h@{queue.h}!order\_t@{order\_t}}
+\index{order\_t@{order\_t}!queue.h@{queue.h}}
+\subsubsection{\texorpdfstring{order\_t}{order\_t}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{queue_8h_a6c7dd10fb53eaa1cb9705e4ee36f5fcb}{order\+\_\+t}}}
+
+
+
+\mbox{\hyperlink{structQueue}{Queue}} order tags for variables in {\ttfamily queue} array. 
+
+These tags correspond to the order buttons outside the elevator. In the case of an order from the inside of the elevator, the order is treated as an floor\+\_\+order\+\_\+t in {\bfseries{both}} directions. 
+
+Definition at line 19 of file queue.\+h.
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{queue_8h_afcaaf32f82f3bf5dce6a3a2266f2d832}\label{queue_8h_afcaaf32f82f3bf5dce6a3a2266f2d832}} 
+\index{queue.h@{queue.h}!queue\_chase\_target@{queue\_chase\_target}}
+\index{queue\_chase\_target@{queue\_chase\_target}!queue.h@{queue.h}}
+\subsubsection{\texorpdfstring{queue\_chase\_target()}{queue\_chase\_target()}}
+{\footnotesize\ttfamily void queue\+\_\+chase\+\_\+target (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Sets the elevator direction according to {\ttfamily target\+\_\+floor}. 
+
+If {\ttfamily target\+\_\+floor} is greater than the elevator floor, direction is set upwards and vice versa. 
+
+Definition at line 141 of file queue.\+c.
+
+\mbox{\Hypertarget{queue_8h_af5e29e564af5c4211d168a5026cb3a58}\label{queue_8h_af5e29e564af5c4211d168a5026cb3a58}} 
+\index{queue.h@{queue.h}!queue\_check\_buttons\_inside@{queue\_check\_buttons\_inside}}
+\index{queue\_check\_buttons\_inside@{queue\_check\_buttons\_inside}!queue.h@{queue.h}}
+\subsubsection{\texorpdfstring{queue\_check\_buttons\_inside()}{queue\_check\_buttons\_inside()}}
+{\footnotesize\ttfamily void queue\+\_\+check\+\_\+buttons\+\_\+inside (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Performs a check on all command buttons inside the elevator and updates {\ttfamily queue}. 
+
+
+
+Definition at line 64 of file queue.\+c.
+
+\mbox{\Hypertarget{queue_8h_a6bf2e0a467946d97e6cf6d9e4c7104f1}\label{queue_8h_a6bf2e0a467946d97e6cf6d9e4c7104f1}} 
+\index{queue.h@{queue.h}!queue\_check\_buttons\_outside@{queue\_check\_buttons\_outside}}
+\index{queue\_check\_buttons\_outside@{queue\_check\_buttons\_outside}!queue.h@{queue.h}}
+\subsubsection{\texorpdfstring{queue\_check\_buttons\_outside()}{queue\_check\_buttons\_outside()}}
+{\footnotesize\ttfamily void queue\+\_\+check\+\_\+buttons\+\_\+outside (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Performs a check on all buttons outside the elevator and updates {\ttfamily queue}. 
+
+
+
+Definition at line 78 of file queue.\+c.
+
+\mbox{\Hypertarget{queue_8h_a77b5b6bf5997fd3b8fcbd0b69e3bffaa}\label{queue_8h_a77b5b6bf5997fd3b8fcbd0b69e3bffaa}} 
+\index{queue.h@{queue.h}!queue\_check\_order\_above\_floor@{queue\_check\_order\_above\_floor}}
+\index{queue\_check\_order\_above\_floor@{queue\_check\_order\_above\_floor}!queue.h@{queue.h}}
+\subsubsection{\texorpdfstring{queue\_check\_order\_above\_floor()}{queue\_check\_order\_above\_floor()}}
+{\footnotesize\ttfamily int queue\+\_\+check\+\_\+order\+\_\+above\+\_\+floor (\begin{DoxyParamCaption}\item[{int}]{floor }\end{DoxyParamCaption})}
+
+
+
+Checks if there is an order above {\ttfamily floor}. 
+
+\begin{DoxyReturn}{Returns}
+1 if there {\ttfamily queue} has an order above {\ttfamily floor}. 0 if not. 
+\end{DoxyReturn}
+
+
+Definition at line 40 of file queue.\+c.
+
+\mbox{\Hypertarget{queue_8h_a0728a25d8c99bf55038e14edc7f3897a}\label{queue_8h_a0728a25d8c99bf55038e14edc7f3897a}} 
+\index{queue.h@{queue.h}!queue\_check\_order\_below\_floor@{queue\_check\_order\_below\_floor}}
+\index{queue\_check\_order\_below\_floor@{queue\_check\_order\_below\_floor}!queue.h@{queue.h}}
+\subsubsection{\texorpdfstring{queue\_check\_order\_below\_floor()}{queue\_check\_order\_below\_floor()}}
+{\footnotesize\ttfamily int queue\+\_\+check\+\_\+order\+\_\+below\+\_\+floor (\begin{DoxyParamCaption}\item[{int}]{floor }\end{DoxyParamCaption})}
+
+
+
+Checks if there is an order below {\ttfamily floor}. 
+
+\begin{DoxyReturn}{Returns}
+1 if there {\ttfamily queue} has an order below {\ttfamily floor}. 0 if not. 
+\end{DoxyReturn}
+
+
+Definition at line 49 of file queue.\+c.
+
+\mbox{\Hypertarget{queue_8h_a51e76147f4af2a6ee29645d6792fbc69}\label{queue_8h_a51e76147f4af2a6ee29645d6792fbc69}} 
+\index{queue.h@{queue.h}!queue\_clear\_orders\_at\_floor@{queue\_clear\_orders\_at\_floor}}
+\index{queue\_clear\_orders\_at\_floor@{queue\_clear\_orders\_at\_floor}!queue.h@{queue.h}}
+\subsubsection{\texorpdfstring{queue\_clear\_orders\_at\_floor()}{queue\_clear\_orders\_at\_floor()}}
+{\footnotesize\ttfamily void queue\+\_\+clear\+\_\+orders\+\_\+at\+\_\+floor (\begin{DoxyParamCaption}\item[{int}]{floor }\end{DoxyParamCaption})}
+
+
+
+Clear the orders from {\ttfamily queue} and turn off the lights at {\ttfamily floor}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em floor} & Floor at which to clear orders from {\ttfamily queue} and turn off lights. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 58 of file queue.\+c.
+
+\mbox{\Hypertarget{queue_8h_a5c4a556280790be948ff1c85ea3d96fa}\label{queue_8h_a5c4a556280790be948ff1c85ea3d96fa}} 
+\index{queue.h@{queue.h}!queue\_count@{queue\_count}}
+\index{queue\_count@{queue\_count}!queue.h@{queue.h}}
+\subsubsection{\texorpdfstring{queue\_count()}{queue\_count()}}
+{\footnotesize\ttfamily int queue\+\_\+count (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Counts the number of orders in {\ttfamily queue} and returns it. 
+
+\begin{DoxyReturn}{Returns}
+0 if {\ttfamily queue} empty. Otherwise, the number of orders in {\ttfamily queue}. 
+\end{DoxyReturn}
+
+
+Definition at line 26 of file queue.\+c.
+
+\mbox{\Hypertarget{queue_8h_ae1f1f6105b668e5722bd779a25a2439d}\label{queue_8h_ae1f1f6105b668e5722bd779a25a2439d}} 
+\index{queue.h@{queue.h}!queue\_find\_target@{queue\_find\_target}}
+\index{queue\_find\_target@{queue\_find\_target}!queue.h@{queue.h}}
+\subsubsection{\texorpdfstring{queue\_find\_target()}{queue\_find\_target()}}
+{\footnotesize\ttfamily void queue\+\_\+find\+\_\+target (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Finds and sets {\ttfamily target\+\_\+floor} based on {\ttfamily queue}. 
+
+The function targets the floor furthest away with an order in the same direction. This allows \mbox{\hyperlink{queue_8h_a6246a25fc3b07b678c031c3dd798e077}{queue\+\_\+stop\+\_\+n\+\_\+serve\+\_\+order}} to serve customers which are on the way to its targeted floor. 
+
+Definition at line 101 of file queue.\+c.
+
+\mbox{\Hypertarget{queue_8h_ab4173bf4447b44e40db1f42073c984c1}\label{queue_8h_ab4173bf4447b44e40db1f42073c984c1}} 
+\index{queue.h@{queue.h}!queue\_get\_order@{queue\_get\_order}}
+\index{queue\_get\_order@{queue\_get\_order}!queue.h@{queue.h}}
+\subsubsection{\texorpdfstring{queue\_get\_order()}{queue\_get\_order()}}
+{\footnotesize\ttfamily int queue\+\_\+get\+\_\+order (\begin{DoxyParamCaption}\item[{elev\+\_\+button\+\_\+type\+\_\+t}]{button,  }\item[{int}]{floor }\end{DoxyParamCaption})}
+
+
+
+Checks for an order by monitoring the button signals. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em button} & Type of button to check. Either B\+U\+T\+T\+O\+N\+\_\+\+C\+A\+L\+L\+\_\+\+UP, B\+U\+T\+T\+O\+N\+\_\+\+C\+A\+L\+L\+\_\+\+D\+O\+WN or B\+U\+T\+T\+O\+N\+\_\+\+C\+O\+M\+M\+A\+ND. \\
+\hline
+{\em floor} & Floor of the button to check.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 if the {\ttfamily button} on {\ttfamily floor} is pressed. 0 if not. 
+\end{DoxyReturn}
+
+
+Definition at line 36 of file queue.\+c.
+
+\mbox{\Hypertarget{queue_8h_ac19ac10c04e65b54e2c03aa726d1535a}\label{queue_8h_ac19ac10c04e65b54e2c03aa726d1535a}} 
+\index{queue.h@{queue.h}!queue\_init@{queue\_init}}
+\index{queue\_init@{queue\_init}!queue.h@{queue.h}}
+\subsubsection{\texorpdfstring{queue\_init()}{queue\_init()}}
+{\footnotesize\ttfamily void queue\+\_\+init (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Initialises the queue module variables. 
+
+The {\ttfamily queue} orders are set to 0. ~\newline
+{\ttfamily target\+\_\+floor} is set to the elevator\textquotesingle{}s current floor. 
+
+Definition at line 7 of file queue.\+c.
+
+\mbox{\Hypertarget{queue_8h_aed4677e40c26592eecfe19be5f1d8284}\label{queue_8h_aed4677e40c26592eecfe19be5f1d8284}} 
+\index{queue.h@{queue.h}!queue\_listen\_and\_find@{queue\_listen\_and\_find}}
+\index{queue\_listen\_and\_find@{queue\_listen\_and\_find}!queue.h@{queue.h}}
+\subsubsection{\texorpdfstring{queue\_listen\_and\_find()}{queue\_listen\_and\_find()}}
+{\footnotesize\ttfamily void queue\+\_\+listen\+\_\+and\+\_\+find (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Performs a check for all orders and updates {\ttfamily queue} and {\ttfamily target\+\_\+floor}. 
+
+
+
+Definition at line 95 of file queue.\+c.
+
+\mbox{\Hypertarget{queue_8h_afd9348275ef56340298946118d8f76f7}\label{queue_8h_afd9348275ef56340298946118d8f76f7}} 
+\index{queue.h@{queue.h}!queue\_pop@{queue\_pop}}
+\index{queue\_pop@{queue\_pop}!queue.h@{queue.h}}
+\subsubsection{\texorpdfstring{queue\_pop()}{queue\_pop()}}
+{\footnotesize\ttfamily void queue\+\_\+pop (\begin{DoxyParamCaption}\item[{int}]{floor\+\_\+order }\end{DoxyParamCaption})}
+
+
+
+Removes an order from {\ttfamily queue}. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em floor\+\_\+order} & An index in {\ttfamily queue} that is to be set to 0. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 22 of file queue.\+c.
+
+\mbox{\Hypertarget{queue_8h_abd3016ad280546c8f3c846723e4a188b}\label{queue_8h_abd3016ad280546c8f3c846723e4a188b}} 
+\index{queue.h@{queue.h}!queue\_set@{queue\_set}}
+\index{queue\_set@{queue\_set}!queue.h@{queue.h}}
+\subsubsection{\texorpdfstring{queue\_set()}{queue\_set()}}
+{\footnotesize\ttfamily void queue\+\_\+set (\begin{DoxyParamCaption}\item[{int}]{floor\+\_\+order }\end{DoxyParamCaption})}
+
+
+
+Places an order in {\ttfamily queue}. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em floor\+\_\+order} & An index in {\ttfamily queue} that is to be set to 1. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 18 of file queue.\+c.
+
+\mbox{\Hypertarget{queue_8h_a4e2fc21e8d5d427c8fcd4bb649c5a1b5}\label{queue_8h_a4e2fc21e8d5d427c8fcd4bb649c5a1b5}} 
+\index{queue.h@{queue.h}!queue\_set\_target\_floor@{queue\_set\_target\_floor}}
+\index{queue\_set\_target\_floor@{queue\_set\_target\_floor}!queue.h@{queue.h}}
+\subsubsection{\texorpdfstring{queue\_set\_target\_floor()}{queue\_set\_target\_floor()}}
+{\footnotesize\ttfamily void queue\+\_\+set\+\_\+target\+\_\+floor (\begin{DoxyParamCaption}\item[{int}]{target }\end{DoxyParamCaption})}
+
+
+
+Sets a target floor in the queue module. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em target} & A floor to set the queue\textquotesingle{}s {\ttfamily target\+\_\+floor} to. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 14 of file queue.\+c.
+
+\mbox{\Hypertarget{queue_8h_a6246a25fc3b07b678c031c3dd798e077}\label{queue_8h_a6246a25fc3b07b678c031c3dd798e077}} 
+\index{queue.h@{queue.h}!queue\_stop\_n\_serve\_order@{queue\_stop\_n\_serve\_order}}
+\index{queue\_stop\_n\_serve\_order@{queue\_stop\_n\_serve\_order}!queue.h@{queue.h}}
+\subsubsection{\texorpdfstring{queue\_stop\_n\_serve\_order()}{queue\_stop\_n\_serve\_order()}}
+{\footnotesize\ttfamily int queue\+\_\+stop\+\_\+n\+\_\+serve\+\_\+order (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Identifies when to serve a customer and serves a customer if certain conditions are met. 
+
+If any of the below conditons are satisfied, \mbox{\hyperlink{queue_8h_a51e76147f4af2a6ee29645d6792fbc69}{queue\+\_\+clear\+\_\+orders\+\_\+at\+\_\+floor}} is called to remove orders and turn off lights at the elevator\textquotesingle{}s current floor.
+
+Condtions to which a customer can be served\+: \begin{DoxyItemize}
+\item Direction is up and same direction order exists \item Direction is up and no orders above \item Direction is down and same direction order exists \item Direction is down and no orders below \item Last order in {\ttfamily queue}.\end{DoxyItemize}
+\begin{DoxyReturn}{Returns}
+1 if the conditions to serve a customer are met. 0 otherwise. 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+If the elevator is not on a valid floor, the function will always return 0. 
+\end{DoxyNote}
+
+
+Definition at line 159 of file queue.\+c.
 

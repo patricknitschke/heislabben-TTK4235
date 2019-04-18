@@ -1,14 +1,14 @@
 \hypertarget{elevator_8h}{}\section{source/elevator.h File Reference}
-\label{elevator_8h}\index{source/elevator.\+h@{source/elevator.\+h}}
+\label{elevator_8h}\index{source/elevator.h@{source/elevator.h}}
 
 
 This file contains the elevator module and its functions.  
 
 
-{\ttfamily \#include \char`\"{}elev.\+h\char`\"{}}\\*
-{\ttfamily \#include \char`\"{}queue.\+h\char`\"{}}\\*
-{\ttfamily \#include \char`\"{}lights.\+h\char`\"{}}\\*
-{\ttfamily \#include \char`\"{}door.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}elev.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}queue.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}lights.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}door.\+h\char`\"{}}\newline
 Include dependency graph for elevator.\+h\+:
 % FIG 0
 This graph shows which files directly or indirectly include this file\+:
@@ -16,47 +16,38 @@ This graph shows which files directly or indirectly include this file\+:
 \subsection*{Data Structures}
 \begin{DoxyCompactItemize}
 \item 
-struct \hyperlink{structElevator}{Elevator}
+struct \mbox{\hyperlink{structElevator}{Elevator}}
 \begin{DoxyCompactList}\small\item\em A struct that holds information regarding the elevators position and direction. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
-typedef struct \hyperlink{structElevator}{Elevator} \hyperlink{elevator_8h_a05b0ff2a7bd8a4106457415054c8599d}{Elevator}
+typedef struct \mbox{\hyperlink{structElevator}{Elevator}} \mbox{\hyperlink{elevator_8h_a05b0ff2a7bd8a4106457415054c8599d}{Elevator}}
 \begin{DoxyCompactList}\small\item\em A struct that holds information regarding the elevators position and direction. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-int \hyperlink{elevator_8h_a7ba7c2e8b5c4c2b9500a3057a9b14b5c}{elevator\+\_\+init\+\_\+hardware} (void)
+int \mbox{\hyperlink{elevator_8h_a7ba7c2e8b5c4c2b9500a3057a9b14b5c}{elevator\+\_\+init\+\_\+hardware}} (void)
 \begin{DoxyCompactList}\small\item\em Initialises the elevator hardware. \end{DoxyCompactList}\item 
-int {\bfseries elevator\+\_\+init} (void)\hypertarget{elevator_8h_a72f8870a61fccfad8e3656b9e50a7033}{}\label{elevator_8h_a72f8870a61fccfad8e3656b9e50a7033}
-
-\item 
-int {\bfseries elevator\+\_\+check\+\_\+valid\+\_\+floor} (void)\hypertarget{elevator_8h_acb97ee8f025fa914dad7ed6b7469cc6a}{}\label{elevator_8h_acb97ee8f025fa914dad7ed6b7469cc6a}
-
-\item 
-void {\bfseries elevator\+\_\+set\+\_\+floor} (void)\hypertarget{elevator_8h_a7d886ddadbe6a437b1a3f84141920d40}{}\label{elevator_8h_a7d886ddadbe6a437b1a3f84141920d40}
-
-\item 
-int {\bfseries elevator\+\_\+get\+\_\+floor} (void)\hypertarget{elevator_8h_abe303923a974cdc1e39d7e007bde33c2}{}\label{elevator_8h_abe303923a974cdc1e39d7e007bde33c2}
-
-\item 
-float {\bfseries elevator\+\_\+get\+\_\+floor\+\_\+in\+\_\+between} (void)\hypertarget{elevator_8h_a32ba683542285b342b0d69074e42af6d}{}\label{elevator_8h_a32ba683542285b342b0d69074e42af6d}
-
-\item 
-void \hyperlink{elevator_8h_a936d5c58852b61169f3b15e078061236}{elevator\+\_\+set\+\_\+direction} (elev\+\_\+motor\+\_\+direction\+\_\+t dir)
+void \mbox{\hyperlink{elevator_8h_adfe9cac4cc26b28abcc5311cf824a8a0}{elevator\+\_\+init}} (void)
+\begin{DoxyCompactList}\small\item\em Initialises the elevator variables and moves the elevator downwards until it reaches a defined state. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{elevator_8h_acb97ee8f025fa914dad7ed6b7469cc6a}{elevator\+\_\+check\+\_\+valid\+\_\+floor}} (void)
+\begin{DoxyCompactList}\small\item\em Used to check if the elevator is on a floor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{elevator_8h_a7d886ddadbe6a437b1a3f84141920d40}{elevator\+\_\+set\+\_\+floor}} (void)
+\begin{DoxyCompactList}\small\item\em Uses the elevator floor sensor to set the elevator floor variable, {\ttfamily floor}, to the current floor. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{elevator_8h_abe303923a974cdc1e39d7e007bde33c2}{elevator\+\_\+get\+\_\+floor}} (void)
+\begin{DoxyCompactList}\small\item\em Gets the elevator floor variable. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{elevator_8h_a32ba683542285b342b0d69074e42af6d}{elevator\+\_\+get\+\_\+floor\+\_\+in\+\_\+between}} (void)
+\begin{DoxyCompactList}\small\item\em Gets the elevator floor variable and adds ± 0.\+5, depending on the elevator\textquotesingle{}s previous direction. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{elevator_8h_a936d5c58852b61169f3b15e078061236}{elevator\+\_\+set\+\_\+direction}} (elev\+\_\+motor\+\_\+direction\+\_\+t dir)
 \begin{DoxyCompactList}\small\item\em Sets both elevator direction and motor direction to the same direction. \end{DoxyCompactList}\item 
-elev\+\_\+motor\+\_\+direction\+\_\+t {\bfseries elevator\+\_\+get\+\_\+direction} (void)\hypertarget{elevator_8h_a89587d153eeb2922a72542fd5754b73f}{}\label{elevator_8h_a89587d153eeb2922a72542fd5754b73f}
-
-\item 
-elev\+\_\+motor\+\_\+direction\+\_\+t {\bfseries elevator\+\_\+get\+\_\+previous\+\_\+direction} (void)\hypertarget{elevator_8h_a18b0a6da9c67db4b512b4dbe1dc8b6b2}{}\label{elevator_8h_a18b0a6da9c67db4b512b4dbe1dc8b6b2}
-
-\item 
-int {\bfseries elevator\+\_\+emergency} (void)\hypertarget{elevator_8h_ae1e4669e5c0b7d3b8a0ab9433db494b2}{}\label{elevator_8h_ae1e4669e5c0b7d3b8a0ab9433db494b2}
-
-\item 
-void {\bfseries elevator\+\_\+emergency\+\_\+stop} (void)\hypertarget{elevator_8h_aea32519dd364ace950d75d98de9ac55a}{}\label{elevator_8h_aea32519dd364ace950d75d98de9ac55a}
-
-\end{DoxyCompactItemize}
+elev\+\_\+motor\+\_\+direction\+\_\+t \mbox{\hyperlink{elevator_8h_a89587d153eeb2922a72542fd5754b73f}{elevator\+\_\+get\+\_\+direction}} (void)
+\begin{DoxyCompactList}\small\item\em Gets the elevator\textquotesingle{}s current direction, {\ttfamily dir}. \end{DoxyCompactList}\item 
+elev\+\_\+motor\+\_\+direction\+\_\+t \mbox{\hyperlink{elevator_8h_a18b0a6da9c67db4b512b4dbe1dc8b6b2}{elevator\+\_\+get\+\_\+previous\+\_\+direction}} (void)
+\begin{DoxyCompactList}\small\item\em Gets the elevator\textquotesingle{}s previous direction, {\ttfamily dir\+\_\+previous}. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{elevator_8h_ae1e4669e5c0b7d3b8a0ab9433db494b2}{elevator\+\_\+emergency}} (void)
+\begin{DoxyCompactList}\small\item\em Checks for an emergency through the stop button status. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{elevator_8h_aea32519dd364ace950d75d98de9ac55a}{elevator\+\_\+emergency\+\_\+stop}} (void)
+\begin{DoxyCompactList}\small\item\em Stops the elevator, sets {\ttfamily dir} to D\+I\+R\+N\+\_\+\+S\+T\+OP and empties the queue. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
@@ -65,9 +56,12 @@ This file contains the elevator module and its functions.
 
 
 \subsection{Typedef Documentation}
-\index{elevator.\+h@{elevator.\+h}!Elevator@{Elevator}}
-\index{Elevator@{Elevator}!elevator.\+h@{elevator.\+h}}
-\subsubsection[{\texorpdfstring{Elevator}{Elevator}}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf Elevator}  {\bf Elevator}}\hypertarget{elevator_8h_a05b0ff2a7bd8a4106457415054c8599d}{}\label{elevator_8h_a05b0ff2a7bd8a4106457415054c8599d}
+\mbox{\Hypertarget{elevator_8h_a05b0ff2a7bd8a4106457415054c8599d}\label{elevator_8h_a05b0ff2a7bd8a4106457415054c8599d}} 
+\index{elevator.h@{elevator.h}!Elevator@{Elevator}}
+\index{Elevator@{Elevator}!elevator.h@{elevator.h}}
+\subsubsection{\texorpdfstring{Elevator}{Elevator}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structElevator}{Elevator}}  \mbox{\hyperlink{structElevator}{Elevator}}}
+
 
 
 A struct that holds information regarding the elevators position and direction. 
@@ -78,19 +72,154 @@ A struct that holds information regarding the elevators position and direction.
 \hline
 {\em dir} & Current direction of the elevator. \\
 \hline
-{\em dir\+\_\+previous} & Remembers the previous direction of the elevator before it stops. \\
+{\em dir\+\_\+previous} & Remembers the previous direction of the elevator before it stops.\\
 \hline
 \end{DoxyParams}
+\begin{DoxyNote}{Note}
+dir\+\_\+previous is never set to D\+I\+R\+N\+\_\+\+S\+T\+OP. 
+\end{DoxyNote}
 
 
 \subsection{Function Documentation}
-\index{elevator.\+h@{elevator.\+h}!elevator\+\_\+init\+\_\+hardware@{elevator\+\_\+init\+\_\+hardware}}
-\index{elevator\+\_\+init\+\_\+hardware@{elevator\+\_\+init\+\_\+hardware}!elevator.\+h@{elevator.\+h}}
-\subsubsection[{\texorpdfstring{elevator\+\_\+init\+\_\+hardware(void)}{elevator_init_hardware(void)}}]{\setlength{\rightskip}{0pt plus 5cm}int elevator\+\_\+init\+\_\+hardware (
-\begin{DoxyParamCaption}
-\item[{void}]{}
-\end{DoxyParamCaption}
-)}\hypertarget{elevator_8h_a7ba7c2e8b5c4c2b9500a3057a9b14b5c}{}\label{elevator_8h_a7ba7c2e8b5c4c2b9500a3057a9b14b5c}
+\mbox{\Hypertarget{elevator_8h_acb97ee8f025fa914dad7ed6b7469cc6a}\label{elevator_8h_acb97ee8f025fa914dad7ed6b7469cc6a}} 
+\index{elevator.h@{elevator.h}!elevator\_check\_valid\_floor@{elevator\_check\_valid\_floor}}
+\index{elevator\_check\_valid\_floor@{elevator\_check\_valid\_floor}!elevator.h@{elevator.h}}
+\subsubsection{\texorpdfstring{elevator\_check\_valid\_floor()}{elevator\_check\_valid\_floor()}}
+{\footnotesize\ttfamily int elevator\+\_\+check\+\_\+valid\+\_\+floor (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Used to check if the elevator is on a floor. 
+
+\begin{DoxyReturn}{Returns}
+1 if the elevator is on a floor, 0 otherwise. 
+\end{DoxyReturn}
+
+
+Definition at line 26 of file elevator.\+c.
+
+\mbox{\Hypertarget{elevator_8h_ae1e4669e5c0b7d3b8a0ab9433db494b2}\label{elevator_8h_ae1e4669e5c0b7d3b8a0ab9433db494b2}} 
+\index{elevator.h@{elevator.h}!elevator\_emergency@{elevator\_emergency}}
+\index{elevator\_emergency@{elevator\_emergency}!elevator.h@{elevator.h}}
+\subsubsection{\texorpdfstring{elevator\_emergency()}{elevator\_emergency()}}
+{\footnotesize\ttfamily int elevator\+\_\+emergency (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Checks for an emergency through the stop button status. 
+
+\begin{DoxyReturn}{Returns}
+1 if stop button pressed, 0 otherwise. 
+\end{DoxyReturn}
+
+
+Definition at line 78 of file elevator.\+c.
+
+\mbox{\Hypertarget{elevator_8h_aea32519dd364ace950d75d98de9ac55a}\label{elevator_8h_aea32519dd364ace950d75d98de9ac55a}} 
+\index{elevator.h@{elevator.h}!elevator\_emergency\_stop@{elevator\_emergency\_stop}}
+\index{elevator\_emergency\_stop@{elevator\_emergency\_stop}!elevator.h@{elevator.h}}
+\subsubsection{\texorpdfstring{elevator\_emergency\_stop()}{elevator\_emergency\_stop()}}
+{\footnotesize\ttfamily void elevator\+\_\+emergency\+\_\+stop (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Stops the elevator, sets {\ttfamily dir} to D\+I\+R\+N\+\_\+\+S\+T\+OP and empties the queue. 
+
+
+
+Definition at line 82 of file elevator.\+c.
+
+\mbox{\Hypertarget{elevator_8h_a89587d153eeb2922a72542fd5754b73f}\label{elevator_8h_a89587d153eeb2922a72542fd5754b73f}} 
+\index{elevator.h@{elevator.h}!elevator\_get\_direction@{elevator\_get\_direction}}
+\index{elevator\_get\_direction@{elevator\_get\_direction}!elevator.h@{elevator.h}}
+\subsubsection{\texorpdfstring{elevator\_get\_direction()}{elevator\_get\_direction()}}
+{\footnotesize\ttfamily elev\+\_\+motor\+\_\+direction\+\_\+t elevator\+\_\+get\+\_\+direction (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Gets the elevator\textquotesingle{}s current direction, {\ttfamily dir}. 
+
+\begin{DoxyReturn}{Returns}
+Current elevator direction, {\ttfamily dir}. 
+\end{DoxyReturn}
+
+
+Definition at line 70 of file elevator.\+c.
+
+\mbox{\Hypertarget{elevator_8h_abe303923a974cdc1e39d7e007bde33c2}\label{elevator_8h_abe303923a974cdc1e39d7e007bde33c2}} 
+\index{elevator.h@{elevator.h}!elevator\_get\_floor@{elevator\_get\_floor}}
+\index{elevator\_get\_floor@{elevator\_get\_floor}!elevator.h@{elevator.h}}
+\subsubsection{\texorpdfstring{elevator\_get\_floor()}{elevator\_get\_floor()}}
+{\footnotesize\ttfamily int elevator\+\_\+get\+\_\+floor (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Gets the elevator floor variable. 
+
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{structElevator}{Elevator}}\textquotesingle{}s current or last visited floor, {\ttfamily floor}. 
+\end{DoxyReturn}
+
+
+Definition at line 37 of file elevator.\+c.
+
+\mbox{\Hypertarget{elevator_8h_a32ba683542285b342b0d69074e42af6d}\label{elevator_8h_a32ba683542285b342b0d69074e42af6d}} 
+\index{elevator.h@{elevator.h}!elevator\_get\_floor\_in\_between@{elevator\_get\_floor\_in\_between}}
+\index{elevator\_get\_floor\_in\_between@{elevator\_get\_floor\_in\_between}!elevator.h@{elevator.h}}
+\subsubsection{\texorpdfstring{elevator\_get\_floor\_in\_between()}{elevator\_get\_floor\_in\_between()}}
+{\footnotesize\ttfamily float elevator\+\_\+get\+\_\+floor\+\_\+in\+\_\+between (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Gets the elevator floor variable and adds ± 0.\+5, depending on the elevator\textquotesingle{}s previous direction. 
+
+\begin{DoxyReturn}{Returns}
+{\ttfamily floor} + 0.\+5, when {\ttfamily dir\+\_\+previous} is D\+I\+R\+N\+\_\+\+UP.~\newline
+{\ttfamily floor} -\/ 0.\+5, when {\ttfamily dir\+\_\+previous} is D\+I\+R\+N\+\_\+\+D\+O\+WN.
+\end{DoxyReturn}
+This is useful in case of emergencies when the elevator is stopped in between floors and needs to serve an order that was at its previous floor. 
+
+Definition at line 41 of file elevator.\+c.
+
+\mbox{\Hypertarget{elevator_8h_a18b0a6da9c67db4b512b4dbe1dc8b6b2}\label{elevator_8h_a18b0a6da9c67db4b512b4dbe1dc8b6b2}} 
+\index{elevator.h@{elevator.h}!elevator\_get\_previous\_direction@{elevator\_get\_previous\_direction}}
+\index{elevator\_get\_previous\_direction@{elevator\_get\_previous\_direction}!elevator.h@{elevator.h}}
+\subsubsection{\texorpdfstring{elevator\_get\_previous\_direction()}{elevator\_get\_previous\_direction()}}
+{\footnotesize\ttfamily elev\+\_\+motor\+\_\+direction\+\_\+t elevator\+\_\+get\+\_\+previous\+\_\+direction (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Gets the elevator\textquotesingle{}s previous direction, {\ttfamily dir\+\_\+previous}. 
+
+\begin{DoxyReturn}{Returns}
+Previous elevator direction, {\ttfamily dir\+\_\+previous}. 
+\end{DoxyReturn}
+
+
+Definition at line 74 of file elevator.\+c.
+
+\mbox{\Hypertarget{elevator_8h_adfe9cac4cc26b28abcc5311cf824a8a0}\label{elevator_8h_adfe9cac4cc26b28abcc5311cf824a8a0}} 
+\index{elevator.h@{elevator.h}!elevator\_init@{elevator\_init}}
+\index{elevator\_init@{elevator\_init}!elevator.h@{elevator.h}}
+\subsubsection{\texorpdfstring{elevator\_init()}{elevator\_init()}}
+{\footnotesize\ttfamily void elevator\+\_\+init (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Initialises the elevator variables and moves the elevator downwards until it reaches a defined state. 
+
+{\ttfamily floor} is set to the current floor. ~\newline
+{\ttfamily dir} is set to D\+I\+R\+N\+\_\+\+S\+T\+OP. ~\newline
+{\ttfamily dir\+\_\+previous} is set to D\+I\+R\+N\+\_\+\+D\+O\+WN. 
+
+Definition at line 16 of file elevator.\+c.
+
+\mbox{\Hypertarget{elevator_8h_a7ba7c2e8b5c4c2b9500a3057a9b14b5c}\label{elevator_8h_a7ba7c2e8b5c4c2b9500a3057a9b14b5c}} 
+\index{elevator.h@{elevator.h}!elevator\_init\_hardware@{elevator\_init\_hardware}}
+\index{elevator\_init\_hardware@{elevator\_init\_hardware}!elevator.h@{elevator.h}}
+\subsubsection{\texorpdfstring{elevator\_init\_hardware()}{elevator\_init\_hardware()}}
+{\footnotesize\ttfamily int elevator\+\_\+init\+\_\+hardware (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
 
 
 Initialises the elevator hardware. 
@@ -102,23 +231,36 @@ Initialises the elevator hardware.
 
 Definition at line 7 of file elevator.\+c.
 
-\index{elevator.\+h@{elevator.\+h}!elevator\+\_\+set\+\_\+direction@{elevator\+\_\+set\+\_\+direction}}
-\index{elevator\+\_\+set\+\_\+direction@{elevator\+\_\+set\+\_\+direction}!elevator.\+h@{elevator.\+h}}
-\subsubsection[{\texorpdfstring{elevator\+\_\+set\+\_\+direction(elev\+\_\+motor\+\_\+direction\+\_\+t dir)}{elevator_set_direction(elev_motor_direction_t dir)}}]{\setlength{\rightskip}{0pt plus 5cm}void elevator\+\_\+set\+\_\+direction (
-\begin{DoxyParamCaption}
-\item[{elev\+\_\+motor\+\_\+direction\+\_\+t}]{dir}
-\end{DoxyParamCaption}
-)}\hypertarget{elevator_8h_a936d5c58852b61169f3b15e078061236}{}\label{elevator_8h_a936d5c58852b61169f3b15e078061236}
+\mbox{\Hypertarget{elevator_8h_a936d5c58852b61169f3b15e078061236}\label{elevator_8h_a936d5c58852b61169f3b15e078061236}} 
+\index{elevator.h@{elevator.h}!elevator\_set\_direction@{elevator\_set\_direction}}
+\index{elevator\_set\_direction@{elevator\_set\_direction}!elevator.h@{elevator.h}}
+\subsubsection{\texorpdfstring{elevator\_set\_direction()}{elevator\_set\_direction()}}
+{\footnotesize\ttfamily void elevator\+\_\+set\+\_\+direction (\begin{DoxyParamCaption}\item[{elev\+\_\+motor\+\_\+direction\+\_\+t}]{dir }\end{DoxyParamCaption})}
+
 
 
 Sets both elevator direction and motor direction to the same direction. 
 
 
 \begin{DoxyParams}[1]{Parameters}
-\mbox{\tt in}  & {\em dir} & Direction to set the motor and {\ttfamily m\+\_\+elevator.\+dir} to. \\
+\mbox{\texttt{ in}}  & {\em dir} & Direction to set the motor and elevator variable, {\ttfamily dir} to.\\
 \hline
 \end{DoxyParams}
+{\ttfamily dir\+\_\+previous} will mirror {\ttfamily dir} unless {\ttfamily dir} is D\+I\+R\+N\+\_\+\+S\+T\+OP. This will allow {\ttfamily dir\+\_\+previous} to remember the previous direction in case the elevator stops. 
+
+Definition at line 53 of file elevator.\+c.
+
+\mbox{\Hypertarget{elevator_8h_a7d886ddadbe6a437b1a3f84141920d40}\label{elevator_8h_a7d886ddadbe6a437b1a3f84141920d40}} 
+\index{elevator.h@{elevator.h}!elevator\_set\_floor@{elevator\_set\_floor}}
+\index{elevator\_set\_floor@{elevator\_set\_floor}!elevator.h@{elevator.h}}
+\subsubsection{\texorpdfstring{elevator\_set\_floor()}{elevator\_set\_floor()}}
+{\footnotesize\ttfamily void elevator\+\_\+set\+\_\+floor (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
 
 
-Definition at line 54 of file elevator.\+c.
+
+Uses the elevator floor sensor to set the elevator floor variable, {\ttfamily floor}, to the current floor. 
+
+{\ttfamily floor} is only set when the elevator is on a valid floor. 
+
+Definition at line 30 of file elevator.\+c.
 

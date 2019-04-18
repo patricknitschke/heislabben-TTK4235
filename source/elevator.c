@@ -13,7 +13,7 @@ int elevator_init_hardware(void) {
     return 1;
 }
 
-int elevator_init(void) {
+void elevator_init(void) {
     elevator_set_direction(DIRN_DOWN);
     int floor = elev_get_floor_sensor_signal();
     while (floor == -1) {
@@ -21,7 +21,6 @@ int elevator_init(void) {
     }
     elevator_set_floor();
     elevator_set_direction(DIRN_STOP);
-    return floor;
 }
 
 int elevator_check_valid_floor(void) {

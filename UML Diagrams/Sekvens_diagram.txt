@@ -6,6 +6,9 @@ activate FSM
 FSM->>Queue:queue_listen_n_find()
 activate Queue
 
+Queue->Queue:
+Queue->Queue:
+
 Queue->Lights:
 Lights->Door:
 
@@ -33,8 +36,3 @@ activate FSM
 
 Main<--FSM:
 deactivate FSM
-
-
-
-
-
