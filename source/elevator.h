@@ -12,7 +12,7 @@
 
 
 /**
-*@brief A struct that holds information regarding the elevators position and direction.
+*@brief A struct that holds information regarding the elevator's position and direction.
 *
 *@param floor Current or last registered floor of the elevator.
 *@param dir Current direction of the elevator.
@@ -29,6 +29,8 @@ typedef struct Elevator {
 
 /**
 *@brief Initialises the elevator hardware.
+*
+*Calls upon ::elev_init to initialise elevator.
 *
 *@return 1 on successful initialisation, 0 if it fails.
 */

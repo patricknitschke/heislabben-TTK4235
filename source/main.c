@@ -1,3 +1,12 @@
+/** 
+*@mainpage %Elevator lab in the subject Embedded Systems, TTK4235
+*
+*This site contains documentation for the code used to implement an elevator in Embedded Systems, TTK4235.@n
+*Written by Eivind Heldal Stray and Patrick Nitschke, Spring 2019.
+*
+*@section section1 Files
+*To view our code, see the <a href="files.html">File List</a> page.
+*/
 #include "states.h"
 #include "elevator.h"
 #include "queue.h"
