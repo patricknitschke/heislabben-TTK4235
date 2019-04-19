@@ -51,7 +51,7 @@ void \mbox{\hyperlink{queue_8h_afd9348275ef56340298946118d8f76f7}{queue\+\_\+pop
 \begin{DoxyCompactList}\small\item\em Removes an order from {\ttfamily queue}. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{queue_8h_a5c4a556280790be948ff1c85ea3d96fa}{queue\+\_\+count}} (void)
 \begin{DoxyCompactList}\small\item\em Counts the number of orders in {\ttfamily queue} and returns it. \end{DoxyCompactList}\item 
-int \mbox{\hyperlink{queue_8h_ab4173bf4447b44e40db1f42073c984c1}{queue\+\_\+get\+\_\+order}} (elev\+\_\+button\+\_\+type\+\_\+t button, int floor)
+int \mbox{\hyperlink{queue_8h_ab4173bf4447b44e40db1f42073c984c1}{queue\+\_\+get\+\_\+order}} (\mbox{\hyperlink{elev_8h_af61c4136fb437a2c49037e5a57c9abda}{elev\+\_\+button\+\_\+type\+\_\+t}} button, int floor)
 \begin{DoxyCompactList}\small\item\em Checks for an order by monitoring the button signals. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{queue_8h_a77b5b6bf5997fd3b8fcbd0b69e3bffaa}{queue\+\_\+check\+\_\+order\+\_\+above\+\_\+floor}} (int floor)
 \begin{DoxyCompactList}\small\item\em Checks if there is an order above {\ttfamily floor}. \end{DoxyCompactList}\item 
@@ -98,7 +98,7 @@ Contains an array with orders and a target floor for the elevator to chase.
 \end{DoxyParams}
 \begin{DoxySeeAlso}{See also}
 \mbox{\hyperlink{queue_8h_ae1f1f6105b668e5722bd779a25a2439d}{queue\+\_\+find\+\_\+target}} and \mbox{\hyperlink{queue_8h_a6246a25fc3b07b678c031c3dd798e077}{queue\+\_\+stop\+\_\+n\+\_\+serve\+\_\+order}} for more description on {\ttfamily target\+\_\+floor}.~\newline
-For information on the {\ttfamily queue} array, see \mbox{\hyperlink{queue_8h_a6c7dd10fb53eaa1cb9705e4ee36f5fcb}{order\+\_\+t}} enum. 
+For information on the {\ttfamily queue} array variables, see \mbox{\hyperlink{queue_8h_a6c7dd10fb53eaa1cb9705e4ee36f5fcb}{order\+\_\+t}} enum. 
 \end{DoxySeeAlso}
 
 
@@ -278,7 +278,7 @@ Definition at line 101 of file queue.\+c.
 \index{queue.h@{queue.h}!queue\_get\_order@{queue\_get\_order}}
 \index{queue\_get\_order@{queue\_get\_order}!queue.h@{queue.h}}
 \subsubsection{\texorpdfstring{queue\_get\_order()}{queue\_get\_order()}}
-{\footnotesize\ttfamily int queue\+\_\+get\+\_\+order (\begin{DoxyParamCaption}\item[{elev\+\_\+button\+\_\+type\+\_\+t}]{button,  }\item[{int}]{floor }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily int queue\+\_\+get\+\_\+order (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{elev_8h_af61c4136fb437a2c49037e5a57c9abda}{elev\+\_\+button\+\_\+type\+\_\+t}}}]{button,  }\item[{int}]{floor }\end{DoxyParamCaption})}
 
 
 
@@ -405,7 +405,7 @@ Condtions to which a customer can be served\+: \begin{DoxyItemize}
 If the elevator is not on a valid floor, the function will always return 0. 
 \end{DoxyNote}
 \begin{DoxyWarning}{Warning}
-Despite its name, this function {\bfseries{ does not }} physically stop the elevator. However, removing orders from {\ttfamily queue} can result in a stop because of \mbox{\hyperlink{queue_8h_afcaaf32f82f3bf5dce6a3a2266f2d832}{queue\+\_\+chase\+\_\+target}}. 
+Despite its name, this function {\bfseries{ does not }} physically stop the elevator. However, removing orders from {\ttfamily queue} can result in a stop after \mbox{\hyperlink{queue_8h_afcaaf32f82f3bf5dce6a3a2266f2d832}{queue\+\_\+chase\+\_\+target}} is called. 
 \end{DoxyWarning}
 
 

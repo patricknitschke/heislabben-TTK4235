@@ -76,7 +76,7 @@ $(function() {
 
 <p>This file contains the elevator module and its functions.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &quot;elev.h&quot;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="elev_8h_source.html">elev.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="queue_8h_source.html">queue.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="lights_8h_source.html">lights.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="door_8h_source.html">door.h</a>&quot;</code><br />
@@ -127,13 +127,13 @@ Functions</h2></td></tr>
 <tr class="memitem:a32ba683542285b342b0d69074e42af6d"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="elevator_8h.html#a32ba683542285b342b0d69074e42af6d">elevator_get_floor_in_between</a> (void)</td></tr>
 <tr class="memdesc:a32ba683542285b342b0d69074e42af6d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the elevator floor variable and adds ± 0.5, depending on the elevator's previous direction.  <a href="#a32ba683542285b342b0d69074e42af6d">More...</a><br /></td></tr>
 <tr class="separator:a32ba683542285b342b0d69074e42af6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a936d5c58852b61169f3b15e078061236"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="elevator_8h.html#a936d5c58852b61169f3b15e078061236">elevator_set_direction</a> (elev_motor_direction_t dir)</td></tr>
+<tr class="memitem:a936d5c58852b61169f3b15e078061236"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="elevator_8h.html#a936d5c58852b61169f3b15e078061236">elevator_set_direction</a> (<a class="el" href="elev_8h.html#a2256dfd58fecce253106f83fd2ed607f">elev_motor_direction_t</a> dir)</td></tr>
 <tr class="memdesc:a936d5c58852b61169f3b15e078061236"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets both elevator direction and motor direction to the same direction.  <a href="#a936d5c58852b61169f3b15e078061236">More...</a><br /></td></tr>
 <tr class="separator:a936d5c58852b61169f3b15e078061236"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a89587d153eeb2922a72542fd5754b73f"><td class="memItemLeft" align="right" valign="top">elev_motor_direction_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="elevator_8h.html#a89587d153eeb2922a72542fd5754b73f">elevator_get_direction</a> (void)</td></tr>
+<tr class="memitem:a89587d153eeb2922a72542fd5754b73f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="elev_8h.html#a2256dfd58fecce253106f83fd2ed607f">elev_motor_direction_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="elevator_8h.html#a89587d153eeb2922a72542fd5754b73f">elevator_get_direction</a> (void)</td></tr>
 <tr class="memdesc:a89587d153eeb2922a72542fd5754b73f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the elevator's current direction, <code>dir</code>.  <a href="#a89587d153eeb2922a72542fd5754b73f">More...</a><br /></td></tr>
 <tr class="separator:a89587d153eeb2922a72542fd5754b73f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a18b0a6da9c67db4b512b4dbe1dc8b6b2"><td class="memItemLeft" align="right" valign="top">elev_motor_direction_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="elevator_8h.html#a18b0a6da9c67db4b512b4dbe1dc8b6b2">elevator_get_previous_direction</a> (void)</td></tr>
+<tr class="memitem:a18b0a6da9c67db4b512b4dbe1dc8b6b2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="elev_8h.html#a2256dfd58fecce253106f83fd2ed607f">elev_motor_direction_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="elevator_8h.html#a18b0a6da9c67db4b512b4dbe1dc8b6b2">elevator_get_previous_direction</a> (void)</td></tr>
 <tr class="memdesc:a18b0a6da9c67db4b512b4dbe1dc8b6b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the elevator's previous direction, <code>dir_previous</code>.  <a href="#a18b0a6da9c67db4b512b4dbe1dc8b6b2">More...</a><br /></td></tr>
 <tr class="separator:a18b0a6da9c67db4b512b4dbe1dc8b6b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae1e4669e5c0b7d3b8a0ab9433db494b2"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="elevator_8h.html#ae1e4669e5c0b7d3b8a0ab9433db494b2">elevator_emergency</a> (void)</td></tr>
@@ -249,7 +249,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">elev_motor_direction_t elevator_get_direction </td>
+          <td class="memname"><a class="el" href="elev_8h.html#a2256dfd58fecce253106f83fd2ed607f">elev_motor_direction_t</a> elevator_get_direction </td>
           <td>(</td>
           <td class="paramtype">void&#160;</td>
           <td class="paramname"></td><td>)</td>
@@ -320,7 +320,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">elev_motor_direction_t elevator_get_previous_direction </td>
+          <td class="memname"><a class="el" href="elev_8h.html#a2256dfd58fecce253106f83fd2ed607f">elev_motor_direction_t</a> elevator_get_previous_direction </td>
           <td>(</td>
           <td class="paramtype">void&#160;</td>
           <td class="paramname"></td><td>)</td>
@@ -393,7 +393,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void elevator_set_direction </td>
           <td>(</td>
-          <td class="paramtype">elev_motor_direction_t&#160;</td>
+          <td class="paramtype"><a class="el" href="elev_8h.html#a2256dfd58fecce253106f83fd2ed607f">elev_motor_direction_t</a>&#160;</td>
           <td class="paramname"><em>dir</em></td><td>)</td>
           <td></td>
         </tr>

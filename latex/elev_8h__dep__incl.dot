@@ -1,0 +1,40 @@
+digraph "source/elev.h"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node2 [label="source/elev.h",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Wrapper for libComedi Elevator control."];
+  Node2 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node3 [label="source/elevator.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$elevator_8h.html",tooltip="This file contains the elevator module and its functions."];
+  Node3 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node4 [label="source/door.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$door_8h.html",tooltip="This file contains the queue module and its functions."];
+  Node4 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node5 [label="source/door.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$door_8c_source.html",tooltip=" "];
+  Node4 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node4 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node6 [label="source/states.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$states_8h.html",tooltip="This file contains the states in the FSM and their functions."];
+  Node6 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node7 [label="source/main.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$main_8c_source.html",tooltip=" "];
+  Node6 -> Node8 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node8 [label="source/states.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$states_8c_source.html",tooltip=" "];
+  Node3 -> Node9 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node9 [label="source/queue.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$queue_8h.html",tooltip="This file contains the queue module and its functions."];
+  Node9 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node9 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node9 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node9 -> Node10 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node10 [label="source/queue.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$queue_8c_source.html",tooltip=" "];
+  Node3 -> Node11 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node11 [label="source/lights.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$lights_8h.html",tooltip="This file contains functions that control the lights."];
+  Node11 -> Node9 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node11 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node11 -> Node12 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node12 [label="source/lights.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$lights_8c_source.html",tooltip=" "];
+  Node11 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node3 -> Node13 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node13 [label="source/elevator.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$elevator_8c_source.html",tooltip=" "];
+  Node3 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node3 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node2 -> Node14 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node14 [label="source/elev.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$elev_8c_source.html",tooltip=" "];
+}

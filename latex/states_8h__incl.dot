@@ -7,7 +7,7 @@ digraph "source/states.h"
   Node0 -> Node1 [color="midnightblue",fontsize="10",style="solid"];
   Node1 [label="elevator.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$elevator_8h.html",tooltip="This file contains the elevator module and its functions."];
   Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid"];
-  Node2 [label="elev.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$elev_8h_source.html",tooltip=" "];
+  Node2 [label="elev.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$elev_8h.html",tooltip="Wrapper for libComedi Elevator control."];
   Node2 -> Node3 [color="midnightblue",fontsize="10",style="solid"];
   Node3 [label="stdbool.h",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
   Node1 -> Node4 [color="midnightblue",fontsize="10",style="solid"];

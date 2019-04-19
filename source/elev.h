@@ -1,7 +1,9 @@
-// Wrapper for libComedi Elevator control.
-// These functions provides an interface to the elevators in the real time lab
-//
-// 2007, Martin Korsgaard
+/** @file
+*@brief Wrapper for libComedi %Elevator control.
+*
+*These functions provides an interface to the elevators in the real time lab
+*2007, Martin Korsgaard
+*/
 #ifndef __INCLUDE_DRIVER_H__
 #define __INCLUDE_DRIVER_H__
 #include <stdbool.h>

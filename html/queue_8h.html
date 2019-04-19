@@ -141,7 +141,7 @@ Functions</h2></td></tr>
 <tr class="memitem:a5c4a556280790be948ff1c85ea3d96fa"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="queue_8h.html#a5c4a556280790be948ff1c85ea3d96fa">queue_count</a> (void)</td></tr>
 <tr class="memdesc:a5c4a556280790be948ff1c85ea3d96fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Counts the number of orders in <code>queue</code> and returns it.  <a href="#a5c4a556280790be948ff1c85ea3d96fa">More...</a><br /></td></tr>
 <tr class="separator:a5c4a556280790be948ff1c85ea3d96fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab4173bf4447b44e40db1f42073c984c1"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="queue_8h.html#ab4173bf4447b44e40db1f42073c984c1">queue_get_order</a> (elev_button_type_t button, int floor)</td></tr>
+<tr class="memitem:ab4173bf4447b44e40db1f42073c984c1"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="queue_8h.html#ab4173bf4447b44e40db1f42073c984c1">queue_get_order</a> (<a class="el" href="elev_8h.html#af61c4136fb437a2c49037e5a57c9abda">elev_button_type_t</a> button, int floor)</td></tr>
 <tr class="memdesc:ab4173bf4447b44e40db1f42073c984c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks for an order by monitoring the button signals.  <a href="#ab4173bf4447b44e40db1f42073c984c1">More...</a><br /></td></tr>
 <tr class="separator:ab4173bf4447b44e40db1f42073c984c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a77b5b6bf5997fd3b8fcbd0b69e3bffaa"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="queue_8h.html#a77b5b6bf5997fd3b8fcbd0b69e3bffaa">queue_check_order_above_floor</a> (int floor)</td></tr>
@@ -198,7 +198,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="queue_8h.html#ae1f1f6105b668e5722bd779a25a2439d" title="Finds and sets target_floor based on queue.">queue_find_target</a> and <a class="el" href="queue_8h.html#a6246a25fc3b07b678c031c3dd798e077" title="Identifies when to serve a customer and serves a customer if certain conditions are met.">queue_stop_n_serve_order</a> for more description on <code>target_floor</code>.<br />
-For information on the <code>queue</code> array, see <a class="el" href="queue_8h.html#a6c7dd10fb53eaa1cb9705e4ee36f5fcb">order_t</a> enum. </dd></dl>
+For information on the <code>queue</code> array variables, see <a class="el" href="queue_8h.html#a6c7dd10fb53eaa1cb9705e4ee36f5fcb">order_t</a> enum. </dd></dl>
 
 </div>
 </div>
@@ -434,7 +434,7 @@ For information on the <code>queue</code> array, see <a class="el" href="queue_8
         <tr>
           <td class="memname">int queue_get_order </td>
           <td>(</td>
-          <td class="paramtype">elev_button_type_t&#160;</td>
+          <td class="paramtype"><a class="el" href="elev_8h.html#af61c4136fb437a2c49037e5a57c9abda">elev_button_type_t</a>&#160;</td>
           <td class="paramname"><em>button</em>, </td>
         </tr>
         <tr>
@@ -622,7 +622,7 @@ For information on the <code>queue</code> array, see <a class="el" href="queue_8
 </ul>
 <dl class="section return"><dt>Returns</dt><dd>1 if the conditions to serve a customer are met. 0 otherwise. </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>If the elevator is not on a valid floor, the function will always return 0. </dd></dl>
-<dl class="section warning"><dt>Warning</dt><dd>Despite its name, this function <b> does not </b> physically stop the elevator. However, removing orders from <code>queue</code> can result in a stop because of <a class="el" href="queue_8h.html#afcaaf32f82f3bf5dce6a3a2266f2d832" title="Sets the elevator direction according to target_floor.">queue_chase_target</a>. </dd></dl>
+<dl class="section warning"><dt>Warning</dt><dd>Despite its name, this function <b> does not </b> physically stop the elevator. However, removing orders from <code>queue</code> can result in a stop after <a class="el" href="queue_8h.html#afcaaf32f82f3bf5dce6a3a2266f2d832" title="Sets the elevator direction according to target_floor.">queue_chase_target</a> is called. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="queue_8c_source.html#l00159">159</a> of file <a class="el" href="queue_8c_source.html">queue.c</a>.</p>
 
