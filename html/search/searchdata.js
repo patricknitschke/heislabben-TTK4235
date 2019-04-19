@@ -4,9 +4,9 @@ var indexSectionsWithContent =
   1: "deq",
   2: "delqs",
   3: "delq",
-  4: "defq",
+  4: "deq",
   5: "ot",
-  6: "nst"
+  6: "fnost"
 };
 
 var indexSectionNames =

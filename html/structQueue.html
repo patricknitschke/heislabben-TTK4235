@@ -76,7 +76,7 @@ $(function() {
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Data Fields</h2></td></tr>
 <tr class="memitem:a5009d22561b0a1f0b94883331e98337f"><td class="memItemLeft" align="right" valign="top"><a id="a5009d22561b0a1f0b94883331e98337f"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>queue</b> [N_ORDER_TAGS]</td></tr>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>queue</b> [<a class="el" href="queue_8h.html#a6c7dd10fb53eaa1cb9705e4ee36f5fcba468de5038698a54ae672a7879f92bc05">N_ORDER_TAGS</a>]</td></tr>
 <tr class="separator:a5009d22561b0a1f0b94883331e98337f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a95698e7080ed2265155b7bad70e7cdd7"><td class="memItemLeft" align="right" valign="top"><a id="a95698e7080ed2265155b7bad70e7cdd7"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>target_floor</b></td></tr>
@@ -86,14 +86,15 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>target_floor</b></td><
 <div class="textblock"><p>Contains an array with orders and a target floor for the elevator to chase. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">queue</td><td>Array that holds the orders. </td></tr>
+    <tr><td class="paramname">queue</td><td>Array of length N_ORDER_TAGS, that keeps track of the orders. </td></tr>
     <tr><td class="paramname">target_floor</td><td>The floor that the elevator aims to reach.</td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="queue_8h.html#ae1f1f6105b668e5722bd779a25a2439d" title="Finds and sets target_floor based on queue.">queue_find_target</a> and <a class="el" href="queue_8h.html#a6246a25fc3b07b678c031c3dd798e077" title="Identifies when to serve a customer and serves a customer if certain conditions are met.">queue_stop_n_serve_order</a> for more description on <code>target_floor</code>. </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="queue_8h.html#ae1f1f6105b668e5722bd779a25a2439d" title="Finds and sets target_floor based on queue.">queue_find_target</a> and <a class="el" href="queue_8h.html#a6246a25fc3b07b678c031c3dd798e077" title="Identifies when to serve a customer and serves a customer if certain conditions are met.">queue_stop_n_serve_order</a> for more description on <code>target_floor</code>.<br />
+For information on the <code>queue</code> array, see <a class="el" href="queue_8h.html#a6c7dd10fb53eaa1cb9705e4ee36f5fcb">order_t</a> enum. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="queue_8h_source.html#l00032">32</a> of file <a class="el" href="queue_8h_source.html">queue.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="queue_8h_source.html#l00055">55</a> of file <a class="el" href="queue_8h_source.html">queue.h</a>.</p>
 </div><hr/>The documentation for this struct was generated from the following file:<ul>
 <li>source/<a class="el" href="queue_8h_source.html">queue.h</a></li>
 </ul>

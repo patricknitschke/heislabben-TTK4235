@@ -10,10 +10,32 @@
 
 
 /**
-*@brief Queue order tags for variables in @p queue array.
+*@enum order_t
+Queue order tags for variables in @p queue array.
 *
 *These tags correspond to the order buttons outside the elevator. In the case of an order from the
-*inside of the elevator, the order is treated as a floor_order_t in @b both directions.
+*inside of the elevator, the order is treated as a @p order_t in @b both directions.
+*
+*@var ONE_UP 
+*Up order button on the first floor.
+*
+*@var TWO_DOWN
+*Down order button on the second floor.
+*
+*@var TWO_UP 
+*Up order button on the second floor.
+*
+*@var THREE_DOWN
+*Down order button on the third floor.
+*
+*@var THREE_UP 
+*Up order button on the third floor.
+*
+*@var FOUR_DOWN
+*Down order button on the fourth floor.
+*
+*@var N_ORDER_TAGS 
+*Number of @p order_t variables.
 *
 */
 typedef enum order_t {
@@ -24,10 +46,11 @@ typedef enum order_t {
 /** 
 *@brief Contains an array with orders and a target floor for the elevator to chase.
 *
-*@param queue Array that holds the orders.
+*@param queue Array of length N_ORDER_TAGS, that keeps track of the orders.
 *@param target_floor The floor that the elevator aims to reach.
 *
-*@sa ::queue_find_target and ::queue_stop_n_serve_order for more description on @p target_floor.
+*@sa ::queue_find_target and ::queue_stop_n_serve_order for more description on @p target_floor.@n
+*For information on the @p queue array variables, see ::order_t enum.
 */
 typedef struct Queue {
     int queue[N_ORDER_TAGS];
@@ -36,9 +59,9 @@ typedef struct Queue {
 
 
 /** 
-*@brief Initialises the queue module variables.
+*@brief Initialises the variables in the queue module.
 *
-*The @p queue orders are set to 0. @n
+*The variables in @p queue are set to 0. @n
 *@p target_floor is set to the elevator's current floor.
 */
 void queue_init(void);
@@ -104,7 +127,7 @@ int queue_check_order_below_floor(int floor);
 
 
 /** 
-*@brief Clear the orders from @p queue and turn off the lights at @p floor.
+*@brief Clear the orders from @p queue and turn off the lights at a particular floor.
 *
 *@param floor Floor at which to clear orders from @p queue and turn off lights.
 */
@@ -126,7 +149,7 @@ void queue_check_buttons_outside(void);
 
 
 /** 
-*@brief Performs a check for all orders and updates @p queue and @p target_floor.
+*@brief Performs a check for @a all buttons and updates @p queue and @p target_floor.
 *
 */
 void queue_listen_and_find(void);
@@ -166,6 +189,8 @@ void queue_chase_target(void);
 *
 *@returns 1 if the conditions to serve a customer are met. 0 otherwise.
 *@note If the elevator is not on a valid floor, the function will always return 0.
+*@warning Despite its name, this function <b> does not </b> physically stop the elevator. However, 
+*removing orders from @p queue can result in a stop after ::queue_chase_target is called.
 */
 int queue_stop_n_serve_order(void);
 

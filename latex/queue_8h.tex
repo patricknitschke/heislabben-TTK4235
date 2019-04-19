@@ -19,29 +19,30 @@ struct \mbox{\hyperlink{structQueue}{Queue}}
 \subsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
-typedef enum \mbox{\hyperlink{queue_8h_a6c7dd10fb53eaa1cb9705e4ee36f5fcb}{order\+\_\+t}} \mbox{\hyperlink{queue_8h_a0f40cd2591af055e3a665595a615b164}{floor\+\_\+order\+\_\+t}}
-\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{structQueue}{Queue}} order tags for variables in {\ttfamily queue} array. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{queue_8h_a0f40cd2591af055e3a665595a615b164}\label{queue_8h_a0f40cd2591af055e3a665595a615b164}} 
+typedef enum \mbox{\hyperlink{queue_8h_a6c7dd10fb53eaa1cb9705e4ee36f5fcb}{order\+\_\+t}} {\bfseries floor\+\_\+order\+\_\+t}
+\item 
 typedef struct \mbox{\hyperlink{structQueue}{Queue}} \mbox{\hyperlink{queue_8h_ad359c9a9ed21445fd95e01a05429c767}{Queue}}
 \begin{DoxyCompactList}\small\item\em Contains an array with orders and a target floor for the elevator to chase. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Enumerations}
 \begin{DoxyCompactItemize}
 \item 
 enum \mbox{\hyperlink{queue_8h_a6c7dd10fb53eaa1cb9705e4ee36f5fcb}{order\+\_\+t}} \{ \newline
-{\bfseries O\+N\+E\+\_\+\+UP}, 
-{\bfseries T\+W\+O\+\_\+\+D\+O\+WN}, 
-{\bfseries T\+W\+O\+\_\+\+UP}, 
-{\bfseries T\+H\+R\+E\+E\+\_\+\+D\+O\+WN}, 
+\mbox{\hyperlink{queue_8h_a6c7dd10fb53eaa1cb9705e4ee36f5fcba65db2fdbd1ccc16c946741c047920f2a}{O\+N\+E\+\_\+\+UP}}, 
+\mbox{\hyperlink{queue_8h_a6c7dd10fb53eaa1cb9705e4ee36f5fcbab8fadbf684723b9384f102188b31bfd3}{T\+W\+O\+\_\+\+D\+O\+WN}}, 
+\mbox{\hyperlink{queue_8h_a6c7dd10fb53eaa1cb9705e4ee36f5fcba117e32e41c2cfc5271f4b4a6c19ce1f7}{T\+W\+O\+\_\+\+UP}}, 
+\mbox{\hyperlink{queue_8h_a6c7dd10fb53eaa1cb9705e4ee36f5fcba7a45f130e33e68f052b5b6efd6914060}{T\+H\+R\+E\+E\+\_\+\+D\+O\+WN}}, 
 \newline
-{\bfseries T\+H\+R\+E\+E\+\_\+\+UP}, 
-{\bfseries F\+O\+U\+R\+\_\+\+D\+O\+WN}, 
-{\bfseries N\+\_\+\+O\+R\+D\+E\+R\+\_\+\+T\+A\+GS}
+\mbox{\hyperlink{queue_8h_a6c7dd10fb53eaa1cb9705e4ee36f5fcba0240b59a01f66a1236b59c4ef5c1be4b}{T\+H\+R\+E\+E\+\_\+\+UP}}, 
+\mbox{\hyperlink{queue_8h_a6c7dd10fb53eaa1cb9705e4ee36f5fcbabfe9151bab4b9db2538afc62fbd253e3}{F\+O\+U\+R\+\_\+\+D\+O\+WN}}, 
+\mbox{\hyperlink{queue_8h_a6c7dd10fb53eaa1cb9705e4ee36f5fcba468de5038698a54ae672a7879f92bc05}{N\+\_\+\+O\+R\+D\+E\+R\+\_\+\+T\+A\+GS}}
  \}
-\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{structQueue}{Queue}} order tags for variables in {\ttfamily queue} array. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{DoxyCompactItemize}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
 void \mbox{\hyperlink{queue_8h_ac19ac10c04e65b54e2c03aa726d1535a}{queue\+\_\+init}} (void)
-\begin{DoxyCompactList}\small\item\em Initialises the queue module variables. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Initialises the variables in the queue module. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{queue_8h_a4e2fc21e8d5d427c8fcd4bb649c5a1b5}{queue\+\_\+set\+\_\+target\+\_\+floor}} (int target)
 \begin{DoxyCompactList}\small\item\em Sets a target floor in the queue module. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{queue_8h_abd3016ad280546c8f3c846723e4a188b}{queue\+\_\+set}} (int floor\+\_\+order)
@@ -57,13 +58,13 @@ int \mbox{\hyperlink{queue_8h_a77b5b6bf5997fd3b8fcbd0b69e3bffaa}{queue\+\_\+chec
 int \mbox{\hyperlink{queue_8h_a0728a25d8c99bf55038e14edc7f3897a}{queue\+\_\+check\+\_\+order\+\_\+below\+\_\+floor}} (int floor)
 \begin{DoxyCompactList}\small\item\em Checks if there is an order below {\ttfamily floor}. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{queue_8h_a51e76147f4af2a6ee29645d6792fbc69}{queue\+\_\+clear\+\_\+orders\+\_\+at\+\_\+floor}} (int floor)
-\begin{DoxyCompactList}\small\item\em Clear the orders from {\ttfamily queue} and turn off the lights at {\ttfamily floor}. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Clear the orders from {\ttfamily queue} and turn off the lights at a particular floor. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{queue_8h_af5e29e564af5c4211d168a5026cb3a58}{queue\+\_\+check\+\_\+buttons\+\_\+inside}} (void)
 \begin{DoxyCompactList}\small\item\em Performs a check on all command buttons inside the elevator and updates {\ttfamily queue}. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{queue_8h_a6bf2e0a467946d97e6cf6d9e4c7104f1}{queue\+\_\+check\+\_\+buttons\+\_\+outside}} (void)
 \begin{DoxyCompactList}\small\item\em Performs a check on all buttons outside the elevator and updates {\ttfamily queue}. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{queue_8h_aed4677e40c26592eecfe19be5f1d8284}{queue\+\_\+listen\+\_\+and\+\_\+find}} (void)
-\begin{DoxyCompactList}\small\item\em Performs a check for all orders and updates {\ttfamily queue} and {\ttfamily target\+\_\+floor}. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Performs a check for {\itshape all} buttons and updates {\ttfamily queue} and {\ttfamily target\+\_\+floor}. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{queue_8h_ae1f1f6105b668e5722bd779a25a2439d}{queue\+\_\+find\+\_\+target}} (void)
 \begin{DoxyCompactList}\small\item\em Finds and sets {\ttfamily target\+\_\+floor} based on {\ttfamily queue}. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{queue_8h_afcaaf32f82f3bf5dce6a3a2266f2d832}{queue\+\_\+chase\+\_\+target}} (void)
@@ -78,17 +79,7 @@ This file contains the queue module and its functions.
 
 
 \subsection{Typedef Documentation}
-\mbox{\Hypertarget{queue_8h_a0f40cd2591af055e3a665595a615b164}\label{queue_8h_a0f40cd2591af055e3a665595a615b164}} 
-\index{queue.h@{queue.h}!floor\_order\_t@{floor\_order\_t}}
-\index{floor\_order\_t@{floor\_order\_t}!queue.h@{queue.h}}
-\subsubsection{\texorpdfstring{floor\_order\_t}{floor\_order\_t}}
-{\footnotesize\ttfamily typedef enum \mbox{\hyperlink{queue_8h_a6c7dd10fb53eaa1cb9705e4ee36f5fcb}{order\+\_\+t}}  \mbox{\hyperlink{queue_8h_a0f40cd2591af055e3a665595a615b164}{floor\+\_\+order\+\_\+t}}}
-
-
-
-\mbox{\hyperlink{structQueue}{Queue}} order tags for variables in {\ttfamily queue} array. 
-
-These tags correspond to the order buttons outside the elevator. In the case of an order from the inside of the elevator, the order is treated as a floor\+\_\+order\+\_\+t in {\bfseries{both}} directions. \mbox{\Hypertarget{queue_8h_ad359c9a9ed21445fd95e01a05429c767}\label{queue_8h_ad359c9a9ed21445fd95e01a05429c767}} 
+\mbox{\Hypertarget{queue_8h_ad359c9a9ed21445fd95e01a05429c767}\label{queue_8h_ad359c9a9ed21445fd95e01a05429c767}} 
 \index{queue.h@{queue.h}!Queue@{Queue}}
 \index{Queue@{Queue}!queue.h@{queue.h}}
 \subsubsection{\texorpdfstring{Queue}{Queue}}
@@ -100,13 +91,14 @@ Contains an array with orders and a target floor for the elevator to chase.
 
 
 \begin{DoxyParams}{Parameters}
-{\em queue} & Array that holds the orders. \\
+{\em queue} & Array of length N\+\_\+\+O\+R\+D\+E\+R\+\_\+\+T\+A\+GS, that keeps track of the orders. \\
 \hline
 {\em target\+\_\+floor} & The floor that the elevator aims to reach.\\
 \hline
 \end{DoxyParams}
 \begin{DoxySeeAlso}{See also}
-\mbox{\hyperlink{queue_8h_ae1f1f6105b668e5722bd779a25a2439d}{queue\+\_\+find\+\_\+target}} and \mbox{\hyperlink{queue_8h_a6246a25fc3b07b678c031c3dd798e077}{queue\+\_\+stop\+\_\+n\+\_\+serve\+\_\+order}} for more description on {\ttfamily target\+\_\+floor}. 
+\mbox{\hyperlink{queue_8h_ae1f1f6105b668e5722bd779a25a2439d}{queue\+\_\+find\+\_\+target}} and \mbox{\hyperlink{queue_8h_a6246a25fc3b07b678c031c3dd798e077}{queue\+\_\+stop\+\_\+n\+\_\+serve\+\_\+order}} for more description on {\ttfamily target\+\_\+floor}.~\newline
+For information on the {\ttfamily queue} array, see \mbox{\hyperlink{queue_8h_a6c7dd10fb53eaa1cb9705e4ee36f5fcb}{order\+\_\+t}} enum. 
 \end{DoxySeeAlso}
 
 
@@ -117,13 +109,41 @@ Contains an array with orders and a target floor for the elevator to chase.
 \subsubsection{\texorpdfstring{order\_t}{order\_t}}
 {\footnotesize\ttfamily enum \mbox{\hyperlink{queue_8h_a6c7dd10fb53eaa1cb9705e4ee36f5fcb}{order\+\_\+t}}}
 
+\mbox{\hyperlink{structQueue}{Queue}} order tags for variables in {\ttfamily queue} array.
+
+These tags correspond to the order buttons outside the elevator. In the case of an order from the inside of the elevator, the order is treated as a {\ttfamily order\+\_\+t} in {\bfseries{both}} directions. \begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ONE\_UP@{ONE\_UP}!queue.h@{queue.h}}\index{queue.h@{queue.h}!ONE\_UP@{ONE\_UP}}}\mbox{\Hypertarget{queue_8h_a6c7dd10fb53eaa1cb9705e4ee36f5fcba65db2fdbd1ccc16c946741c047920f2a}\label{queue_8h_a6c7dd10fb53eaa1cb9705e4ee36f5fcba65db2fdbd1ccc16c946741c047920f2a}} 
+O\+N\+E\+\_\+\+UP&Up order button on the first floor. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{TWO\_DOWN@{TWO\_DOWN}!queue.h@{queue.h}}\index{queue.h@{queue.h}!TWO\_DOWN@{TWO\_DOWN}}}\mbox{\Hypertarget{queue_8h_a6c7dd10fb53eaa1cb9705e4ee36f5fcbab8fadbf684723b9384f102188b31bfd3}\label{queue_8h_a6c7dd10fb53eaa1cb9705e4ee36f5fcbab8fadbf684723b9384f102188b31bfd3}} 
+T\+W\+O\+\_\+\+D\+O\+WN&Down order button on the second floor. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{TWO\_UP@{TWO\_UP}!queue.h@{queue.h}}\index{queue.h@{queue.h}!TWO\_UP@{TWO\_UP}}}\mbox{\Hypertarget{queue_8h_a6c7dd10fb53eaa1cb9705e4ee36f5fcba117e32e41c2cfc5271f4b4a6c19ce1f7}\label{queue_8h_a6c7dd10fb53eaa1cb9705e4ee36f5fcba117e32e41c2cfc5271f4b4a6c19ce1f7}} 
+T\+W\+O\+\_\+\+UP&Up order button on the second floor. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{THREE\_DOWN@{THREE\_DOWN}!queue.h@{queue.h}}\index{queue.h@{queue.h}!THREE\_DOWN@{THREE\_DOWN}}}\mbox{\Hypertarget{queue_8h_a6c7dd10fb53eaa1cb9705e4ee36f5fcba7a45f130e33e68f052b5b6efd6914060}\label{queue_8h_a6c7dd10fb53eaa1cb9705e4ee36f5fcba7a45f130e33e68f052b5b6efd6914060}} 
+T\+H\+R\+E\+E\+\_\+\+D\+O\+WN&Down order button on the third floor. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{THREE\_UP@{THREE\_UP}!queue.h@{queue.h}}\index{queue.h@{queue.h}!THREE\_UP@{THREE\_UP}}}\mbox{\Hypertarget{queue_8h_a6c7dd10fb53eaa1cb9705e4ee36f5fcba0240b59a01f66a1236b59c4ef5c1be4b}\label{queue_8h_a6c7dd10fb53eaa1cb9705e4ee36f5fcba0240b59a01f66a1236b59c4ef5c1be4b}} 
+T\+H\+R\+E\+E\+\_\+\+UP&Up order button on the third floor. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FOUR\_DOWN@{FOUR\_DOWN}!queue.h@{queue.h}}\index{queue.h@{queue.h}!FOUR\_DOWN@{FOUR\_DOWN}}}\mbox{\Hypertarget{queue_8h_a6c7dd10fb53eaa1cb9705e4ee36f5fcbabfe9151bab4b9db2538afc62fbd253e3}\label{queue_8h_a6c7dd10fb53eaa1cb9705e4ee36f5fcbabfe9151bab4b9db2538afc62fbd253e3}} 
+F\+O\+U\+R\+\_\+\+D\+O\+WN&Down order button on the fourth floor. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{N\_ORDER\_TAGS@{N\_ORDER\_TAGS}!queue.h@{queue.h}}\index{queue.h@{queue.h}!N\_ORDER\_TAGS@{N\_ORDER\_TAGS}}}\mbox{\Hypertarget{queue_8h_a6c7dd10fb53eaa1cb9705e4ee36f5fcba468de5038698a54ae672a7879f92bc05}\label{queue_8h_a6c7dd10fb53eaa1cb9705e4ee36f5fcba468de5038698a54ae672a7879f92bc05}} 
+N\+\_\+\+O\+R\+D\+E\+R\+\_\+\+T\+A\+GS&Number of {\ttfamily order\+\_\+t} variables. \\
+\hline
+
+\end{DoxyEnumFields}
 
 
-\mbox{\hyperlink{structQueue}{Queue}} order tags for variables in {\ttfamily queue} array. 
-
-These tags correspond to the order buttons outside the elevator. In the case of an order from the inside of the elevator, the order is treated as a floor\+\_\+order\+\_\+t in {\bfseries{both}} directions. 
-
-Definition at line 19 of file queue.\+h.
+Definition at line 41 of file queue.\+h.
 
 
 
@@ -212,7 +232,7 @@ Definition at line 49 of file queue.\+c.
 
 
 
-Clear the orders from {\ttfamily queue} and turn off the lights at {\ttfamily floor}. 
+Clear the orders from {\ttfamily queue} and turn off the lights at a particular floor. 
 
 
 \begin{DoxyParams}{Parameters}
@@ -286,9 +306,9 @@ Definition at line 36 of file queue.\+c.
 
 
 
-Initialises the queue module variables. 
+Initialises the variables in the queue module. 
 
-The {\ttfamily queue} orders are set to 0. ~\newline
+The variables in {\ttfamily queue} are set to 0. ~\newline
 {\ttfamily target\+\_\+floor} is set to the elevator\textquotesingle{}s current floor. 
 
 Definition at line 7 of file queue.\+c.
@@ -301,7 +321,7 @@ Definition at line 7 of file queue.\+c.
 
 
 
-Performs a check for all orders and updates {\ttfamily queue} and {\ttfamily target\+\_\+floor}. 
+Performs a check for {\itshape all} buttons and updates {\ttfamily queue} and {\ttfamily target\+\_\+floor}. 
 
 
 
@@ -384,6 +404,9 @@ Condtions to which a customer can be served\+: \begin{DoxyItemize}
 \begin{DoxyNote}{Note}
 If the elevator is not on a valid floor, the function will always return 0. 
 \end{DoxyNote}
+\begin{DoxyWarning}{Warning}
+Despite its name, this function {\bfseries{ does not }} physically stop the elevator. However, removing orders from {\ttfamily queue} can result in a stop because of \mbox{\hyperlink{queue_8h_afcaaf32f82f3bf5dce6a3a2266f2d832}{queue\+\_\+chase\+\_\+target}}. 
+\end{DoxyWarning}
 
 
 Definition at line 159 of file queue.\+c.
