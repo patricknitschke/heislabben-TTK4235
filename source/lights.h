@@ -1,8 +1,9 @@
 /** @file
-*@brief This file contains functions that control the lights.
+*@brief Functions used to operate the lights of the elevator.
 *
+*These functions are sufficient in operating the lights of the elevator. Some are wrappers for
+*functions supplied by elev.h.
 */
-
 #ifndef LIGHTS_H
 #define LIGHTS_H
 #include "elevator.h"
@@ -15,7 +16,7 @@ void light_set_floor_indicator(void);
 
 
 /**
-*@brief Turn a button lamp on or off. Essentially an alias for elev_set_button_lamp().
+*@brief Turn a button lamp on or off. Essentially an alias for ::elev_set_button_lamp.
 *
 *@param[in] button Button lamp type. Either BUTTON_CALL_UP, BUTTON_CALL_DOWN or BUTTON_COMMAND.
 *@param[in] floor Floor in which the button is to be set.

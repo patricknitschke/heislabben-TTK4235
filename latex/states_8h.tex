@@ -2,7 +2,7 @@
 \label{states_8h}\index{source/states.h@{source/states.h}}
 
 
-This file contains the states in the F\+SM and their functions.  
+State definitions and its corresponding functions.  
 
 
 {\ttfamily \#include \char`\"{}elevator.\+h\char`\"{}}\newline
@@ -12,75 +12,75 @@ This file contains the states in the F\+SM and their functions.
 \subsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{states_8h_a9f34354b149588b399cf9448e20069be}\label{states_8h_a9f34354b149588b399cf9448e20069be}} 
-typedef enum \mbox{\hyperlink{states_8h_adc6e5733fc3c22f0a7b2914188c49c90}{state}} {\bfseries state}
+\mbox{\Hypertarget{states_8h_ac6d9f440e9d1e6bbc948c13ed7cdccd7}\label{states_8h_ac6d9f440e9d1e6bbc948c13ed7cdccd7}} 
+typedef enum \mbox{\hyperlink{states_8h_a2af5bc6b2437cab9b3dd701744368abf}{tag\+\_\+state}} {\bfseries state}
 \end{DoxyCompactItemize}
 \subsection*{Enumerations}
 \begin{DoxyCompactItemize}
 \item 
-enum \mbox{\hyperlink{states_8h_adc6e5733fc3c22f0a7b2914188c49c90}{state}} \{ \newline
-\mbox{\hyperlink{states_8h_adc6e5733fc3c22f0a7b2914188c49c90ac169e9ffa53b0e66f7f30d192d44643f}{S\+T\+A\+RT}}, 
-\mbox{\hyperlink{states_8h_adc6e5733fc3c22f0a7b2914188c49c90a051fbc8606b854603fe93508651dac2c}{I\+D\+LE}}, 
-\mbox{\hyperlink{states_8h_adc6e5733fc3c22f0a7b2914188c49c90a7ee2de6c753618ca9b6ed035e1b72fa7}{D\+R\+I\+V\+I\+NG}}, 
-\mbox{\hyperlink{states_8h_adc6e5733fc3c22f0a7b2914188c49c90acebb89aafa9389b3ed8828e7e4d0a585}{P\+I\+C\+K\+UP}}, 
+enum \mbox{\hyperlink{states_8h_a2af5bc6b2437cab9b3dd701744368abf}{tag\+\_\+state}} \{ \newline
+\mbox{\hyperlink{states_8h_a2af5bc6b2437cab9b3dd701744368abfac169e9ffa53b0e66f7f30d192d44643f}{S\+T\+A\+RT}}, 
+\mbox{\hyperlink{states_8h_a2af5bc6b2437cab9b3dd701744368abfa051fbc8606b854603fe93508651dac2c}{I\+D\+LE}}, 
+\mbox{\hyperlink{states_8h_a2af5bc6b2437cab9b3dd701744368abfa7ee2de6c753618ca9b6ed035e1b72fa7}{D\+R\+I\+V\+I\+NG}}, 
+\mbox{\hyperlink{states_8h_a2af5bc6b2437cab9b3dd701744368abfacebb89aafa9389b3ed8828e7e4d0a585}{P\+I\+C\+K\+UP}}, 
 \newline
-\mbox{\hyperlink{states_8h_adc6e5733fc3c22f0a7b2914188c49c90a22114f46a3d4d4dc2abf05ab8b7e5c03}{E\+M\+E\+R\+G\+E\+N\+CY}}, 
-\mbox{\hyperlink{states_8h_adc6e5733fc3c22f0a7b2914188c49c90a1de54bd922161dd5c6a353647f448fd6}{E\+ND}}
+\mbox{\hyperlink{states_8h_a2af5bc6b2437cab9b3dd701744368abfa22114f46a3d4d4dc2abf05ab8b7e5c03}{E\+M\+E\+R\+G\+E\+N\+CY}}, 
+\mbox{\hyperlink{states_8h_a2af5bc6b2437cab9b3dd701744368abfa1de54bd922161dd5c6a353647f448fd6}{E\+ND}}
  \}
 \end{DoxyCompactItemize}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{states_8h_adc6e5733fc3c22f0a7b2914188c49c90}{state}} \mbox{\hyperlink{states_8h_aef6441779abf5c61cf7d756abd088bce}{state\+\_\+pending\+\_\+emergency}} (\mbox{\hyperlink{states_8h_adc6e5733fc3c22f0a7b2914188c49c90}{state}} current\+\_\+state)
+state \mbox{\hyperlink{states_8h_aef6441779abf5c61cf7d756abd088bce}{state\+\_\+pending\+\_\+emergency}} (state current\+\_\+state)
 \begin{DoxyCompactList}\small\item\em Transitions the F\+SM to an emergency state if the stop button pressed. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{states_8h_adc6e5733fc3c22f0a7b2914188c49c90}{state}} \mbox{\hyperlink{states_8h_a0bc53252d6deea62ee6029e971f5087a}{state\+\_\+start}} (void)
+state \mbox{\hyperlink{states_8h_a0bc53252d6deea62ee6029e971f5087a}{state\+\_\+start}} (void)
 \begin{DoxyCompactList}\small\item\em Initialises elevator, queue and door modules. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{states_8h_adc6e5733fc3c22f0a7b2914188c49c90}{state}} \mbox{\hyperlink{states_8h_a170cb59be6707eea55c4e41cd75ec225}{state\+\_\+idle}} (void)
+state \mbox{\hyperlink{states_8h_a170cb59be6707eea55c4e41cd75ec225}{state\+\_\+idle}} (void)
 \begin{DoxyCompactList}\small\item\em Does nothing. Stays in I\+D\+LE if the queue is empty, transition to D\+R\+I\+V\+I\+NG otherwise. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{states_8h_adc6e5733fc3c22f0a7b2914188c49c90}{state}} \mbox{\hyperlink{states_8h_aee5b17293a7966a3e5e7bd4de1efe2eb}{state\+\_\+driving}} (void)
+state \mbox{\hyperlink{states_8h_aee5b17293a7966a3e5e7bd4de1efe2eb}{state\+\_\+driving}} (void)
 \begin{DoxyCompactList}\small\item\em Continuously drives towards the elevator target. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{states_8h_adc6e5733fc3c22f0a7b2914188c49c90}{state}} \mbox{\hyperlink{states_8h_a4cfe686c0dd1623de8f3fa7255c47841}{state\+\_\+pickup}} (void)
+state \mbox{\hyperlink{states_8h_a4cfe686c0dd1623de8f3fa7255c47841}{state\+\_\+pickup}} (void)
 \begin{DoxyCompactList}\small\item\em Controls the door using a timer. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{states_8h_adc6e5733fc3c22f0a7b2914188c49c90}{state}} \mbox{\hyperlink{states_8h_add0c6077def6202b9730114a4543caad}{state\+\_\+emergency}} (void)
+state \mbox{\hyperlink{states_8h_add0c6077def6202b9730114a4543caad}{state\+\_\+emergency}} (void)
 \begin{DoxyCompactList}\small\item\em Stops the motor and empties the queue. Elevator waits until emergency over. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{states_8h_adc6e5733fc3c22f0a7b2914188c49c90}{state}} \mbox{\hyperlink{states_8h_af5a0983f3a289493459ed1c632cb480c}{state\+\_\+end}} (void)
+state \mbox{\hyperlink{states_8h_af5a0983f3a289493459ed1c632cb480c}{state\+\_\+end}} (void)
 \begin{DoxyCompactList}\small\item\em Exits the F\+SM. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
-This file contains the states in the F\+SM and their functions. 
+State definitions and its corresponding functions. 
 
-
+This file contains the necessary states to implement a functioning elevator. 
 
 \subsection{Enumeration Type Documentation}
-\mbox{\Hypertarget{states_8h_adc6e5733fc3c22f0a7b2914188c49c90}\label{states_8h_adc6e5733fc3c22f0a7b2914188c49c90}} 
-\index{states.h@{states.h}!state@{state}}
-\index{state@{state}!states.h@{states.h}}
-\subsubsection{\texorpdfstring{state}{state}}
-{\footnotesize\ttfamily enum \mbox{\hyperlink{states_8h_adc6e5733fc3c22f0a7b2914188c49c90}{state}}}
+\mbox{\Hypertarget{states_8h_a2af5bc6b2437cab9b3dd701744368abf}\label{states_8h_a2af5bc6b2437cab9b3dd701744368abf}} 
+\index{states.h@{states.h}!tag\_state@{tag\_state}}
+\index{tag\_state@{tag\_state}!states.h@{states.h}}
+\subsubsection{\texorpdfstring{tag\_state}{tag\_state}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{states_8h_a2af5bc6b2437cab9b3dd701744368abf}{tag\+\_\+state}}}
 
 State tags used in the finite state machine (F\+SM). These brief descriptions are elaborated further in their respective state functions. \begin{DoxyEnumFields}{Enumerator}
-\raisebox{\heightof{T}}[0pt][0pt]{\index{START@{START}!states.h@{states.h}}\index{states.h@{states.h}!START@{START}}}\mbox{\Hypertarget{states_8h_adc6e5733fc3c22f0a7b2914188c49c90ac169e9ffa53b0e66f7f30d192d44643f}\label{states_8h_adc6e5733fc3c22f0a7b2914188c49c90ac169e9ffa53b0e66f7f30d192d44643f}} 
+\raisebox{\heightof{T}}[0pt][0pt]{\index{START@{START}!states.h@{states.h}}\index{states.h@{states.h}!START@{START}}}\mbox{\Hypertarget{states_8h_a2af5bc6b2437cab9b3dd701744368abfac169e9ffa53b0e66f7f30d192d44643f}\label{states_8h_a2af5bc6b2437cab9b3dd701744368abfac169e9ffa53b0e66f7f30d192d44643f}} 
 S\+T\+A\+RT&State where the initialisation of the elevator occurs. \\
 \hline
 
-\raisebox{\heightof{T}}[0pt][0pt]{\index{IDLE@{IDLE}!states.h@{states.h}}\index{states.h@{states.h}!IDLE@{IDLE}}}\mbox{\Hypertarget{states_8h_adc6e5733fc3c22f0a7b2914188c49c90a051fbc8606b854603fe93508651dac2c}\label{states_8h_adc6e5733fc3c22f0a7b2914188c49c90a051fbc8606b854603fe93508651dac2c}} 
+\raisebox{\heightof{T}}[0pt][0pt]{\index{IDLE@{IDLE}!states.h@{states.h}}\index{states.h@{states.h}!IDLE@{IDLE}}}\mbox{\Hypertarget{states_8h_a2af5bc6b2437cab9b3dd701744368abfa051fbc8606b854603fe93508651dac2c}\label{states_8h_a2af5bc6b2437cab9b3dd701744368abfa051fbc8606b854603fe93508651dac2c}} 
 I\+D\+LE&State where the elevator idles whilst waiting for an order. \\
 \hline
 
-\raisebox{\heightof{T}}[0pt][0pt]{\index{DRIVING@{DRIVING}!states.h@{states.h}}\index{states.h@{states.h}!DRIVING@{DRIVING}}}\mbox{\Hypertarget{states_8h_adc6e5733fc3c22f0a7b2914188c49c90a7ee2de6c753618ca9b6ed035e1b72fa7}\label{states_8h_adc6e5733fc3c22f0a7b2914188c49c90a7ee2de6c753618ca9b6ed035e1b72fa7}} 
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DRIVING@{DRIVING}!states.h@{states.h}}\index{states.h@{states.h}!DRIVING@{DRIVING}}}\mbox{\Hypertarget{states_8h_a2af5bc6b2437cab9b3dd701744368abfa7ee2de6c753618ca9b6ed035e1b72fa7}\label{states_8h_a2af5bc6b2437cab9b3dd701744368abfa7ee2de6c753618ca9b6ed035e1b72fa7}} 
 D\+R\+I\+V\+I\+NG&State where the elevator is in motion, attempting to reach a target. \\
 \hline
 
-\raisebox{\heightof{T}}[0pt][0pt]{\index{PICKUP@{PICKUP}!states.h@{states.h}}\index{states.h@{states.h}!PICKUP@{PICKUP}}}\mbox{\Hypertarget{states_8h_adc6e5733fc3c22f0a7b2914188c49c90acebb89aafa9389b3ed8828e7e4d0a585}\label{states_8h_adc6e5733fc3c22f0a7b2914188c49c90acebb89aafa9389b3ed8828e7e4d0a585}} 
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PICKUP@{PICKUP}!states.h@{states.h}}\index{states.h@{states.h}!PICKUP@{PICKUP}}}\mbox{\Hypertarget{states_8h_a2af5bc6b2437cab9b3dd701744368abfacebb89aafa9389b3ed8828e7e4d0a585}\label{states_8h_a2af5bc6b2437cab9b3dd701744368abfacebb89aafa9389b3ed8828e7e4d0a585}} 
 P\+I\+C\+K\+UP&State when the elevator stops to serve a customer and doors are controlled. \\
 \hline
 
-\raisebox{\heightof{T}}[0pt][0pt]{\index{EMERGENCY@{EMERGENCY}!states.h@{states.h}}\index{states.h@{states.h}!EMERGENCY@{EMERGENCY}}}\mbox{\Hypertarget{states_8h_adc6e5733fc3c22f0a7b2914188c49c90a22114f46a3d4d4dc2abf05ab8b7e5c03}\label{states_8h_adc6e5733fc3c22f0a7b2914188c49c90a22114f46a3d4d4dc2abf05ab8b7e5c03}} 
+\raisebox{\heightof{T}}[0pt][0pt]{\index{EMERGENCY@{EMERGENCY}!states.h@{states.h}}\index{states.h@{states.h}!EMERGENCY@{EMERGENCY}}}\mbox{\Hypertarget{states_8h_a2af5bc6b2437cab9b3dd701744368abfa22114f46a3d4d4dc2abf05ab8b7e5c03}\label{states_8h_a2af5bc6b2437cab9b3dd701744368abfa22114f46a3d4d4dc2abf05ab8b7e5c03}} 
 E\+M\+E\+R\+G\+E\+N\+CY&State when the stop button is pressed and handled according to specific standards. \\
 \hline
 
-\raisebox{\heightof{T}}[0pt][0pt]{\index{END@{END}!states.h@{states.h}}\index{states.h@{states.h}!END@{END}}}\mbox{\Hypertarget{states_8h_adc6e5733fc3c22f0a7b2914188c49c90a1de54bd922161dd5c6a353647f448fd6}\label{states_8h_adc6e5733fc3c22f0a7b2914188c49c90a1de54bd922161dd5c6a353647f448fd6}} 
+\raisebox{\heightof{T}}[0pt][0pt]{\index{END@{END}!states.h@{states.h}}\index{states.h@{states.h}!END@{END}}}\mbox{\Hypertarget{states_8h_a2af5bc6b2437cab9b3dd701744368abfa1de54bd922161dd5c6a353647f448fd6}\label{states_8h_a2af5bc6b2437cab9b3dd701744368abfa1de54bd922161dd5c6a353647f448fd6}} 
 E\+ND&State which signifies that the F\+SM stops. \\
 \hline
 
@@ -96,7 +96,7 @@ Definition at line 37 of file states.\+h.
 \index{states.h@{states.h}!state\_driving@{state\_driving}}
 \index{state\_driving@{state\_driving}!states.h@{states.h}}
 \subsubsection{\texorpdfstring{state\_driving()}{state\_driving()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{states_8h_adc6e5733fc3c22f0a7b2914188c49c90}{state}} state\+\_\+driving (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily state state\+\_\+driving (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
 
 
 
@@ -118,7 +118,7 @@ Definition at line 33 of file states.\+c.
 \index{states.h@{states.h}!state\_emergency@{state\_emergency}}
 \index{state\_emergency@{state\_emergency}!states.h@{states.h}}
 \subsubsection{\texorpdfstring{state\_emergency()}{state\_emergency()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{states_8h_adc6e5733fc3c22f0a7b2914188c49c90}{state}} state\+\_\+emergency (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily state state\+\_\+emergency (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
 
 
 
@@ -140,7 +140,7 @@ Definition at line 64 of file states.\+c.
 \index{states.h@{states.h}!state\_end@{state\_end}}
 \index{state\_end@{state\_end}!states.h@{states.h}}
 \subsubsection{\texorpdfstring{state\_end()}{state\_end()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{states_8h_adc6e5733fc3c22f0a7b2914188c49c90}{state}} state\+\_\+end (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily state state\+\_\+end (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
 
 
 
@@ -159,7 +159,7 @@ Definition at line 84 of file states.\+c.
 \index{states.h@{states.h}!state\_idle@{state\_idle}}
 \index{state\_idle@{state\_idle}!states.h@{states.h}}
 \subsubsection{\texorpdfstring{state\_idle()}{state\_idle()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{states_8h_adc6e5733fc3c22f0a7b2914188c49c90}{state}} state\+\_\+idle (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily state state\+\_\+idle (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
 
 
 
@@ -176,7 +176,7 @@ Definition at line 24 of file states.\+c.
 \index{states.h@{states.h}!state\_pending\_emergency@{state\_pending\_emergency}}
 \index{state\_pending\_emergency@{state\_pending\_emergency}!states.h@{states.h}}
 \subsubsection{\texorpdfstring{state\_pending\_emergency()}{state\_pending\_emergency()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{states_8h_adc6e5733fc3c22f0a7b2914188c49c90}{state}} state\+\_\+pending\+\_\+emergency (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{states_8h_adc6e5733fc3c22f0a7b2914188c49c90}{state}}}]{current\+\_\+state }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily state state\+\_\+pending\+\_\+emergency (\begin{DoxyParamCaption}\item[{state}]{current\+\_\+state }\end{DoxyParamCaption})}
 
 
 
@@ -198,7 +198,7 @@ Definition at line 3 of file states.\+c.
 \index{states.h@{states.h}!state\_pickup@{state\_pickup}}
 \index{state\_pickup@{state\_pickup}!states.h@{states.h}}
 \subsubsection{\texorpdfstring{state\_pickup()}{state\_pickup()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{states_8h_adc6e5733fc3c22f0a7b2914188c49c90}{state}} state\+\_\+pickup (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily state state\+\_\+pickup (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
 
 
 
@@ -217,7 +217,7 @@ Definition at line 46 of file states.\+c.
 \index{states.h@{states.h}!state\_start@{state\_start}}
 \index{state\_start@{state\_start}!states.h@{states.h}}
 \subsubsection{\texorpdfstring{state\_start()}{state\_start()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{states_8h_adc6e5733fc3c22f0a7b2914188c49c90}{state}} state\+\_\+start (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily state state\+\_\+start (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
 
 
 

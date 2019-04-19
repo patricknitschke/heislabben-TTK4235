@@ -1,8 +1,9 @@
 /** @file
-*@brief This file contains the elevator module and its functions.
+*@brief %Elevator module and its corresponding functions.
 *
+*This file contains the elevator struct and includes functions that update the struct and
+*control the motion of the elevator.
 */
-
 #ifndef ELEVATOR_H
 #define ELEVATOR_H
 #include "elev.h"

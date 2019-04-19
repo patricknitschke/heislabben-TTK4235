@@ -72,7 +72,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>This file contains functions that control the lights.  
+<p>Functions used to operate the lights of the elevator.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="elevator_8h_source.html">elevator.h</a>&quot;</code><br />
 </div>
@@ -85,7 +85,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ligh
 <tr class="memdesc:a021177e0383b3159e9976ce6341a8029"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the elevator floor indicator to the current floor. <br /></td></tr>
 <tr class="separator:a021177e0383b3159e9976ce6341a8029"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adf4b073a7fa1a767dd98f64d590b3f87"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lights_8h.html#adf4b073a7fa1a767dd98f64d590b3f87">light_set_lamp</a> (<a class="el" href="elev_8h.html#af61c4136fb437a2c49037e5a57c9abda">elev_button_type_t</a> button, int floor, int value)</td></tr>
-<tr class="memdesc:adf4b073a7fa1a767dd98f64d590b3f87"><td class="mdescLeft">&#160;</td><td class="mdescRight">Turn a button lamp on or off. Essentially an alias for <a class="el" href="elev_8h.html#a9e81321c63d80ddf1699bc91593cd9d4">elev_set_button_lamp()</a>.  <a href="#adf4b073a7fa1a767dd98f64d590b3f87">More...</a><br /></td></tr>
+<tr class="memdesc:adf4b073a7fa1a767dd98f64d590b3f87"><td class="mdescLeft">&#160;</td><td class="mdescRight">Turn a button lamp on or off. Essentially an alias for <a class="el" href="elev_8h.html#a9e81321c63d80ddf1699bc91593cd9d4">elev_set_button_lamp</a>.  <a href="#adf4b073a7fa1a767dd98f64d590b3f87">More...</a><br /></td></tr>
 <tr class="separator:adf4b073a7fa1a767dd98f64d590b3f87"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a67ba29732fba6dbb35f4587c27a19f44"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lights_8h.html#a67ba29732fba6dbb35f4587c27a19f44">light_shut_at_floor</a> (int floor)</td></tr>
 <tr class="memdesc:a67ba29732fba6dbb35f4587c27a19f44"><td class="mdescLeft">&#160;</td><td class="mdescRight">Turns off all button lamps at <code>floor</code>.  <a href="#a67ba29732fba6dbb35f4587c27a19f44">More...</a><br /></td></tr>
@@ -99,7 +99,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ligh
 <tr class="separator:aa386361204dbc12e313ee754c50b0a2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>This file contains functions that control the lights. </p>
+<div class="textblock"><p>Functions used to operate the lights of the elevator. </p>
+<p>These functions are sufficient in operating the lights of the elevator. Some are wrappers for functions supplied by <a class="el" href="elev_8h.html" title="Wrapper for libComedi Elevator control.">elev.h</a>. </p>
 
 <p class="definition">Definition in file <a class="el" href="lights_8h_source.html">lights.h</a>.</p>
 </div><h2 class="groupheader">Function Documentation</h2>
@@ -135,7 +136,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ligh
       </table>
 </div><div class="memdoc">
 
-<p>Turn a button lamp on or off. Essentially an alias for <a class="el" href="elev_8h.html#a9e81321c63d80ddf1699bc91593cd9d4">elev_set_button_lamp()</a>. </p>
+<p>Turn a button lamp on or off. Essentially an alias for <a class="el" href="elev_8h.html#a9e81321c63d80ddf1699bc91593cd9d4">elev_set_button_lamp</a>. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">button</td><td>Button lamp type. Either BUTTON_CALL_UP, BUTTON_CALL_DOWN or BUTTON_COMMAND. </td></tr>

@@ -5,7 +5,7 @@ var indexSectionsWithContent =
   2: "cdeilqs",
   3: "deilqs",
   4: "deq",
-  5: "ost",
+  5: "ot",
   6: "definopst"
 };
 

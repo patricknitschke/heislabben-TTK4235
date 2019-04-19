@@ -1,8 +1,9 @@
 /** @file
-*@brief This file contains the queue module and its functions.
+*@brief %Queue module and its corresponding functions.
 *
+*This file contains the queue struct and a collection of functions used to manage a functioning
+*queue system.
 */
-
 #ifndef QUEUE_H
 #define QUEUE_H
 #include "elevator.h"

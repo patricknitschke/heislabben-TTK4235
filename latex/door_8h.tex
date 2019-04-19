@@ -2,7 +2,7 @@
 \label{door_8h}\index{source/door.h@{source/door.h}}
 
 
-This file contains the queue module and its functions.  
+Functions used to operate the doors of the elevator.  
 
 
 {\ttfamily \#include \char`\"{}elevator.\+h\char`\"{}}\newline
@@ -15,14 +15,17 @@ struct \mbox{\hyperlink{structDoor}{Door}}
 \subsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
+\mbox{\Hypertarget{door_8h_a3f5533da2e64c72cdbc948fee0c4edc7}\label{door_8h_a3f5533da2e64c72cdbc948fee0c4edc7}} 
+typedef enum \mbox{\hyperlink{door_8h_a4805ac658f5672fc7f938a3622962948}{tag\+\_\+timer}} {\bfseries timer\+\_\+t}
+\item 
 typedef struct \mbox{\hyperlink{structDoor}{Door}} \mbox{\hyperlink{door_8h_a0d75795cc05e18d8b798ffa10de24f3d}{Door}}
 \begin{DoxyCompactList}\small\item\em A struct that holds information regarding the door\textquotesingle{}s state and timer. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Enumerations}
 \begin{DoxyCompactItemize}
 \item 
-enum \mbox{\hyperlink{door_8h_a764f517e2e45ad48bcd8b88590ab5276}{timer\+\_\+t}} \{ \mbox{\hyperlink{door_8h_a764f517e2e45ad48bcd8b88590ab5276ae8990a8e196193c057e87125b6294aaa}{S\+T\+A\+R\+T\+\_\+\+T\+I\+M\+ER}}, 
-\mbox{\hyperlink{door_8h_a764f517e2e45ad48bcd8b88590ab5276a81400a21a86c14e3afb637441f8682c0}{T\+I\+M\+E\+R\+\_\+\+E\+N\+A\+B\+L\+ED}}, 
-\mbox{\hyperlink{door_8h_a764f517e2e45ad48bcd8b88590ab5276a7314652df30c259bec1d360788aef62c}{N\+U\+M\+\_\+\+T\+\_\+\+T\+A\+GS}}
+enum \mbox{\hyperlink{door_8h_a4805ac658f5672fc7f938a3622962948}{tag\+\_\+timer}} \{ \mbox{\hyperlink{door_8h_a4805ac658f5672fc7f938a3622962948ae8990a8e196193c057e87125b6294aaa}{S\+T\+A\+R\+T\+\_\+\+T\+I\+M\+ER}}, 
+\mbox{\hyperlink{door_8h_a4805ac658f5672fc7f938a3622962948a81400a21a86c14e3afb637441f8682c0}{T\+I\+M\+E\+R\+\_\+\+E\+N\+A\+B\+L\+ED}}, 
+\mbox{\hyperlink{door_8h_a4805ac658f5672fc7f938a3622962948a7314652df30c259bec1d360788aef62c}{N\+U\+M\+\_\+\+T\+\_\+\+T\+A\+GS}}
  \}
 \end{DoxyCompactItemize}
 \subsection*{Functions}
@@ -47,9 +50,9 @@ int \mbox{\hyperlink{door_8h_a178466f511769579894312351089f705}{door\+\_\+picked
 
 
 \subsection{Detailed Description}
-This file contains the queue module and its functions. 
+Functions used to operate the doors of the elevator. 
 
-
+These functions are sufficient in operating a door and its lights. Utilises a timer, {\itshape clock()}, from time.\+h. 
 
 \subsection{Typedef Documentation}
 \mbox{\Hypertarget{door_8h_a0d75795cc05e18d8b798ffa10de24f3d}\label{door_8h_a0d75795cc05e18d8b798ffa10de24f3d}} 
@@ -70,34 +73,34 @@ A struct that holds information regarding the door\textquotesingle{}s state and 
 \hline
 \end{DoxyParams}
 \begin{DoxySeeAlso}{See also}
-\mbox{\hyperlink{door_8h_a764f517e2e45ad48bcd8b88590ab5276}{timer\+\_\+t}} enum for variables in {\ttfamily door\+\_\+timer}. 
+\mbox{\hyperlink{door_8h_a4805ac658f5672fc7f938a3622962948}{tag\+\_\+timer}} enum for variables in {\ttfamily door\+\_\+timer}. 
 \end{DoxySeeAlso}
 
 
 \subsection{Enumeration Type Documentation}
-\mbox{\Hypertarget{door_8h_a764f517e2e45ad48bcd8b88590ab5276}\label{door_8h_a764f517e2e45ad48bcd8b88590ab5276}} 
-\index{door.h@{door.h}!timer\_t@{timer\_t}}
-\index{timer\_t@{timer\_t}!door.h@{door.h}}
-\subsubsection{\texorpdfstring{timer\_t}{timer\_t}}
-{\footnotesize\ttfamily enum \mbox{\hyperlink{door_8h_a764f517e2e45ad48bcd8b88590ab5276}{timer\+\_\+t}}}
+\mbox{\Hypertarget{door_8h_a4805ac658f5672fc7f938a3622962948}\label{door_8h_a4805ac658f5672fc7f938a3622962948}} 
+\index{door.h@{door.h}!tag\_timer@{tag\_timer}}
+\index{tag\_timer@{tag\_timer}!door.h@{door.h}}
+\subsubsection{\texorpdfstring{tag\_timer}{tag\_timer}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{door_8h_a4805ac658f5672fc7f938a3622962948}{tag\+\_\+timer}}}
 
 Timer tags for variables in {\ttfamily door\+\_\+timer} array. \begin{DoxyEnumFields}{Enumerator}
-\raisebox{\heightof{T}}[0pt][0pt]{\index{START\_TIMER@{START\_TIMER}!door.h@{door.h}}\index{door.h@{door.h}!START\_TIMER@{START\_TIMER}}}\mbox{\Hypertarget{door_8h_a764f517e2e45ad48bcd8b88590ab5276ae8990a8e196193c057e87125b6294aaa}\label{door_8h_a764f517e2e45ad48bcd8b88590ab5276ae8990a8e196193c057e87125b6294aaa}} 
+\raisebox{\heightof{T}}[0pt][0pt]{\index{START\_TIMER@{START\_TIMER}!door.h@{door.h}}\index{door.h@{door.h}!START\_TIMER@{START\_TIMER}}}\mbox{\Hypertarget{door_8h_a4805ac658f5672fc7f938a3622962948ae8990a8e196193c057e87125b6294aaa}\label{door_8h_a4805ac658f5672fc7f938a3622962948ae8990a8e196193c057e87125b6294aaa}} 
 S\+T\+A\+R\+T\+\_\+\+T\+I\+M\+ER&Timestamp at which the door opens. \\
 \hline
 
-\raisebox{\heightof{T}}[0pt][0pt]{\index{TIMER\_ENABLED@{TIMER\_ENABLED}!door.h@{door.h}}\index{door.h@{door.h}!TIMER\_ENABLED@{TIMER\_ENABLED}}}\mbox{\Hypertarget{door_8h_a764f517e2e45ad48bcd8b88590ab5276a81400a21a86c14e3afb637441f8682c0}\label{door_8h_a764f517e2e45ad48bcd8b88590ab5276a81400a21a86c14e3afb637441f8682c0}} 
+\raisebox{\heightof{T}}[0pt][0pt]{\index{TIMER\_ENABLED@{TIMER\_ENABLED}!door.h@{door.h}}\index{door.h@{door.h}!TIMER\_ENABLED@{TIMER\_ENABLED}}}\mbox{\Hypertarget{door_8h_a4805ac658f5672fc7f938a3622962948a81400a21a86c14e3afb637441f8682c0}\label{door_8h_a4805ac658f5672fc7f938a3622962948a81400a21a86c14e3afb637441f8682c0}} 
 T\+I\+M\+E\+R\+\_\+\+E\+N\+A\+B\+L\+ED&1 if the timer is enabled, 0 if not. \\
 \hline
 
-\raisebox{\heightof{T}}[0pt][0pt]{\index{NUM\_T\_TAGS@{NUM\_T\_TAGS}!door.h@{door.h}}\index{door.h@{door.h}!NUM\_T\_TAGS@{NUM\_T\_TAGS}}}\mbox{\Hypertarget{door_8h_a764f517e2e45ad48bcd8b88590ab5276a7314652df30c259bec1d360788aef62c}\label{door_8h_a764f517e2e45ad48bcd8b88590ab5276a7314652df30c259bec1d360788aef62c}} 
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NUM\_T\_TAGS@{NUM\_T\_TAGS}!door.h@{door.h}}\index{door.h@{door.h}!NUM\_T\_TAGS@{NUM\_T\_TAGS}}}\mbox{\Hypertarget{door_8h_a4805ac658f5672fc7f938a3622962948a7314652df30c259bec1d360788aef62c}\label{door_8h_a4805ac658f5672fc7f938a3622962948a7314652df30c259bec1d360788aef62c}} 
 N\+U\+M\+\_\+\+T\+\_\+\+T\+A\+GS&Number of variables in {\ttfamily door\+\_\+timer} array. \\
 \hline
 
 \end{DoxyEnumFields}
 
 
-Definition at line 26 of file door.\+h.
+Definition at line 27 of file door.\+h.
 
 
 
@@ -203,10 +206,12 @@ Definition at line 22 of file door.\+c.
 
 Alias for \mbox{\hyperlink{door_8h_a2adfbc4914704e15ac593d4f965783f5}{door\+\_\+check\+\_\+timer}}. 
 
+Checks if customers have entered the elevator through the timer.
+
 \begin{DoxyReturn}{Returns}
-\mbox{\hyperlink{door_8h_a2adfbc4914704e15ac593d4f965783f5}{door\+\_\+check\+\_\+timer}}.
+\mbox{\hyperlink{door_8h_a2adfbc4914704e15ac593d4f965783f5}{door\+\_\+check\+\_\+timer}}. 
 \end{DoxyReturn}
-Checks if customers have entered the elevator through the timer. 
+
 
 Definition at line 43 of file door.\+c.
 

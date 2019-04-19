@@ -74,7 +74,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>This file contains the states in the FSM and their functions.  
+<p>State definitions and its corresponding functions.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="elevator_8h_source.html">elevator.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="queue_8h_source.html">queue.h</a>&quot;</code><br />
@@ -85,77 +85,78 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:a9f34354b149588b399cf9448e20069be"><td class="memItemLeft" align="right" valign="top"><a id="a9f34354b149588b399cf9448e20069be"></a>
-typedef enum <a class="el" href="states_8h.html#adc6e5733fc3c22f0a7b2914188c49c90">state</a>&#160;</td><td class="memItemRight" valign="bottom"><b>state</b></td></tr>
-<tr class="separator:a9f34354b149588b399cf9448e20069be"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac6d9f440e9d1e6bbc948c13ed7cdccd7"><td class="memItemLeft" align="right" valign="top"><a id="ac6d9f440e9d1e6bbc948c13ed7cdccd7"></a>
+typedef enum <a class="el" href="states_8h.html#a2af5bc6b2437cab9b3dd701744368abf">tag_state</a>&#160;</td><td class="memItemRight" valign="bottom"><b>state</b></td></tr>
+<tr class="separator:ac6d9f440e9d1e6bbc948c13ed7cdccd7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Enumerations</h2></td></tr>
-<tr class="memitem:adc6e5733fc3c22f0a7b2914188c49c90"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="states_8h.html#adc6e5733fc3c22f0a7b2914188c49c90">state</a> { <br />
-&#160;&#160;<a class="el" href="states_8h.html#adc6e5733fc3c22f0a7b2914188c49c90ac169e9ffa53b0e66f7f30d192d44643f">START</a>, 
-<a class="el" href="states_8h.html#adc6e5733fc3c22f0a7b2914188c49c90a051fbc8606b854603fe93508651dac2c">IDLE</a>, 
-<a class="el" href="states_8h.html#adc6e5733fc3c22f0a7b2914188c49c90a7ee2de6c753618ca9b6ed035e1b72fa7">DRIVING</a>, 
-<a class="el" href="states_8h.html#adc6e5733fc3c22f0a7b2914188c49c90acebb89aafa9389b3ed8828e7e4d0a585">PICKUP</a>, 
+<tr class="memitem:a2af5bc6b2437cab9b3dd701744368abf"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="states_8h.html#a2af5bc6b2437cab9b3dd701744368abf">tag_state</a> { <br />
+&#160;&#160;<a class="el" href="states_8h.html#a2af5bc6b2437cab9b3dd701744368abfac169e9ffa53b0e66f7f30d192d44643f">START</a>, 
+<a class="el" href="states_8h.html#a2af5bc6b2437cab9b3dd701744368abfa051fbc8606b854603fe93508651dac2c">IDLE</a>, 
+<a class="el" href="states_8h.html#a2af5bc6b2437cab9b3dd701744368abfa7ee2de6c753618ca9b6ed035e1b72fa7">DRIVING</a>, 
+<a class="el" href="states_8h.html#a2af5bc6b2437cab9b3dd701744368abfacebb89aafa9389b3ed8828e7e4d0a585">PICKUP</a>, 
 <br />
-&#160;&#160;<a class="el" href="states_8h.html#adc6e5733fc3c22f0a7b2914188c49c90a22114f46a3d4d4dc2abf05ab8b7e5c03">EMERGENCY</a>, 
-<a class="el" href="states_8h.html#adc6e5733fc3c22f0a7b2914188c49c90a1de54bd922161dd5c6a353647f448fd6">END</a>
+&#160;&#160;<a class="el" href="states_8h.html#a2af5bc6b2437cab9b3dd701744368abfa22114f46a3d4d4dc2abf05ab8b7e5c03">EMERGENCY</a>, 
+<a class="el" href="states_8h.html#a2af5bc6b2437cab9b3dd701744368abfa1de54bd922161dd5c6a353647f448fd6">END</a>
 <br />
  }</td></tr>
-<tr class="separator:adc6e5733fc3c22f0a7b2914188c49c90"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:a2af5bc6b2437cab9b3dd701744368abf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:aef6441779abf5c61cf7d756abd088bce"><td class="memItemLeft" align="right" valign="top"><a class="el" href="states_8h.html#adc6e5733fc3c22f0a7b2914188c49c90">state</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="states_8h.html#aef6441779abf5c61cf7d756abd088bce">state_pending_emergency</a> (<a class="el" href="states_8h.html#adc6e5733fc3c22f0a7b2914188c49c90">state</a> current_state)</td></tr>
+<tr class="memitem:aef6441779abf5c61cf7d756abd088bce"><td class="memItemLeft" align="right" valign="top">state&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="states_8h.html#aef6441779abf5c61cf7d756abd088bce">state_pending_emergency</a> (state current_state)</td></tr>
 <tr class="memdesc:aef6441779abf5c61cf7d756abd088bce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Transitions the FSM to an emergency state if the stop button pressed.  <a href="#aef6441779abf5c61cf7d756abd088bce">More...</a><br /></td></tr>
 <tr class="separator:aef6441779abf5c61cf7d756abd088bce"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0bc53252d6deea62ee6029e971f5087a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="states_8h.html#adc6e5733fc3c22f0a7b2914188c49c90">state</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="states_8h.html#a0bc53252d6deea62ee6029e971f5087a">state_start</a> (void)</td></tr>
+<tr class="memitem:a0bc53252d6deea62ee6029e971f5087a"><td class="memItemLeft" align="right" valign="top">state&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="states_8h.html#a0bc53252d6deea62ee6029e971f5087a">state_start</a> (void)</td></tr>
 <tr class="memdesc:a0bc53252d6deea62ee6029e971f5087a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialises elevator, queue and door modules.  <a href="#a0bc53252d6deea62ee6029e971f5087a">More...</a><br /></td></tr>
 <tr class="separator:a0bc53252d6deea62ee6029e971f5087a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a170cb59be6707eea55c4e41cd75ec225"><td class="memItemLeft" align="right" valign="top"><a class="el" href="states_8h.html#adc6e5733fc3c22f0a7b2914188c49c90">state</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="states_8h.html#a170cb59be6707eea55c4e41cd75ec225">state_idle</a> (void)</td></tr>
+<tr class="memitem:a170cb59be6707eea55c4e41cd75ec225"><td class="memItemLeft" align="right" valign="top">state&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="states_8h.html#a170cb59be6707eea55c4e41cd75ec225">state_idle</a> (void)</td></tr>
 <tr class="memdesc:a170cb59be6707eea55c4e41cd75ec225"><td class="mdescLeft">&#160;</td><td class="mdescRight">Does nothing. Stays in IDLE if the queue is empty, transition to DRIVING otherwise.  <a href="#a170cb59be6707eea55c4e41cd75ec225">More...</a><br /></td></tr>
 <tr class="separator:a170cb59be6707eea55c4e41cd75ec225"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aee5b17293a7966a3e5e7bd4de1efe2eb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="states_8h.html#adc6e5733fc3c22f0a7b2914188c49c90">state</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="states_8h.html#aee5b17293a7966a3e5e7bd4de1efe2eb">state_driving</a> (void)</td></tr>
+<tr class="memitem:aee5b17293a7966a3e5e7bd4de1efe2eb"><td class="memItemLeft" align="right" valign="top">state&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="states_8h.html#aee5b17293a7966a3e5e7bd4de1efe2eb">state_driving</a> (void)</td></tr>
 <tr class="memdesc:aee5b17293a7966a3e5e7bd4de1efe2eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Continuously drives towards the elevator target.  <a href="#aee5b17293a7966a3e5e7bd4de1efe2eb">More...</a><br /></td></tr>
 <tr class="separator:aee5b17293a7966a3e5e7bd4de1efe2eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4cfe686c0dd1623de8f3fa7255c47841"><td class="memItemLeft" align="right" valign="top"><a class="el" href="states_8h.html#adc6e5733fc3c22f0a7b2914188c49c90">state</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="states_8h.html#a4cfe686c0dd1623de8f3fa7255c47841">state_pickup</a> (void)</td></tr>
+<tr class="memitem:a4cfe686c0dd1623de8f3fa7255c47841"><td class="memItemLeft" align="right" valign="top">state&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="states_8h.html#a4cfe686c0dd1623de8f3fa7255c47841">state_pickup</a> (void)</td></tr>
 <tr class="memdesc:a4cfe686c0dd1623de8f3fa7255c47841"><td class="mdescLeft">&#160;</td><td class="mdescRight">Controls the door using a timer.  <a href="#a4cfe686c0dd1623de8f3fa7255c47841">More...</a><br /></td></tr>
 <tr class="separator:a4cfe686c0dd1623de8f3fa7255c47841"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:add0c6077def6202b9730114a4543caad"><td class="memItemLeft" align="right" valign="top"><a class="el" href="states_8h.html#adc6e5733fc3c22f0a7b2914188c49c90">state</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="states_8h.html#add0c6077def6202b9730114a4543caad">state_emergency</a> (void)</td></tr>
+<tr class="memitem:add0c6077def6202b9730114a4543caad"><td class="memItemLeft" align="right" valign="top">state&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="states_8h.html#add0c6077def6202b9730114a4543caad">state_emergency</a> (void)</td></tr>
 <tr class="memdesc:add0c6077def6202b9730114a4543caad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stops the motor and empties the queue. Elevator waits until emergency over.  <a href="#add0c6077def6202b9730114a4543caad">More...</a><br /></td></tr>
 <tr class="separator:add0c6077def6202b9730114a4543caad"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af5a0983f3a289493459ed1c632cb480c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="states_8h.html#adc6e5733fc3c22f0a7b2914188c49c90">state</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="states_8h.html#af5a0983f3a289493459ed1c632cb480c">state_end</a> (void)</td></tr>
+<tr class="memitem:af5a0983f3a289493459ed1c632cb480c"><td class="memItemLeft" align="right" valign="top">state&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="states_8h.html#af5a0983f3a289493459ed1c632cb480c">state_end</a> (void)</td></tr>
 <tr class="memdesc:af5a0983f3a289493459ed1c632cb480c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Exits the FSM.  <a href="#af5a0983f3a289493459ed1c632cb480c">More...</a><br /></td></tr>
 <tr class="separator:af5a0983f3a289493459ed1c632cb480c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>This file contains the states in the FSM and their functions. </p>
+<div class="textblock"><p>State definitions and its corresponding functions. </p>
+<p>This file contains the necessary states to implement a functioning elevator. </p>
 
 <p class="definition">Definition in file <a class="el" href="states_8h_source.html">states.h</a>.</p>
 </div><h2 class="groupheader">Enumeration Type Documentation</h2>
-<a id="adc6e5733fc3c22f0a7b2914188c49c90"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adc6e5733fc3c22f0a7b2914188c49c90">&#9670;&nbsp;</a></span>state</h2>
+<a id="a2af5bc6b2437cab9b3dd701744368abf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2af5bc6b2437cab9b3dd701744368abf">&#9670;&nbsp;</a></span>tag_state</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">enum <a class="el" href="states_8h.html#adc6e5733fc3c22f0a7b2914188c49c90">state</a></td>
+          <td class="memname">enum <a class="el" href="states_8h.html#a2af5bc6b2437cab9b3dd701744368abf">tag_state</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
 <p>State tags used in the finite state machine (FSM). These brief descriptions are elaborated further in their respective state functions. </p>
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="adc6e5733fc3c22f0a7b2914188c49c90ac169e9ffa53b0e66f7f30d192d44643f"></a>START&#160;</td><td class="fielddoc"><p>State where the initialisation of the elevator occurs. </p>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a2af5bc6b2437cab9b3dd701744368abfac169e9ffa53b0e66f7f30d192d44643f"></a>START&#160;</td><td class="fielddoc"><p>State where the initialisation of the elevator occurs. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="adc6e5733fc3c22f0a7b2914188c49c90a051fbc8606b854603fe93508651dac2c"></a>IDLE&#160;</td><td class="fielddoc"><p>State where the elevator idles whilst waiting for an order. </p>
+<tr><td class="fieldname"><a id="a2af5bc6b2437cab9b3dd701744368abfa051fbc8606b854603fe93508651dac2c"></a>IDLE&#160;</td><td class="fielddoc"><p>State where the elevator idles whilst waiting for an order. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="adc6e5733fc3c22f0a7b2914188c49c90a7ee2de6c753618ca9b6ed035e1b72fa7"></a>DRIVING&#160;</td><td class="fielddoc"><p>State where the elevator is in motion, attempting to reach a target. </p>
+<tr><td class="fieldname"><a id="a2af5bc6b2437cab9b3dd701744368abfa7ee2de6c753618ca9b6ed035e1b72fa7"></a>DRIVING&#160;</td><td class="fielddoc"><p>State where the elevator is in motion, attempting to reach a target. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="adc6e5733fc3c22f0a7b2914188c49c90acebb89aafa9389b3ed8828e7e4d0a585"></a>PICKUP&#160;</td><td class="fielddoc"><p>State when the elevator stops to serve a customer and doors are controlled. </p>
+<tr><td class="fieldname"><a id="a2af5bc6b2437cab9b3dd701744368abfacebb89aafa9389b3ed8828e7e4d0a585"></a>PICKUP&#160;</td><td class="fielddoc"><p>State when the elevator stops to serve a customer and doors are controlled. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="adc6e5733fc3c22f0a7b2914188c49c90a22114f46a3d4d4dc2abf05ab8b7e5c03"></a>EMERGENCY&#160;</td><td class="fielddoc"><p>State when the stop button is pressed and handled according to specific standards. </p>
+<tr><td class="fieldname"><a id="a2af5bc6b2437cab9b3dd701744368abfa22114f46a3d4d4dc2abf05ab8b7e5c03"></a>EMERGENCY&#160;</td><td class="fielddoc"><p>State when the stop button is pressed and handled according to specific standards. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="adc6e5733fc3c22f0a7b2914188c49c90a1de54bd922161dd5c6a353647f448fd6"></a>END&#160;</td><td class="fielddoc"><p>State which signifies that the FSM stops. </p>
+<tr><td class="fieldname"><a id="a2af5bc6b2437cab9b3dd701744368abfa1de54bd922161dd5c6a353647f448fd6"></a>END&#160;</td><td class="fielddoc"><p>State which signifies that the FSM stops. </p>
 </td></tr>
 </table>
 
@@ -171,7 +172,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="states_8h.html#adc6e5733fc3c22f0a7b2914188c49c90">state</a> state_driving </td>
+          <td class="memname">state state_driving </td>
           <td>(</td>
           <td class="paramtype">void&#160;</td>
           <td class="paramname"></td><td>)</td>
@@ -196,7 +197,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="states_8h.html#adc6e5733fc3c22f0a7b2914188c49c90">state</a> state_emergency </td>
+          <td class="memname">state state_emergency </td>
           <td>(</td>
           <td class="paramtype">void&#160;</td>
           <td class="paramname"></td><td>)</td>
@@ -221,7 +222,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="states_8h.html#adc6e5733fc3c22f0a7b2914188c49c90">state</a> state_end </td>
+          <td class="memname">state state_end </td>
           <td>(</td>
           <td class="paramtype">void&#160;</td>
           <td class="paramname"></td><td>)</td>
@@ -245,7 +246,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="states_8h.html#adc6e5733fc3c22f0a7b2914188c49c90">state</a> state_idle </td>
+          <td class="memname">state state_idle </td>
           <td>(</td>
           <td class="paramtype">void&#160;</td>
           <td class="paramname"></td><td>)</td>
@@ -268,9 +269,9 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="states_8h.html#adc6e5733fc3c22f0a7b2914188c49c90">state</a> state_pending_emergency </td>
+          <td class="memname">state state_pending_emergency </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="states_8h.html#adc6e5733fc3c22f0a7b2914188c49c90">state</a>&#160;</td>
+          <td class="paramtype">state&#160;</td>
           <td class="paramname"><em>current_state</em></td><td>)</td>
           <td></td>
         </tr>
@@ -297,7 +298,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="states_8h.html#adc6e5733fc3c22f0a7b2914188c49c90">state</a> state_pickup </td>
+          <td class="memname">state state_pickup </td>
           <td>(</td>
           <td class="paramtype">void&#160;</td>
           <td class="paramname"></td><td>)</td>
@@ -321,7 +322,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="states_8h.html#adc6e5733fc3c22f0a7b2914188c49c90">state</a> state_start </td>
+          <td class="memname">state state_start </td>
           <td>(</td>
           <td class="paramtype">void&#160;</td>
           <td class="paramname"></td><td>)</td>

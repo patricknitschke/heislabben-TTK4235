@@ -1,8 +1,8 @@
 /** @file
-*@brief This file contains the states in the FSM and their functions.
+*@brief State definitions and its corresponding functions.
 *
+*This file contains the necessary states to implement a functioning elevator.
 */
-
 #ifndef STATES_H
 #define STATES_H
 #include "elevator.h"
@@ -12,7 +12,7 @@
 
 
 /**
-*@enum state
+*@enum tag_state
 *State tags used in the finite state machine (FSM). These brief descriptions are elaborated further in
 *their respective state functions.
 *
@@ -34,7 +34,7 @@
 *@var END
 *State which signifies that the FSM stops.
 */
-typedef enum state {
+typedef enum tag_state {
 	START, IDLE, DRIVING, PICKUP, EMERGENCY, END
 } state;
 

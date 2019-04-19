@@ -1,8 +1,9 @@
 /** @file
-*@brief This file contains the queue module and its functions.
+*@brief Functions used to operate the doors of the elevator.
 *
+*These functions are sufficient in operating a door and its lights. Utilises a timer, @a clock(),
+*from %time.h.
 */
-
 #ifndef DOOR_H
 #define DOOR_H
 #include "elevator.h"
@@ -10,7 +11,7 @@
 
 
 /**
-*@enum timer_t 
+*@enum tag_timer 
 *Timer tags for variables in @p door_timer array.
 *
 *@var START_TIMER 
@@ -23,9 +24,9 @@
 *Number of variables in @p door_timer array.
 *
 */
-enum timer_t {
+typedef enum tag_timer {
     START_TIMER, TIMER_ENABLED, NUM_T_TAGS
-};
+} timer_t;
 
 
 /**
@@ -33,7 +34,7 @@ enum timer_t {
 *
 *@param door_timer Array of length NUM_T_TAGS, with variables used to control the door timer. 
 *@param door_is_open Keeps track of the door's state. 1 if the door is open, 0 if closed.
-*@sa ::timer_t enum for variables in @p door_timer.
+*@sa ::tag_timer enum for variables in @p door_timer.
 */
 typedef struct Door {
     int door_timer[NUM_T_TAGS];
@@ -56,7 +57,6 @@ void door_init(void);
 *Sets TIMER_ENABLED to 1 and START_TIMER to the current time, @a clock().
 */
 void door_enable_timer(void);
-
 
 
 /**
@@ -101,9 +101,10 @@ int door_check_timer(void);
 
 /**
 *@brief Alias for ::door_check_timer.
-*@returns ::door_check_timer.
 *
 *Checks if customers have entered the elevator through the timer. 
+*
+*@returns ::door_check_timer.
 */
 int door_picked_up(void);
 

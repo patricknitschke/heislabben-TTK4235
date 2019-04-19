@@ -75,7 +75,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>This file contains the queue module and its functions.  
+<p>Functions used to operate the doors of the elevator.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="elevator_8h_source.html">elevator.h</a>&quot;</code><br />
 <code>#include &quot;time.h&quot;</code><br />
@@ -90,17 +90,20 @@ Data Structures</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
+<tr class="memitem:a3f5533da2e64c72cdbc948fee0c4edc7"><td class="memItemLeft" align="right" valign="top"><a id="a3f5533da2e64c72cdbc948fee0c4edc7"></a>
+typedef enum <a class="el" href="door_8h.html#a4805ac658f5672fc7f938a3622962948">tag_timer</a>&#160;</td><td class="memItemRight" valign="bottom"><b>timer_t</b></td></tr>
+<tr class="separator:a3f5533da2e64c72cdbc948fee0c4edc7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0d75795cc05e18d8b798ffa10de24f3d"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structDoor.html">Door</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="door_8h.html#a0d75795cc05e18d8b798ffa10de24f3d">Door</a></td></tr>
 <tr class="memdesc:a0d75795cc05e18d8b798ffa10de24f3d"><td class="mdescLeft">&#160;</td><td class="mdescRight">A struct that holds information regarding the door's state and timer.  <a href="#a0d75795cc05e18d8b798ffa10de24f3d">More...</a><br /></td></tr>
 <tr class="separator:a0d75795cc05e18d8b798ffa10de24f3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Enumerations</h2></td></tr>
-<tr class="memitem:a764f517e2e45ad48bcd8b88590ab5276"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="door_8h.html#a764f517e2e45ad48bcd8b88590ab5276">timer_t</a> { <a class="el" href="door_8h.html#a764f517e2e45ad48bcd8b88590ab5276ae8990a8e196193c057e87125b6294aaa">START_TIMER</a>, 
-<a class="el" href="door_8h.html#a764f517e2e45ad48bcd8b88590ab5276a81400a21a86c14e3afb637441f8682c0">TIMER_ENABLED</a>, 
-<a class="el" href="door_8h.html#a764f517e2e45ad48bcd8b88590ab5276a7314652df30c259bec1d360788aef62c">NUM_T_TAGS</a>
+<tr class="memitem:a4805ac658f5672fc7f938a3622962948"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="door_8h.html#a4805ac658f5672fc7f938a3622962948">tag_timer</a> { <a class="el" href="door_8h.html#a4805ac658f5672fc7f938a3622962948ae8990a8e196193c057e87125b6294aaa">START_TIMER</a>, 
+<a class="el" href="door_8h.html#a4805ac658f5672fc7f938a3622962948a81400a21a86c14e3afb637441f8682c0">TIMER_ENABLED</a>, 
+<a class="el" href="door_8h.html#a4805ac658f5672fc7f938a3622962948a7314652df30c259bec1d360788aef62c">NUM_T_TAGS</a>
  }</td></tr>
-<tr class="separator:a764f517e2e45ad48bcd8b88590ab5276"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:a4805ac658f5672fc7f938a3622962948"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
@@ -130,7 +133,8 @@ Functions</h2></td></tr>
 <tr class="separator:a178466f511769579894312351089f705"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>This file contains the queue module and its functions. </p>
+<div class="textblock"><p>Functions used to operate the doors of the elevator. </p>
+<p>These functions are sufficient in operating a door and its lights. Utilises a timer, <em>clock()</em>, from time.h. </p>
 
 <p class="definition">Definition in file <a class="el" href="door_8h_source.html">door.h</a>.</p>
 </div><h2 class="groupheader">Typedef Documentation</h2>
@@ -154,33 +158,33 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="door_8h.html#a764f517e2e45ad48bcd8b88590ab5276">timer_t</a> enum for variables in <code>door_timer</code>. </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="door_8h.html#a4805ac658f5672fc7f938a3622962948">tag_timer</a> enum for variables in <code>door_timer</code>. </dd></dl>
 
 </div>
 </div>
 <h2 class="groupheader">Enumeration Type Documentation</h2>
-<a id="a764f517e2e45ad48bcd8b88590ab5276"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a764f517e2e45ad48bcd8b88590ab5276">&#9670;&nbsp;</a></span>timer_t</h2>
+<a id="a4805ac658f5672fc7f938a3622962948"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4805ac658f5672fc7f938a3622962948">&#9670;&nbsp;</a></span>tag_timer</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">enum <a class="el" href="door_8h.html#a764f517e2e45ad48bcd8b88590ab5276">timer_t</a></td>
+          <td class="memname">enum <a class="el" href="door_8h.html#a4805ac658f5672fc7f938a3622962948">tag_timer</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
 <p>Timer tags for variables in <code>door_timer</code> array. </p>
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a764f517e2e45ad48bcd8b88590ab5276ae8990a8e196193c057e87125b6294aaa"></a>START_TIMER&#160;</td><td class="fielddoc"><p>Timestamp at which the door opens. </p>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a4805ac658f5672fc7f938a3622962948ae8990a8e196193c057e87125b6294aaa"></a>START_TIMER&#160;</td><td class="fielddoc"><p>Timestamp at which the door opens. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a764f517e2e45ad48bcd8b88590ab5276a81400a21a86c14e3afb637441f8682c0"></a>TIMER_ENABLED&#160;</td><td class="fielddoc"><p>1 if the timer is enabled, 0 if not. </p>
+<tr><td class="fieldname"><a id="a4805ac658f5672fc7f938a3622962948a81400a21a86c14e3afb637441f8682c0"></a>TIMER_ENABLED&#160;</td><td class="fielddoc"><p>1 if the timer is enabled, 0 if not. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a764f517e2e45ad48bcd8b88590ab5276a7314652df30c259bec1d360788aef62c"></a>NUM_T_TAGS&#160;</td><td class="fielddoc"><p>Number of variables in <code>door_timer</code> array. </p>
+<tr><td class="fieldname"><a id="a4805ac658f5672fc7f938a3622962948a7314652df30c259bec1d360788aef62c"></a>NUM_T_TAGS&#160;</td><td class="fielddoc"><p>Number of variables in <code>door_timer</code> array. </p>
 </td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="door_8h_source.html#l00026">26</a> of file <a class="el" href="door_8h_source.html">door.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="door_8h_source.html#l00027">27</a> of file <a class="el" href="door_8h_source.html">door.h</a>.</p>
 
 </div>
 </div>
@@ -341,8 +345,8 @@ Sets <code>door_is_open</code> to 0. </p>
 </div><div class="memdoc">
 
 <p>Alias for <a class="el" href="door_8h.html#a2adfbc4914704e15ac593d4f965783f5" title="Checks if the door timer of 3 seconds has completed.">door_check_timer</a>. </p>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="door_8h.html#a2adfbc4914704e15ac593d4f965783f5" title="Checks if the door timer of 3 seconds has completed.">door_check_timer</a>.</dd></dl>
-<p>Checks if customers have entered the elevator through the timer. </p>
+<p>Checks if customers have entered the elevator through the timer.</p>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="door_8h.html#a2adfbc4914704e15ac593d4f965783f5" title="Checks if the door timer of 3 seconds has completed.">door_check_timer</a>. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="door_8c_source.html#l00043">43</a> of file <a class="el" href="door_8c_source.html">door.c</a>.</p>
 
