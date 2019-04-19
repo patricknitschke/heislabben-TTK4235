@@ -9,10 +9,6 @@ This file contains the elevator module and its functions.
 {\ttfamily \#include \char`\"{}queue.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}lights.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}door.\+h\char`\"{}}\newline
-Include dependency graph for elevator.\+h\+:
-% FIG 0
-This graph shows which files directly or indirectly include this file\+:
-% FIG 1
 \subsection*{Data Structures}
 \begin{DoxyCompactItemize}
 \item 
@@ -223,6 +219,8 @@ Definition at line 16 of file elevator.\+c.
 
 
 Initialises the elevator hardware. 
+
+Calls upon \mbox{\hyperlink{elev_8h_a949b0e1f7c0f03ea6f92008c378e4573}{elev\+\_\+init}} to initialise elevator.
 
 \begin{DoxyReturn}{Returns}
 1 on successful initialisation, 0 if it fails. 

@@ -9,56 +9,229 @@ This file contains the states in the F\+SM and their functions.
 {\ttfamily \#include \char`\"{}queue.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}lights.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}door.\+h\char`\"{}}\newline
-Include dependency graph for states.\+h\+:
-% FIG 0
-This graph shows which files directly or indirectly include this file\+:
-% FIG 1
 \subsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\Hypertarget{states_8h_a9f34354b149588b399cf9448e20069be}\label{states_8h_a9f34354b149588b399cf9448e20069be}} 
-typedef enum state {\bfseries state}
+typedef enum \mbox{\hyperlink{states_8h_adc6e5733fc3c22f0a7b2914188c49c90}{state}} {\bfseries state}
 \end{DoxyCompactItemize}
 \subsection*{Enumerations}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{states_8h_adc6e5733fc3c22f0a7b2914188c49c90}\label{states_8h_adc6e5733fc3c22f0a7b2914188c49c90}} 
-enum {\bfseries state} \{ \newline
-{\bfseries S\+T\+A\+RT}, 
-{\bfseries I\+D\+LE}, 
-{\bfseries D\+R\+I\+V\+I\+NG}, 
-{\bfseries P\+I\+C\+K\+UP}, 
+enum \mbox{\hyperlink{states_8h_adc6e5733fc3c22f0a7b2914188c49c90}{state}} \{ \newline
+\mbox{\hyperlink{states_8h_adc6e5733fc3c22f0a7b2914188c49c90ac169e9ffa53b0e66f7f30d192d44643f}{S\+T\+A\+RT}}, 
+\mbox{\hyperlink{states_8h_adc6e5733fc3c22f0a7b2914188c49c90a051fbc8606b854603fe93508651dac2c}{I\+D\+LE}}, 
+\mbox{\hyperlink{states_8h_adc6e5733fc3c22f0a7b2914188c49c90a7ee2de6c753618ca9b6ed035e1b72fa7}{D\+R\+I\+V\+I\+NG}}, 
+\mbox{\hyperlink{states_8h_adc6e5733fc3c22f0a7b2914188c49c90acebb89aafa9389b3ed8828e7e4d0a585}{P\+I\+C\+K\+UP}}, 
 \newline
-{\bfseries E\+M\+E\+R\+G\+E\+N\+CY}, 
-{\bfseries E\+ND}
+\mbox{\hyperlink{states_8h_adc6e5733fc3c22f0a7b2914188c49c90a22114f46a3d4d4dc2abf05ab8b7e5c03}{E\+M\+E\+R\+G\+E\+N\+CY}}, 
+\mbox{\hyperlink{states_8h_adc6e5733fc3c22f0a7b2914188c49c90a1de54bd922161dd5c6a353647f448fd6}{E\+ND}}
  \}
 \end{DoxyCompactItemize}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{states_8h_aef6441779abf5c61cf7d756abd088bce}\label{states_8h_aef6441779abf5c61cf7d756abd088bce}} 
-state {\bfseries state\+\_\+pending\+\_\+emergency} (state current\+\_\+state)
-\item 
-\mbox{\Hypertarget{states_8h_a0bc53252d6deea62ee6029e971f5087a}\label{states_8h_a0bc53252d6deea62ee6029e971f5087a}} 
-state {\bfseries state\+\_\+start} (void)
-\item 
-\mbox{\Hypertarget{states_8h_a170cb59be6707eea55c4e41cd75ec225}\label{states_8h_a170cb59be6707eea55c4e41cd75ec225}} 
-state {\bfseries state\+\_\+idle} (void)
-\item 
-\mbox{\Hypertarget{states_8h_aee5b17293a7966a3e5e7bd4de1efe2eb}\label{states_8h_aee5b17293a7966a3e5e7bd4de1efe2eb}} 
-state {\bfseries state\+\_\+driving} (void)
-\item 
-\mbox{\Hypertarget{states_8h_a4cfe686c0dd1623de8f3fa7255c47841}\label{states_8h_a4cfe686c0dd1623de8f3fa7255c47841}} 
-state {\bfseries state\+\_\+pickup} (void)
-\item 
-\mbox{\Hypertarget{states_8h_add0c6077def6202b9730114a4543caad}\label{states_8h_add0c6077def6202b9730114a4543caad}} 
-state {\bfseries state\+\_\+emergency} (void)
-\item 
-\mbox{\Hypertarget{states_8h_af5a0983f3a289493459ed1c632cb480c}\label{states_8h_af5a0983f3a289493459ed1c632cb480c}} 
-state {\bfseries state\+\_\+end} (void)
-\end{DoxyCompactItemize}
+\mbox{\hyperlink{states_8h_adc6e5733fc3c22f0a7b2914188c49c90}{state}} \mbox{\hyperlink{states_8h_aef6441779abf5c61cf7d756abd088bce}{state\+\_\+pending\+\_\+emergency}} (\mbox{\hyperlink{states_8h_adc6e5733fc3c22f0a7b2914188c49c90}{state}} current\+\_\+state)
+\begin{DoxyCompactList}\small\item\em Transitions the F\+SM to an emergency state if the stop button pressed. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{states_8h_adc6e5733fc3c22f0a7b2914188c49c90}{state}} \mbox{\hyperlink{states_8h_a0bc53252d6deea62ee6029e971f5087a}{state\+\_\+start}} (void)
+\begin{DoxyCompactList}\small\item\em Initialises elevator, queue and door modules. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{states_8h_adc6e5733fc3c22f0a7b2914188c49c90}{state}} \mbox{\hyperlink{states_8h_a170cb59be6707eea55c4e41cd75ec225}{state\+\_\+idle}} (void)
+\begin{DoxyCompactList}\small\item\em Does nothing. Stays in I\+D\+LE if the queue is empty, transition to D\+R\+I\+V\+I\+NG otherwise. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{states_8h_adc6e5733fc3c22f0a7b2914188c49c90}{state}} \mbox{\hyperlink{states_8h_aee5b17293a7966a3e5e7bd4de1efe2eb}{state\+\_\+driving}} (void)
+\begin{DoxyCompactList}\small\item\em Continuously drives towards the elevator target. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{states_8h_adc6e5733fc3c22f0a7b2914188c49c90}{state}} \mbox{\hyperlink{states_8h_a4cfe686c0dd1623de8f3fa7255c47841}{state\+\_\+pickup}} (void)
+\begin{DoxyCompactList}\small\item\em Controls the door using a timer. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{states_8h_adc6e5733fc3c22f0a7b2914188c49c90}{state}} \mbox{\hyperlink{states_8h_add0c6077def6202b9730114a4543caad}{state\+\_\+emergency}} (void)
+\begin{DoxyCompactList}\small\item\em Stops the motor and empties the queue. Elevator waits until emergency over. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{states_8h_adc6e5733fc3c22f0a7b2914188c49c90}{state}} \mbox{\hyperlink{states_8h_af5a0983f3a289493459ed1c632cb480c}{state\+\_\+end}} (void)
+\begin{DoxyCompactList}\small\item\em Exits the F\+SM. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
 This file contains the states in the F\+SM and their functions. 
+
+
+
+\subsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{states_8h_adc6e5733fc3c22f0a7b2914188c49c90}\label{states_8h_adc6e5733fc3c22f0a7b2914188c49c90}} 
+\index{states.h@{states.h}!state@{state}}
+\index{state@{state}!states.h@{states.h}}
+\subsubsection{\texorpdfstring{state}{state}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{states_8h_adc6e5733fc3c22f0a7b2914188c49c90}{state}}}
+
+State tags used in the finite state machine (F\+SM). These brief descriptions are elaborated further in their respective state functions. \begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{START@{START}!states.h@{states.h}}\index{states.h@{states.h}!START@{START}}}\mbox{\Hypertarget{states_8h_adc6e5733fc3c22f0a7b2914188c49c90ac169e9ffa53b0e66f7f30d192d44643f}\label{states_8h_adc6e5733fc3c22f0a7b2914188c49c90ac169e9ffa53b0e66f7f30d192d44643f}} 
+S\+T\+A\+RT&State where the initialisation of the elevator occurs. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{IDLE@{IDLE}!states.h@{states.h}}\index{states.h@{states.h}!IDLE@{IDLE}}}\mbox{\Hypertarget{states_8h_adc6e5733fc3c22f0a7b2914188c49c90a051fbc8606b854603fe93508651dac2c}\label{states_8h_adc6e5733fc3c22f0a7b2914188c49c90a051fbc8606b854603fe93508651dac2c}} 
+I\+D\+LE&State where the elevator idles whilst waiting for an order. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DRIVING@{DRIVING}!states.h@{states.h}}\index{states.h@{states.h}!DRIVING@{DRIVING}}}\mbox{\Hypertarget{states_8h_adc6e5733fc3c22f0a7b2914188c49c90a7ee2de6c753618ca9b6ed035e1b72fa7}\label{states_8h_adc6e5733fc3c22f0a7b2914188c49c90a7ee2de6c753618ca9b6ed035e1b72fa7}} 
+D\+R\+I\+V\+I\+NG&State where the elevator is in motion, attempting to reach a target. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PICKUP@{PICKUP}!states.h@{states.h}}\index{states.h@{states.h}!PICKUP@{PICKUP}}}\mbox{\Hypertarget{states_8h_adc6e5733fc3c22f0a7b2914188c49c90acebb89aafa9389b3ed8828e7e4d0a585}\label{states_8h_adc6e5733fc3c22f0a7b2914188c49c90acebb89aafa9389b3ed8828e7e4d0a585}} 
+P\+I\+C\+K\+UP&State when the elevator stops to serve a customer and doors are controlled. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{EMERGENCY@{EMERGENCY}!states.h@{states.h}}\index{states.h@{states.h}!EMERGENCY@{EMERGENCY}}}\mbox{\Hypertarget{states_8h_adc6e5733fc3c22f0a7b2914188c49c90a22114f46a3d4d4dc2abf05ab8b7e5c03}\label{states_8h_adc6e5733fc3c22f0a7b2914188c49c90a22114f46a3d4d4dc2abf05ab8b7e5c03}} 
+E\+M\+E\+R\+G\+E\+N\+CY&State when the stop button is pressed and handled according to specific standards. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{END@{END}!states.h@{states.h}}\index{states.h@{states.h}!END@{END}}}\mbox{\Hypertarget{states_8h_adc6e5733fc3c22f0a7b2914188c49c90a1de54bd922161dd5c6a353647f448fd6}\label{states_8h_adc6e5733fc3c22f0a7b2914188c49c90a1de54bd922161dd5c6a353647f448fd6}} 
+E\+ND&State which signifies that the F\+SM stops. \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line 37 of file states.\+h.
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{states_8h_aee5b17293a7966a3e5e7bd4de1efe2eb}\label{states_8h_aee5b17293a7966a3e5e7bd4de1efe2eb}} 
+\index{states.h@{states.h}!state\_driving@{state\_driving}}
+\index{state\_driving@{state\_driving}!states.h@{states.h}}
+\subsubsection{\texorpdfstring{state\_driving()}{state\_driving()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{states_8h_adc6e5733fc3c22f0a7b2914188c49c90}{state}} state\+\_\+driving (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Continuously drives towards the elevator target. 
+
+The elevator\textquotesingle{}s floor and direction is continuously set to reach a defined target. Once a target is reached or there is an order in the same direction, the F\+SM transitions to P\+I\+C\+K\+UP.
+
+\begin{DoxyReturn}{Returns}
+P\+I\+C\+K\+UP on reaching a floor with an appropriate order. Otherwise, returns D\+R\+I\+V\+I\+NG. 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{queue_8h_a6246a25fc3b07b678c031c3dd798e077}{queue\+\_\+stop\+\_\+n\+\_\+serve\+\_\+order}} for details on what is an appropriate order. 
+\end{DoxySeeAlso}
+
+
+Definition at line 33 of file states.\+c.
+
+\mbox{\Hypertarget{states_8h_add0c6077def6202b9730114a4543caad}\label{states_8h_add0c6077def6202b9730114a4543caad}} 
+\index{states.h@{states.h}!state\_emergency@{state\_emergency}}
+\index{state\_emergency@{state\_emergency}!states.h@{states.h}}
+\subsubsection{\texorpdfstring{state\_emergency()}{state\_emergency()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{states_8h_adc6e5733fc3c22f0a7b2914188c49c90}{state}} state\+\_\+emergency (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Stops the motor and empties the queue. Elevator waits until emergency over. 
+
+All queue orders are removed and all lights are turned off. Also, if on a valid floor, the doors are opened. Then, the elevator will stay in a \textquotesingle{}busy\textquotesingle{} wait as long as the stop button is pressed.
+
+\begin{DoxyReturn}{Returns}
+P\+I\+C\+K\+UP when the elevator is on a valid floor. I\+D\+LE otherwise. 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+If the doors are open, the doors remain open until after 3 seconds have passed. 
+\end{DoxyNote}
+
+
+Definition at line 64 of file states.\+c.
+
+\mbox{\Hypertarget{states_8h_af5a0983f3a289493459ed1c632cb480c}\label{states_8h_af5a0983f3a289493459ed1c632cb480c}} 
+\index{states.h@{states.h}!state\_end@{state\_end}}
+\index{state\_end@{state\_end}!states.h@{states.h}}
+\subsubsection{\texorpdfstring{state\_end()}{state\_end()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{states_8h_adc6e5733fc3c22f0a7b2914188c49c90}{state}} state\+\_\+end (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Exits the F\+SM. 
+
+The criteria in the while loop that runs the F\+SM fails, thus exiting the F\+SM. See \mbox{\hyperlink{main_8c_source}{main.\+c}}.
+
+\begin{DoxyReturn}{Returns}
+E\+ND. 
+\end{DoxyReturn}
+
+
+Definition at line 84 of file states.\+c.
+
+\mbox{\Hypertarget{states_8h_a170cb59be6707eea55c4e41cd75ec225}\label{states_8h_a170cb59be6707eea55c4e41cd75ec225}} 
+\index{states.h@{states.h}!state\_idle@{state\_idle}}
+\index{state\_idle@{state\_idle}!states.h@{states.h}}
+\subsubsection{\texorpdfstring{state\_idle()}{state\_idle()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{states_8h_adc6e5733fc3c22f0a7b2914188c49c90}{state}} state\+\_\+idle (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Does nothing. Stays in I\+D\+LE if the queue is empty, transition to D\+R\+I\+V\+I\+NG otherwise. 
+
+\begin{DoxyReturn}{Returns}
+D\+R\+I\+V\+I\+NG if the queue is not empty, i.\+e. an order is pending. Otherwise, returns I\+D\+LE. 
+\end{DoxyReturn}
+
+
+Definition at line 24 of file states.\+c.
+
+\mbox{\Hypertarget{states_8h_aef6441779abf5c61cf7d756abd088bce}\label{states_8h_aef6441779abf5c61cf7d756abd088bce}} 
+\index{states.h@{states.h}!state\_pending\_emergency@{state\_pending\_emergency}}
+\index{state\_pending\_emergency@{state\_pending\_emergency}!states.h@{states.h}}
+\subsubsection{\texorpdfstring{state\_pending\_emergency()}{state\_pending\_emergency()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{states_8h_adc6e5733fc3c22f0a7b2914188c49c90}{state}} state\+\_\+pending\+\_\+emergency (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{states_8h_adc6e5733fc3c22f0a7b2914188c49c90}{state}}}]{current\+\_\+state }\end{DoxyParamCaption})}
+
+
+
+Transitions the F\+SM to an emergency state if the stop button pressed. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em current\+\_\+state} & State that F\+SM currently is in. Used to maintain state. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+E\+M\+E\+R\+G\+E\+N\+CY state if the stop button is pressed, {\ttfamily current\+\_\+state} if not. 
+\end{DoxyReturn}
+
+
+Definition at line 3 of file states.\+c.
+
+\mbox{\Hypertarget{states_8h_a4cfe686c0dd1623de8f3fa7255c47841}\label{states_8h_a4cfe686c0dd1623de8f3fa7255c47841}} 
+\index{states.h@{states.h}!state\_pickup@{state\_pickup}}
+\index{state\_pickup@{state\_pickup}!states.h@{states.h}}
+\subsubsection{\texorpdfstring{state\_pickup()}{state\_pickup()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{states_8h_adc6e5733fc3c22f0a7b2914188c49c90}{state}} state\+\_\+pickup (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Controls the door using a timer. 
+
+Stops the motor and starts a timer of 3 seconds. Once the customer has entered (after 3 seconds), the F\+SM will transition to I\+D\+LE if there are no other orders, or D\+R\+I\+V\+I\+NG if there are.
+
+\begin{DoxyReturn}{Returns}
+P\+I\+C\+K\+UP while the timer is ongoing. Otherwise, I\+D\+LE if the queue is empty or D\+R\+I\+V\+I\+NG if not. 
+\end{DoxyReturn}
+
+
+Definition at line 46 of file states.\+c.
+
+\mbox{\Hypertarget{states_8h_a0bc53252d6deea62ee6029e971f5087a}\label{states_8h_a0bc53252d6deea62ee6029e971f5087a}} 
+\index{states.h@{states.h}!state\_start@{state\_start}}
+\index{state\_start@{state\_start}!states.h@{states.h}}
+\subsubsection{\texorpdfstring{state\_start()}{state\_start()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{states_8h_adc6e5733fc3c22f0a7b2914188c49c90}{state}} state\+\_\+start (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Initialises elevator, queue and door modules. 
+
+Runs the initialisation functions for the elevator, queue and door modules.
+
+\begin{DoxyReturn}{Returns}
+I\+D\+LE on successful initialisation. E\+ND if hardware initialisation fails. 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{elevator_8h_a7ba7c2e8b5c4c2b9500a3057a9b14b5c}{elevator\+\_\+init\+\_\+hardware}}, \mbox{\hyperlink{elevator_8h_adfe9cac4cc26b28abcc5311cf824a8a0}{elevator\+\_\+init}}, \mbox{\hyperlink{queue_8h_ac19ac10c04e65b54e2c03aa726d1535a}{queue\+\_\+init}} and \mbox{\hyperlink{door_8h_a2d0de401f47aafdfe2dba172332748de}{door\+\_\+init}} for more details. 
+\end{DoxySeeAlso}
+
+
+Definition at line 14 of file states.\+c.
 
