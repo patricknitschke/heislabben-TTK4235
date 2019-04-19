@@ -191,7 +191,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p><a class="el" href="structQueue.html" title="Contains an array with orders and a target floor for the elevator to chase.">Queue</a> order tags for variables in <code>queue</code> array. </p>
-<p>These tags correspond to the order buttons outside the elevator. In the case of an order from the inside of the elevator, the order is treated as an floor_order_t in <b>both</b> directions. </p>
+<p>These tags correspond to the order buttons outside the elevator. In the case of an order from the inside of the elevator, the order is treated as a floor_order_t in <b>both</b> directions. </p>
 
 </div>
 </div>
@@ -233,7 +233,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p><a class="el" href="structQueue.html" title="Contains an array with orders and a target floor for the elevator to chase.">Queue</a> order tags for variables in <code>queue</code> array. </p>
-<p>These tags correspond to the order buttons outside the elevator. In the case of an order from the inside of the elevator, the order is treated as an floor_order_t in <b>both</b> directions. </p>
+<p>These tags correspond to the order buttons outside the elevator. In the case of an order from the inside of the elevator, the order is treated as a floor_order_t in <b>both</b> directions. </p>
 
 <p class="definition">Definition at line <a class="el" href="queue_8h_source.html#l00019">19</a> of file <a class="el" href="queue_8h_source.html">queue.h</a>.</p>
 
@@ -257,7 +257,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Sets the elevator direction according to <code>target_floor</code>. </p>
-<p>If <code>target_floor</code> is greater than the elevator floor, direction is set upwards and vice versa. </p>
+<p>If <code>target_floor</code> is greater than the elevator floor, direction is set upwards and vice versa. If the <code>target_floor</code> is the same as the current floor, the elevator stops. </p>
 
 <p class="definition">Definition at line <a class="el" href="queue_8c_source.html#l00141">141</a> of file <a class="el" href="queue_8c_source.html">queue.c</a>.</p>
 

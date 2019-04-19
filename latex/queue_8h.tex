@@ -88,7 +88,7 @@ This file contains the queue module and its functions.
 
 \mbox{\hyperlink{structQueue}{Queue}} order tags for variables in {\ttfamily queue} array. 
 
-These tags correspond to the order buttons outside the elevator. In the case of an order from the inside of the elevator, the order is treated as an floor\+\_\+order\+\_\+t in {\bfseries{both}} directions. \mbox{\Hypertarget{queue_8h_ad359c9a9ed21445fd95e01a05429c767}\label{queue_8h_ad359c9a9ed21445fd95e01a05429c767}} 
+These tags correspond to the order buttons outside the elevator. In the case of an order from the inside of the elevator, the order is treated as a floor\+\_\+order\+\_\+t in {\bfseries{both}} directions. \mbox{\Hypertarget{queue_8h_ad359c9a9ed21445fd95e01a05429c767}\label{queue_8h_ad359c9a9ed21445fd95e01a05429c767}} 
 \index{queue.h@{queue.h}!Queue@{Queue}}
 \index{Queue@{Queue}!queue.h@{queue.h}}
 \subsubsection{\texorpdfstring{Queue}{Queue}}
@@ -121,7 +121,7 @@ Contains an array with orders and a target floor for the elevator to chase.
 
 \mbox{\hyperlink{structQueue}{Queue}} order tags for variables in {\ttfamily queue} array. 
 
-These tags correspond to the order buttons outside the elevator. In the case of an order from the inside of the elevator, the order is treated as an floor\+\_\+order\+\_\+t in {\bfseries{both}} directions. 
+These tags correspond to the order buttons outside the elevator. In the case of an order from the inside of the elevator, the order is treated as a floor\+\_\+order\+\_\+t in {\bfseries{both}} directions. 
 
 Definition at line 19 of file queue.\+h.
 
@@ -138,7 +138,7 @@ Definition at line 19 of file queue.\+h.
 
 Sets the elevator direction according to {\ttfamily target\+\_\+floor}. 
 
-If {\ttfamily target\+\_\+floor} is greater than the elevator floor, direction is set upwards and vice versa. 
+If {\ttfamily target\+\_\+floor} is greater than the elevator floor, direction is set upwards and vice versa. If the {\ttfamily target\+\_\+floor} is the same as the current floor, the elevator stops. 
 
 Definition at line 141 of file queue.\+c.
 

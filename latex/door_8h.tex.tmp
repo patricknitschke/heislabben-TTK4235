@@ -15,51 +15,216 @@ This graph shows which files directly or indirectly include this file\+:
 \begin{DoxyCompactItemize}
 \item 
 struct \mbox{\hyperlink{structDoor}{Door}}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em A struct that holds information regarding the door\textquotesingle{}s state and timer. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{door_8h_a0d75795cc05e18d8b798ffa10de24f3d}\label{door_8h_a0d75795cc05e18d8b798ffa10de24f3d}} 
-typedef struct \mbox{\hyperlink{structDoor}{Door}} {\bfseries Door}
-\end{DoxyCompactItemize}
+typedef struct \mbox{\hyperlink{structDoor}{Door}} \mbox{\hyperlink{door_8h_a0d75795cc05e18d8b798ffa10de24f3d}{Door}}
+\begin{DoxyCompactList}\small\item\em A struct that holds information regarding the door\textquotesingle{}s state and timer. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Enumerations}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{door_8h_a764f517e2e45ad48bcd8b88590ab5276}\label{door_8h_a764f517e2e45ad48bcd8b88590ab5276}} 
-enum {\bfseries timer\+\_\+t} \{ {\bfseries S\+T\+A\+R\+T\+\_\+\+T\+I\+M\+ER}, 
-{\bfseries T\+I\+M\+E\+R\+\_\+\+E\+N\+A\+B\+L\+ED}, 
-{\bfseries N\+U\+M\+\_\+\+T\+\_\+\+T\+A\+GS}
+enum \mbox{\hyperlink{door_8h_a764f517e2e45ad48bcd8b88590ab5276}{timer\+\_\+t}} \{ \mbox{\hyperlink{door_8h_a764f517e2e45ad48bcd8b88590ab5276ae8990a8e196193c057e87125b6294aaa}{S\+T\+A\+R\+T\+\_\+\+T\+I\+M\+ER}}, 
+\mbox{\hyperlink{door_8h_a764f517e2e45ad48bcd8b88590ab5276a81400a21a86c14e3afb637441f8682c0}{T\+I\+M\+E\+R\+\_\+\+E\+N\+A\+B\+L\+ED}}, 
+\mbox{\hyperlink{door_8h_a764f517e2e45ad48bcd8b88590ab5276a7314652df30c259bec1d360788aef62c}{N\+U\+M\+\_\+\+T\+\_\+\+T\+A\+GS}}
  \}
 \end{DoxyCompactItemize}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{door_8h_a2d0de401f47aafdfe2dba172332748de}\label{door_8h_a2d0de401f47aafdfe2dba172332748de}} 
-void {\bfseries door\+\_\+init} (void)
-\item 
-\mbox{\Hypertarget{door_8h_aaf21268ad90861ac0407bba35c83ce62}\label{door_8h_aaf21268ad90861ac0407bba35c83ce62}} 
-void {\bfseries door\+\_\+enable\+\_\+timer} (void)
-\item 
-\mbox{\Hypertarget{door_8h_a22af8e3b0c2d67b0f2d280509fe7b89e}\label{door_8h_a22af8e3b0c2d67b0f2d280509fe7b89e}} 
-void {\bfseries door\+\_\+reset\+\_\+timer} (void)
-\item 
-\mbox{\Hypertarget{door_8h_a702fef97d6171ba25eece93f99b20c29}\label{door_8h_a702fef97d6171ba25eece93f99b20c29}} 
-void {\bfseries door\+\_\+open} (void)
-\item 
-\mbox{\Hypertarget{door_8h_ae7995dcc50dbd1aeeace40b95d32e2d4}\label{door_8h_ae7995dcc50dbd1aeeace40b95d32e2d4}} 
-void {\bfseries door\+\_\+close} (void)
-\item 
-\mbox{\Hypertarget{door_8h_ab44b064e84827293b35fea9e3a778df6}\label{door_8h_ab44b064e84827293b35fea9e3a778df6}} 
-int {\bfseries door\+\_\+check\+\_\+open} (void)
-\item 
-\mbox{\Hypertarget{door_8h_a2adfbc4914704e15ac593d4f965783f5}\label{door_8h_a2adfbc4914704e15ac593d4f965783f5}} 
-int {\bfseries door\+\_\+check\+\_\+timer} (void)
-\item 
-\mbox{\Hypertarget{door_8h_a178466f511769579894312351089f705}\label{door_8h_a178466f511769579894312351089f705}} 
-int {\bfseries door\+\_\+picked\+\_\+up} (void)
-\end{DoxyCompactItemize}
+void \mbox{\hyperlink{door_8h_a2d0de401f47aafdfe2dba172332748de}{door\+\_\+init}} (void)
+\begin{DoxyCompactList}\small\item\em Initialises door module variables. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{door_8h_aaf21268ad90861ac0407bba35c83ce62}{door\+\_\+enable\+\_\+timer}} (void)
+\begin{DoxyCompactList}\small\item\em Enables the timer and registers the start time. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{door_8h_a22af8e3b0c2d67b0f2d280509fe7b89e}{door\+\_\+reset\+\_\+timer}} (void)
+\begin{DoxyCompactList}\small\item\em Disables the timer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{door_8h_a702fef97d6171ba25eece93f99b20c29}{door\+\_\+open}} (void)
+\begin{DoxyCompactList}\small\item\em Starts the timer and turns on door lamp. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{door_8h_ae7995dcc50dbd1aeeace40b95d32e2d4}{door\+\_\+close}} (void)
+\begin{DoxyCompactList}\small\item\em Resets timer and turns off door lamp. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{door_8h_ab44b064e84827293b35fea9e3a778df6}{door\+\_\+check\+\_\+open}} (void)
+\begin{DoxyCompactList}\small\item\em Checks if the door is open using {\ttfamily door\+\_\+is\+\_\+open}. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{door_8h_a2adfbc4914704e15ac593d4f965783f5}{door\+\_\+check\+\_\+timer}} (void)
+\begin{DoxyCompactList}\small\item\em Checks if the door timer of 3 seconds has completed. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{door_8h_a178466f511769579894312351089f705}{door\+\_\+picked\+\_\+up}} (void)
+\begin{DoxyCompactList}\small\item\em Alias for \mbox{\hyperlink{door_8h_a2adfbc4914704e15ac593d4f965783f5}{door\+\_\+check\+\_\+timer}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
 This file contains the queue module and its functions. 
+
+
+
+\subsection{Typedef Documentation}
+\mbox{\Hypertarget{door_8h_a0d75795cc05e18d8b798ffa10de24f3d}\label{door_8h_a0d75795cc05e18d8b798ffa10de24f3d}} 
+\index{door.h@{door.h}!Door@{Door}}
+\index{Door@{Door}!door.h@{door.h}}
+\subsubsection{\texorpdfstring{Door}{Door}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structDoor}{Door}}  \mbox{\hyperlink{structDoor}{Door}}}
+
+
+
+A struct that holds information regarding the door\textquotesingle{}s state and timer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em door\+\_\+timer} & Array of length N\+U\+M\+\_\+\+T\+\_\+\+T\+A\+GS, with variables used to control the door timer. \\
+\hline
+{\em door\+\_\+is\+\_\+open} & Keeps track of the door\textquotesingle{}s state. 1 if the door is open, 0 if closed. \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{door_8h_a764f517e2e45ad48bcd8b88590ab5276}{timer\+\_\+t}} enum for variables in {\ttfamily door\+\_\+timer}. 
+\end{DoxySeeAlso}
+
+
+\subsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{door_8h_a764f517e2e45ad48bcd8b88590ab5276}\label{door_8h_a764f517e2e45ad48bcd8b88590ab5276}} 
+\index{door.h@{door.h}!timer\_t@{timer\_t}}
+\index{timer\_t@{timer\_t}!door.h@{door.h}}
+\subsubsection{\texorpdfstring{timer\_t}{timer\_t}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{door_8h_a764f517e2e45ad48bcd8b88590ab5276}{timer\+\_\+t}}}
+
+Timer tags for variables in {\ttfamily door\+\_\+timer} array. \begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{START\_TIMER@{START\_TIMER}!door.h@{door.h}}\index{door.h@{door.h}!START\_TIMER@{START\_TIMER}}}\mbox{\Hypertarget{door_8h_a764f517e2e45ad48bcd8b88590ab5276ae8990a8e196193c057e87125b6294aaa}\label{door_8h_a764f517e2e45ad48bcd8b88590ab5276ae8990a8e196193c057e87125b6294aaa}} 
+S\+T\+A\+R\+T\+\_\+\+T\+I\+M\+ER&Timestamp at which the door opens. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{TIMER\_ENABLED@{TIMER\_ENABLED}!door.h@{door.h}}\index{door.h@{door.h}!TIMER\_ENABLED@{TIMER\_ENABLED}}}\mbox{\Hypertarget{door_8h_a764f517e2e45ad48bcd8b88590ab5276a81400a21a86c14e3afb637441f8682c0}\label{door_8h_a764f517e2e45ad48bcd8b88590ab5276a81400a21a86c14e3afb637441f8682c0}} 
+T\+I\+M\+E\+R\+\_\+\+E\+N\+A\+B\+L\+ED&1 if the timer is enabled, 0 if not. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NUM\_T\_TAGS@{NUM\_T\_TAGS}!door.h@{door.h}}\index{door.h@{door.h}!NUM\_T\_TAGS@{NUM\_T\_TAGS}}}\mbox{\Hypertarget{door_8h_a764f517e2e45ad48bcd8b88590ab5276a7314652df30c259bec1d360788aef62c}\label{door_8h_a764f517e2e45ad48bcd8b88590ab5276a7314652df30c259bec1d360788aef62c}} 
+N\+U\+M\+\_\+\+T\+\_\+\+T\+A\+GS&Number of variables in {\ttfamily door\+\_\+timer} array. \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line 26 of file door.\+h.
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{door_8h_ab44b064e84827293b35fea9e3a778df6}\label{door_8h_ab44b064e84827293b35fea9e3a778df6}} 
+\index{door.h@{door.h}!door\_check\_open@{door\_check\_open}}
+\index{door\_check\_open@{door\_check\_open}!door.h@{door.h}}
+\subsubsection{\texorpdfstring{door\_check\_open()}{door\_check\_open()}}
+{\footnotesize\ttfamily int door\+\_\+check\+\_\+open (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Checks if the door is open using {\ttfamily door\+\_\+is\+\_\+open}. 
+
+\begin{DoxyReturn}{Returns}
+{\ttfamily door\+\_\+is\+\_\+open} variable. 
+\end{DoxyReturn}
+
+
+Definition at line 35 of file door.\+c.
+
+\mbox{\Hypertarget{door_8h_a2adfbc4914704e15ac593d4f965783f5}\label{door_8h_a2adfbc4914704e15ac593d4f965783f5}} 
+\index{door.h@{door.h}!door\_check\_timer@{door\_check\_timer}}
+\index{door\_check\_timer@{door\_check\_timer}!door.h@{door.h}}
+\subsubsection{\texorpdfstring{door\_check\_timer()}{door\_check\_timer()}}
+{\footnotesize\ttfamily int door\+\_\+check\+\_\+timer (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Checks if the door timer of 3 seconds has completed. 
+
+\begin{DoxyReturn}{Returns}
+1 if the 3 seconds have elapsed, 0 if not. 
+\end{DoxyReturn}
+
+
+Definition at line 39 of file door.\+c.
+
+\mbox{\Hypertarget{door_8h_ae7995dcc50dbd1aeeace40b95d32e2d4}\label{door_8h_ae7995dcc50dbd1aeeace40b95d32e2d4}} 
+\index{door.h@{door.h}!door\_close@{door\_close}}
+\index{door\_close@{door\_close}!door.h@{door.h}}
+\subsubsection{\texorpdfstring{door\_close()}{door\_close()}}
+{\footnotesize\ttfamily void door\+\_\+close (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Resets timer and turns off door lamp. 
+
+Calls upon \mbox{\hyperlink{door_8h_a22af8e3b0c2d67b0f2d280509fe7b89e}{door\+\_\+reset\+\_\+timer}}, sets {\ttfamily door\+\_\+is\+\_\+open} to 0 and turns off the door lamp. 
+
+Definition at line 29 of file door.\+c.
+
+\mbox{\Hypertarget{door_8h_aaf21268ad90861ac0407bba35c83ce62}\label{door_8h_aaf21268ad90861ac0407bba35c83ce62}} 
+\index{door.h@{door.h}!door\_enable\_timer@{door\_enable\_timer}}
+\index{door\_enable\_timer@{door\_enable\_timer}!door.h@{door.h}}
+\subsubsection{\texorpdfstring{door\_enable\_timer()}{door\_enable\_timer()}}
+{\footnotesize\ttfamily void door\+\_\+enable\+\_\+timer (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Enables the timer and registers the start time. 
+
+Sets T\+I\+M\+E\+R\+\_\+\+E\+N\+A\+B\+L\+ED to 1 and S\+T\+A\+R\+T\+\_\+\+T\+I\+M\+ER to the current time, {\itshape clock()}. 
+
+Definition at line 11 of file door.\+c.
+
+\mbox{\Hypertarget{door_8h_a2d0de401f47aafdfe2dba172332748de}\label{door_8h_a2d0de401f47aafdfe2dba172332748de}} 
+\index{door.h@{door.h}!door\_init@{door\_init}}
+\index{door\_init@{door\_init}!door.h@{door.h}}
+\subsubsection{\texorpdfstring{door\_init()}{door\_init()}}
+{\footnotesize\ttfamily void door\+\_\+init (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Initialises door module variables. 
+
+Sets {\ttfamily door\+\_\+timer} variables to 0.~\newline
+Sets {\ttfamily door\+\_\+is\+\_\+open} to 0. 
+
+Definition at line 5 of file door.\+c.
+
+\mbox{\Hypertarget{door_8h_a702fef97d6171ba25eece93f99b20c29}\label{door_8h_a702fef97d6171ba25eece93f99b20c29}} 
+\index{door.h@{door.h}!door\_open@{door\_open}}
+\index{door\_open@{door\_open}!door.h@{door.h}}
+\subsubsection{\texorpdfstring{door\_open()}{door\_open()}}
+{\footnotesize\ttfamily void door\+\_\+open (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Starts the timer and turns on door lamp. 
+
+Calls upon \mbox{\hyperlink{door_8h_aaf21268ad90861ac0407bba35c83ce62}{door\+\_\+enable\+\_\+timer}}, sets {\ttfamily door\+\_\+is\+\_\+open} to 1 and turns on the door lamp. 
+
+Definition at line 22 of file door.\+c.
+
+\mbox{\Hypertarget{door_8h_a178466f511769579894312351089f705}\label{door_8h_a178466f511769579894312351089f705}} 
+\index{door.h@{door.h}!door\_picked\_up@{door\_picked\_up}}
+\index{door\_picked\_up@{door\_picked\_up}!door.h@{door.h}}
+\subsubsection{\texorpdfstring{door\_picked\_up()}{door\_picked\_up()}}
+{\footnotesize\ttfamily int door\+\_\+picked\+\_\+up (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Alias for \mbox{\hyperlink{door_8h_a2adfbc4914704e15ac593d4f965783f5}{door\+\_\+check\+\_\+timer}}. 
+
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{door_8h_a2adfbc4914704e15ac593d4f965783f5}{door\+\_\+check\+\_\+timer}}.
+\end{DoxyReturn}
+Checks if customers have entered the elevator through the timer. 
+
+Definition at line 43 of file door.\+c.
+
+\mbox{\Hypertarget{door_8h_a22af8e3b0c2d67b0f2d280509fe7b89e}\label{door_8h_a22af8e3b0c2d67b0f2d280509fe7b89e}} 
+\index{door.h@{door.h}!door\_reset\_timer@{door\_reset\_timer}}
+\index{door\_reset\_timer@{door\_reset\_timer}!door.h@{door.h}}
+\subsubsection{\texorpdfstring{door\_reset\_timer()}{door\_reset\_timer()}}
+{\footnotesize\ttfamily void door\+\_\+reset\+\_\+timer (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Disables the timer. 
+
+Sets T\+I\+M\+E\+R\+\_\+\+E\+N\+A\+B\+L\+ED to 0. 
+
+Definition at line 18 of file door.\+c.
 

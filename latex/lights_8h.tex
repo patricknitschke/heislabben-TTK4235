@@ -13,19 +13,18 @@ This graph shows which files directly or indirectly include this file\+:
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
+\mbox{\Hypertarget{lights_8h_a021177e0383b3159e9976ce6341a8029}\label{lights_8h_a021177e0383b3159e9976ce6341a8029}} 
 void \mbox{\hyperlink{lights_8h_a021177e0383b3159e9976ce6341a8029}{light\+\_\+set\+\_\+floor\+\_\+indicator}} (void)
-\begin{DoxyCompactList}\small\item\em Updates the floor lamp to the current floor. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Sets the elevator floor indicator to the current floor. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{lights_8h_adf4b073a7fa1a767dd98f64d590b3f87}{light\+\_\+set\+\_\+lamp}} (elev\+\_\+button\+\_\+type\+\_\+t button, int floor, int value)
 \begin{DoxyCompactList}\small\item\em Turn a button lamp on or off. Essentially an alias for elev\+\_\+set\+\_\+button\+\_\+lamp(). \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{lights_8h_a67ba29732fba6dbb35f4587c27a19f44}\label{lights_8h_a67ba29732fba6dbb35f4587c27a19f44}} 
-void {\bfseries light\+\_\+shut\+\_\+at\+\_\+floor} (int floor)
-\item 
+void \mbox{\hyperlink{lights_8h_a67ba29732fba6dbb35f4587c27a19f44}{light\+\_\+shut\+\_\+at\+\_\+floor}} (int floor)
+\begin{DoxyCompactList}\small\item\em Turns off all button lamps at {\ttfamily floor}. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{lights_8h_a68a0761c3a85e3a6333419dedbb9e172}\label{lights_8h_a68a0761c3a85e3a6333419dedbb9e172}} 
-void {\bfseries light\+\_\+shut\+\_\+all} (void)
-\item 
-\mbox{\Hypertarget{lights_8h_aa386361204dbc12e313ee754c50b0a2f}\label{lights_8h_aa386361204dbc12e313ee754c50b0a2f}} 
-void {\bfseries light\+\_\+set\+\_\+stop\+\_\+lamp} (int value)
-\end{DoxyCompactItemize}
+void \mbox{\hyperlink{lights_8h_a68a0761c3a85e3a6333419dedbb9e172}{light\+\_\+shut\+\_\+all}} (void)
+\begin{DoxyCompactList}\small\item\em Turns off all button lamps on the elevator. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{lights_8h_aa386361204dbc12e313ee754c50b0a2f}{light\+\_\+set\+\_\+stop\+\_\+lamp}} (int value)
+\begin{DoxyCompactList}\small\item\em Turns on or off the stop button lamp. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
@@ -34,20 +33,6 @@ This file contains functions that control the lights.
 
 
 \subsection{Function Documentation}
-\mbox{\Hypertarget{lights_8h_a021177e0383b3159e9976ce6341a8029}\label{lights_8h_a021177e0383b3159e9976ce6341a8029}} 
-\index{lights.h@{lights.h}!light\_set\_floor\_indicator@{light\_set\_floor\_indicator}}
-\index{light\_set\_floor\_indicator@{light\_set\_floor\_indicator}!lights.h@{lights.h}}
-\subsubsection{\texorpdfstring{light\_set\_floor\_indicator()}{light\_set\_floor\_indicator()}}
-{\footnotesize\ttfamily void light\+\_\+set\+\_\+floor\+\_\+indicator (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
-
-
-
-Updates the floor lamp to the current floor. 
-
-
-
-Definition at line 3 of file lights.\+c.
-
 \mbox{\Hypertarget{lights_8h_adf4b073a7fa1a767dd98f64d590b3f87}\label{lights_8h_adf4b073a7fa1a767dd98f64d590b3f87}} 
 \index{lights.h@{lights.h}!light\_set\_lamp@{light\_set\_lamp}}
 \index{light\_set\_lamp@{light\_set\_lamp}!lights.h@{lights.h}}
@@ -64,10 +49,48 @@ Turn a button lamp on or off. Essentially an alias for elev\+\_\+set\+\_\+button
 \hline
 \mbox{\texttt{ in}}  & {\em floor} & Floor in which the button is to be set. \\
 \hline
-\mbox{\texttt{ in}}  & {\em value} & Value to set the button lamp to. Either 1 or 0. \\
+\mbox{\texttt{ in}}  & {\em value} & Value to set the button lamp to. Either 1 or 0, where 1 is on. \\
 \hline
 \end{DoxyParams}
 
 
 Definition at line 10 of file lights.\+c.
+
+\mbox{\Hypertarget{lights_8h_aa386361204dbc12e313ee754c50b0a2f}\label{lights_8h_aa386361204dbc12e313ee754c50b0a2f}} 
+\index{lights.h@{lights.h}!light\_set\_stop\_lamp@{light\_set\_stop\_lamp}}
+\index{light\_set\_stop\_lamp@{light\_set\_stop\_lamp}!lights.h@{lights.h}}
+\subsubsection{\texorpdfstring{light\_set\_stop\_lamp()}{light\_set\_stop\_lamp()}}
+{\footnotesize\ttfamily void light\+\_\+set\+\_\+stop\+\_\+lamp (\begin{DoxyParamCaption}\item[{int}]{value }\end{DoxyParamCaption})}
+
+
+
+Turns on or off the stop button lamp. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em value} & Value to set the stop lamp to. Either 1 or 0, where 1 is on. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 30 of file lights.\+c.
+
+\mbox{\Hypertarget{lights_8h_a67ba29732fba6dbb35f4587c27a19f44}\label{lights_8h_a67ba29732fba6dbb35f4587c27a19f44}} 
+\index{lights.h@{lights.h}!light\_shut\_at\_floor@{light\_shut\_at\_floor}}
+\index{light\_shut\_at\_floor@{light\_shut\_at\_floor}!lights.h@{lights.h}}
+\subsubsection{\texorpdfstring{light\_shut\_at\_floor()}{light\_shut\_at\_floor()}}
+{\footnotesize\ttfamily void light\+\_\+shut\+\_\+at\+\_\+floor (\begin{DoxyParamCaption}\item[{int}]{floor }\end{DoxyParamCaption})}
+
+
+
+Turns off all button lamps at {\ttfamily floor}. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em floor} & Floor where lights are to be turned off. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 14 of file lights.\+c.
 

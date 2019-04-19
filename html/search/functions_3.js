@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['queue',['Queue',['../structQueue.html',1,'Queue'],['../queue_8h.html#ad359c9a9ed21445fd95e01a05429c767',1,'Queue():&#160;queue.h']]],
-  ['queue_2eh',['queue.h',['../queue_8h.html',1,'']]],
   ['queue_5fchase_5ftarget',['queue_chase_target',['../queue_8h.html#afcaaf32f82f3bf5dce6a3a2266f2d832',1,'queue.c']]],
   ['queue_5fcheck_5fbuttons_5finside',['queue_check_buttons_inside',['../queue_8h.html#af5e29e564af5c4211d168a5026cb3a58',1,'queue.c']]],
   ['queue_5fcheck_5fbuttons_5foutside',['queue_check_buttons_outside',['../queue_8h.html#a6bf2e0a467946d97e6cf6d9e4c7104f1',1,'queue.c']]],

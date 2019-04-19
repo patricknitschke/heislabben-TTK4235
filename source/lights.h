@@ -10,7 +10,6 @@
 
 /**
 *@brief Sets the elevator floor indicator to the current floor.
-*
 */
 void light_set_floor_indicator(void);
 
@@ -36,7 +35,6 @@ void light_shut_at_floor(int floor);
 
 /**
 *@brief Turns off all button lamps on the elevator.
-*
 */
 void light_shut_all(void);
 

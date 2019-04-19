@@ -1,10 +1,19 @@
 \hypertarget{structDoor}{}\section{Door Struct Reference}
 \label{structDoor}\index{Door@{Door}}
+
+
+A struct that holds information regarding the door\textquotesingle{}s state and timer.  
+
+
+
+
+{\ttfamily \#include $<$door.\+h$>$}
+
 \subsection*{Data Fields}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\Hypertarget{structDoor_aa5e2ba489f890ed656ac936513fd90fb}\label{structDoor_aa5e2ba489f890ed656ac936513fd90fb}} 
-int {\bfseries door\+\_\+timer} \mbox{[}N\+U\+M\+\_\+\+T\+\_\+\+T\+A\+GS\mbox{]}
+int {\bfseries door\+\_\+timer} \mbox{[}\mbox{\hyperlink{door_8h_a764f517e2e45ad48bcd8b88590ab5276a7314652df30c259bec1d360788aef62c}{N\+U\+M\+\_\+\+T\+\_\+\+T\+A\+GS}}\mbox{]}
 \item 
 \mbox{\Hypertarget{structDoor_a7e103b2e2527ecdead0dfd1f07366de9}\label{structDoor_a7e103b2e2527ecdead0dfd1f07366de9}} 
 int {\bfseries door\+\_\+is\+\_\+open}
@@ -12,9 +21,21 @@ int {\bfseries door\+\_\+is\+\_\+open}
 
 
 \subsection{Detailed Description}
+A struct that holds information regarding the door\textquotesingle{}s state and timer. 
 
 
-Definition at line 19 of file door.\+h.
+\begin{DoxyParams}{Parameters}
+{\em door\+\_\+timer} & Array of length N\+U\+M\+\_\+\+T\+\_\+\+T\+A\+GS, with variables used to control the door timer. \\
+\hline
+{\em door\+\_\+is\+\_\+open} & Keeps track of the door\textquotesingle{}s state. 1 if the door is open, 0 if closed. \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{door_8h_a764f517e2e45ad48bcd8b88590ab5276}{timer\+\_\+t}} enum for variables in {\ttfamily door\+\_\+timer}. 
+\end{DoxySeeAlso}
+
+
+Definition at line 38 of file door.\+h.
 
 
 

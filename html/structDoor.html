@@ -67,19 +67,33 @@ $(function() {
 <div class="title">Door Struct Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>A struct that holds information regarding the door's state and timer.  
+ <a href="structDoor.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="door_8h_source.html">door.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Data Fields</h2></td></tr>
 <tr class="memitem:aa5e2ba489f890ed656ac936513fd90fb"><td class="memItemLeft" align="right" valign="top"><a id="aa5e2ba489f890ed656ac936513fd90fb"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>door_timer</b> [NUM_T_TAGS]</td></tr>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>door_timer</b> [<a class="el" href="door_8h.html#a764f517e2e45ad48bcd8b88590ab5276a7314652df30c259bec1d360788aef62c">NUM_T_TAGS</a>]</td></tr>
 <tr class="separator:aa5e2ba489f890ed656ac936513fd90fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7e103b2e2527ecdead0dfd1f07366de9"><td class="memItemLeft" align="right" valign="top"><a id="a7e103b2e2527ecdead0dfd1f07366de9"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>door_is_open</b></td></tr>
 <tr class="separator:a7e103b2e2527ecdead0dfd1f07366de9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="door_8h_source.html#l00019">19</a> of file <a class="el" href="door_8h_source.html">door.h</a>.</p>
+<div class="textblock"><p>A struct that holds information regarding the door's state and timer. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">door_timer</td><td>Array of length NUM_T_TAGS, with variables used to control the door timer. </td></tr>
+    <tr><td class="paramname">door_is_open</td><td>Keeps track of the door's state. 1 if the door is open, 0 if closed. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="door_8h.html#a764f517e2e45ad48bcd8b88590ab5276">timer_t</a> enum for variables in <code>door_timer</code>. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="door_8h_source.html#l00038">38</a> of file <a class="el" href="door_8h_source.html">door.h</a>.</p>
 </div><hr/>The documentation for this struct was generated from the following file:<ul>
 <li>source/<a class="el" href="door_8h_source.html">door.h</a></li>
 </ul>
