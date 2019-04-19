@@ -22,17 +22,11 @@ void light_shut_at_floor(int floor) {
 }
 
 void light_shut_all(void) {
-    for (int i = 0; i < 4; i++){
-        if (i != N_FLOORS-1) {
-            light_set_lamp(BUTTON_CALL_UP, i, 0);
-        }
-        if (i != 0) {
-            light_set_lamp(BUTTON_CALL_DOWN, i, 0);
-        }
-        light_set_lamp(BUTTON_COMMAND, i, 0);
+    for (int i = 0; i < N_FLOORS; i++) {
+        light_shut_at_floor(i);
     }
 }
 
-void light_set_stop_lamp(int value){
+void light_set_stop_lamp(int value) {
     elev_set_stop_lamp(value);
 }

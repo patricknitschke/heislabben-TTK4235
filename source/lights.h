@@ -9,7 +9,7 @@
 
 
 /**
-*@brief Updates the floor lamp to the current floor.
+*@brief Sets the elevator floor indicator to the current floor.
 *
 */
 void light_set_floor_indicator(void);
@@ -20,21 +20,32 @@ void light_set_floor_indicator(void);
 *
 *@param[in] button Button lamp type. Either BUTTON_CALL_UP, BUTTON_CALL_DOWN or BUTTON_COMMAND.
 *@param[in] floor Floor in which the button is to be set.
-*@param[in] value Value to set the button lamp to. Either 1 or 0.
+*@param[in] value Value to set the button lamp to. Either 1 or 0, where 1 is on.
 *
 */
 void light_set_lamp(elev_button_type_t button, int floor, int value);
 
 
-// Turn off order lights at a floor.
+/**
+*@brief Turns off all button lamps at @p floor.
+*
+*@param[in] floor Floor where lights are to be turned off.
+*/
 void light_shut_at_floor(int floor);
 
 
-// Turn off all lights in case of emergency.
+/**
+*@brief Turns off all button lamps on the elevator.
+*
+*/
 void light_shut_all(void);
 
 
-// Turns on or off the stop button lamp.
+/**
+*@brief Turns on or off the stop button lamp.
+*
+*@param[in] value Value to set the stop lamp to. Either 1 or 0, where 1 is on.
+*/
 void light_set_stop_lamp(int value);
 
 
