@@ -1,0 +1,523 @@
+title Sequence Diagram for Elevator lab
+
+activate Main
+
+//START - IN IDLE STATE
+note left of Main:In IDLE state
+Main->FSM:state_idle()
+activate FSM
+
+FSM->Queue:queue_count()
+activate Queue
+FSM<<--Queue:0
+deactivate Queue
+
+Main<--FSM:IDLE
+deactivate FSM
+
+
+//LOOP 1 - IDLE TO DRIVING
+note left of Main:1. IDLE to DRIVING
+
+Main->>Queue:queue_listen_n_find()
+activate Queue
+Queue->>Queue:queue_check_buttons()
+activate Queue
+Queue->>Queue:queue_get_order()
+activate Queue
+Queue->Elev hw:elev_get_button_signal()
+activate Elev hw
+Queue<<--Elev hw:1
+deactivate Elev hw
+deactivate Queue
+Queue->>Queue:queue_set()
+activate Queue
+space0
+deactivate Queue
+Queue->>Lights:lights_set_lamp()
+deactivate Queue
+activate Lights
+Lights->>Elev hw:elev_set_button_lamp()
+deactivate Lights
+activate Elev hw
+space0
+deactivate Elev hw
+Queue->>Queue:queue_find_target()
+activate Queue
+Queue->>Queue:queue_set_target_floor()
+deactivate Queue
+space 0
+deactivate Queue
+
+Main->FSM:state_idle()
+activate FSM
+
+FSM->Queue:queue_count()
+activate Queue
+FSM<<--Queue:1
+deactivate Queue
+
+Main<--FSM:DRIVING
+deactivate FSM
+
+
+//LOOP 2 - DRIVING 2nd to 1st
+note left of Main:2. Driving - 2nd to 1st
+loop current_state = DRIVING
+
+Main->>Queue:queue_listen_n_find()
+activate Queue
+Queue->>Queue:queue_check_buttons()
+activate Queue
+Queue->>Queue:queue_get_order()
+activate Queue
+Queue->Elev hw:elev_get_button_signal()
+activate Elev hw
+Queue<<--Elev hw:0
+deactivate Elev hw
+deactivate Queue
+space 0
+deactivate Queue
+Queue->>Queue:queue_find_target()
+activate Queue
+Queue->>Queue:queue_set_target_floor()
+deactivate Queue
+space 0
+deactivate Queue
+
+
+Main->FSM:state_driving()
+activate FSM
+
+FSM->>Elevator:elevator_set_floor()
+activate Elevator
+Elevator->Elev hw:elev_get_floor_sensor_signal()
+activate Elev hw
+Elevator<<--Elev hw:-1
+deactivate Elev hw
+deactivate Elevator
+FSM->Queue:queue_stop_n_serve_order()
+activate Queue
+Queue->Elevator:elevator_check_valid_floor()
+activate Elevator
+note right of Elevator:Just left\n2nd floor
+Queue<<--Elevator:0 (DRIVING)
+deactivate Elevator
+deactivate Queue
+FSM->Queue:queue_chase_target()
+activate Queue
+Queue->Elevator:elevator_get_floor()
+activate Elevator
+Queue<<--Elevator:1
+deactivate Elevator
+note left of Queue:Target is known\n by queue
+Queue->>Elevator:elevator_set_direction(DIRN_DOWN)
+deactivate Queue
+activate Elevator
+space 1
+deactivate Elevator
+
+Main<--FSM:DRIVING
+deactivate FSM
+
+end
+
+
+//LOOP 3 - DRIVING TO PICKUP
+note left of Main:3. DRIVING to PICKUP
+
+Main->>Queue:queue_listen_n_find()
+activate Queue
+Queue->>Queue:queue_check_buttons()
+activate Queue
+Queue->>Queue:queue_get_order()
+activate Queue
+Queue->Elev hw:elev_get_button_signal()
+activate Elev hw
+Queue<<--Elev hw:0
+deactivate Elev hw
+deactivate Queue
+space 0
+deactivate Queue
+Queue->>Queue:queue_find_target()
+activate Queue
+Queue->>Queue:queue_set_target_floor()
+deactivate Queue
+space 0
+deactivate Queue
+
+
+Main->FSM:state_driving()
+activate FSM
+
+FSM->>Elevator:elevator_set_floor()
+activate Elevator
+Elevator->Elev hw:elev_get_floor_sensor_signal()
+activate Elev hw
+Elevator<<--Elev hw:0
+deactivate Elev hw
+deactivate Elevator
+FSM->Queue:queue_stop_n_serve_order()
+activate Queue
+Queue->Elevator:elevator_check_valid_floor()
+activate Elevator
+note right of Elevator:Just arrived\n1st floor
+Queue<<--Elevator:1 (PICKUP)
+deactivate Elevator
+Queue->>Queue:queue_clear_orders_at_floor()
+activate Queue
+space 0
+deactivate Queue
+space 0
+deactivate Queue
+FSM->Queue:queue_chase_target()
+activate Queue
+Queue->Elevator:elevator_get_floor()
+activate Elevator
+Queue<<--Elevator:0
+deactivate Elevator
+note left of Queue:Target is known\n by queue
+Queue->>Elevator:elevator_set_direction(DIRN_STOP)
+deactivate Queue
+activate Elevator
+space 1
+deactivate Elevator
+
+Main<--FSM:PICKUP
+deactivate FSM
+
+//PICKUP TO PICKUP - gets order here. (hidden)
+
+//LOOP 4 - PICKUP TO DRIVING
+note left of Main:4. PICKUP to DRIVING
+
+Main->>Queue:queue_listen_n_find()
+activate Queue
+Queue->>Queue:queue_check_buttons()
+activate Queue
+Queue->>Queue:queue_get_order()
+activate Queue
+Queue->Elev hw:elev_get_button_signal()
+activate Elev hw
+Queue<<--Elev hw:1
+deactivate Elev hw
+deactivate Queue
+Queue->>Queue:queue_set()
+activate Queue
+space0
+deactivate Queue
+Queue->>Lights:lights_set_lamp()
+deactivate Queue
+activate Lights
+Lights->>Elev hw:elev_set_button_lamp()
+deactivate Lights
+activate Elev hw
+space0
+deactivate Elev hw
+Queue->>Queue:queue_find_target()
+activate Queue
+Queue->>Queue:queue_set_target_floor()
+deactivate Queue
+space 0
+deactivate Queue
+
+
+Main->FSM:state_pickup()
+activate FSM
+
+FSM->>Door:door_open()
+activate Door
+Door->>Elevator:elevator_set_direction(DIRN_STOP)
+activate Elevator
+space 1
+deactivate Elevator
+Door->>Door:door_enable_timer()
+activate Door
+space 0
+deactivate Door
+Door->>Elev hw:elev_set_door_open_lamp()
+deactivate Door
+activate Elev hw
+space 0
+deactivate Elev hw
+
+FSM->Door:door_picked_up()
+activate Door
+note right of Door:3 seconds \nhave passed
+FSM<<--Door:1
+deactivate Door
+
+FSM->>Door:door_close()
+activate Door
+Door->>Door:door_reset_timer()
+activate Door
+space 0
+deactivate Door
+Door->>Elev hw:elev_set_door_open_lamp()
+deactivate Door
+activate Elev hw
+space 0
+deactivate Elev hw
+
+FSM->Queue:queue_count()
+activate Queue
+FSM<<--Queue:1 (DRIVING)
+deactivate Queue
+
+Main<--FSM:DRIVING
+deactivate FSM
+
+//LOOP 5 - DRIVING 1st to 4th
+note left of Main:5. Driving - 1st to 4th
+loop current_state = DRIVING
+
+Main->>Queue:queue_listen_n_find()
+activate Queue
+Queue->>Queue:queue_check_buttons()
+activate Queue
+Queue->>Queue:queue_get_order()
+activate Queue
+Queue->Elev hw:elev_get_button_signal()
+activate Elev hw
+Queue<<--Elev hw:0
+deactivate Elev hw
+deactivate Queue
+space 0
+deactivate Queue
+Queue->>Queue:queue_find_target()
+activate Queue
+Queue->>Queue:queue_set_target_floor()
+deactivate Queue
+space 0
+deactivate Queue
+
+
+Main->FSM:state_driving()
+activate FSM
+
+FSM->>Elevator:elevator_set_floor()
+activate Elevator
+Elevator->Elev hw:elev_get_floor_sensor_signal()
+activate Elev hw
+Elevator<<--Elev hw:-1
+deactivate Elev hw
+deactivate Elevator
+FSM->Queue:queue_stop_n_serve_order()
+activate Queue
+Queue->Elevator:elevator_check_valid_floor()
+activate Elevator
+note right of Elevator:Just left\n1st floor
+Queue<<--Elevator:0 (DRIVING)
+deactivate Elevator
+deactivate Queue
+FSM->Queue:queue_chase_target()
+activate Queue
+Queue->Elevator:elevator_get_floor()
+activate Elevator
+Queue<<--Elevator:0
+deactivate Elevator
+note left of Queue:Target is known\n by queue
+Queue->>Elevator:elevator_set_direction(DIRN_UP)
+deactivate Queue
+activate Elevator
+space 1
+deactivate Elevator
+
+Main<--FSM:DRIVING
+deactivate FSM
+end
+
+//LOOP 6 - DRIVING TO PICKUP
+note left of Main:6. DRIVING to PICKUP
+
+Main->>Queue:queue_listen_n_find()
+activate Queue
+Queue->>Queue:queue_check_buttons()
+activate Queue
+Queue->>Queue:queue_get_order()
+activate Queue
+Queue->Elev hw:elev_get_button_signal()
+activate Elev hw
+Queue<<--Elev hw:0
+deactivate Elev hw
+deactivate Queue
+space 0
+deactivate Queue
+Queue->>Queue:queue_find_target()
+activate Queue
+Queue->>Queue:queue_set_target_floor()
+deactivate Queue
+space 0
+deactivate Queue
+
+
+Main->FSM:state_driving()
+activate FSM
+
+FSM->>Elevator:elevator_set_floor()
+activate Elevator
+Elevator->Elev hw:elev_get_floor_sensor_signal()
+activate Elev hw
+Elevator<<--Elev hw:3
+deactivate Elev hw
+deactivate Elevator
+FSM->Queue:queue_stop_n_serve_order()
+activate Queue
+Queue->Elevator:elevator_check_valid_floor()
+activate Elevator
+note right of Elevator:Just arrived\n4th floor
+Queue<<--Elevator:1 (PICKUP)
+deactivate Elevator
+Queue->>Queue:queue_clear_orders_at_floor()
+activate Queue
+space 0
+deactivate Queue
+space 0
+deactivate Queue
+FSM->Queue:queue_chase_target()
+activate Queue
+Queue->Elevator:elevator_get_floor()
+activate Elevator
+Queue<<--Elevator:3
+deactivate Elevator
+note left of Queue:Target is known\n by queue
+Queue->>Elevator:elevator_set_direction(DIRN_STOP)
+deactivate Queue
+activate Elevator
+space 1
+deactivate Elevator
+
+Main<--FSM:PICKUP
+deactivate FSM
+
+
+//LOOP 7 - PICKUP not 3 seconds yet
+note left of Main:7. PICKUP - wait on timer
+loop current_state = PICKUP
+
+Main->>Queue:queue_listen_n_find()
+activate Queue
+Queue->>Queue:queue_check_buttons()
+activate Queue
+Queue->>Queue:queue_get_order()
+activate Queue
+Queue->Elev hw:elev_get_button_signal()
+activate Elev hw
+Queue<<--Elev hw:0
+deactivate Elev hw
+deactivate Queue
+space 0
+deactivate Queue
+Queue->>Queue:queue_find_target()
+activate Queue
+Queue->>Queue:queue_set_target_floor()
+deactivate Queue
+space 0
+deactivate Queue
+
+
+Main->FSM:state_pickup()
+activate FSM
+
+FSM->>Door:door_open()
+activate Door
+Door->>Elevator:elevator_set_direction(DIRN_STOP)
+activate Elevator
+space 1
+deactivate Elevator
+Door->>Door:door_enable_timer()
+activate Door
+space 0
+deactivate Door
+Door->>Elev hw:elev_set_door_open_lamp()
+deactivate Door
+activate Elev hw
+space 0
+deactivate Elev hw
+
+FSM->Door:door_picked_up()
+activate Door
+note right of Door:3 seconds have \nnot passed
+FSM<<--Door:0 (PICKUP)
+deactivate Door
+
+FSM->Queue:queue_count()
+activate Queue
+FSM<<--Queue:1 (DRIVING)
+deactivate Queue
+
+Main<--FSM:DRIVING
+deactivate FSM
+
+end
+
+//LOOP 8 - PICKUP TO IDLE
+note left of Main:8. PICKUP to IDLE
+
+Main->>Queue:queue_listen_n_find()
+activate Queue
+Queue->>Queue:queue_check_buttons()
+activate Queue
+Queue->>Queue:queue_get_order()
+activate Queue
+Queue->Elev hw:elev_get_button_signal()
+activate Elev hw
+Queue<<--Elev hw:0
+deactivate Elev hw
+deactivate Queue
+space 0
+deactivate Queue
+Queue->>Queue:queue_find_target()
+activate Queue
+Queue->>Queue:queue_set_target_floor()
+deactivate Queue
+space 0
+deactivate Queue
+
+
+Main->FSM:state_pickup()
+activate FSM
+
+FSM->>Door:door_open()
+activate Door
+Door->>Elevator:elevator_set_direction(DIRN_STOP)
+activate Elevator
+space 1
+deactivate Elevator
+Door->>Door:door_enable_timer()
+activate Door
+space 0
+deactivate Door
+Door->>Elev hw:elev_set_door_open_lamp()
+deactivate Door
+activate Elev hw
+space 0
+deactivate Elev hw
+
+FSM->Door:door_picked_up()
+activate Door
+note right of Door:3 seconds \nhave passed
+FSM<<--Door:1
+deactivate Door
+
+FSM->>Door:door_close()
+activate Door
+Door->>Door:door_reset_timer()
+activate Door
+space 0
+deactivate Door
+Door->>Elev hw:elev_set_door_open_lamp()
+deactivate Door
+activate Elev hw
+space 0
+deactivate Elev hw
+
+FSM->Queue:queue_count()
+activate Queue
+FSM<<--Queue:0 (IDLE)
+deactivate Queue
+
+Main<--FSM:IDLE
+deactivate FSM
+space 0
+deactivate Main
