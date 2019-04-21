@@ -101,7 +101,7 @@ typedef enum <a class="el" href="door_8h.html#a4805ac658f5672fc7f938a3622962948"
 Enumerations</h2></td></tr>
 <tr class="memitem:a4805ac658f5672fc7f938a3622962948"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="door_8h.html#a4805ac658f5672fc7f938a3622962948">tag_timer</a> { <a class="el" href="door_8h.html#a4805ac658f5672fc7f938a3622962948ae8990a8e196193c057e87125b6294aaa">START_TIMER</a>, 
 <a class="el" href="door_8h.html#a4805ac658f5672fc7f938a3622962948a81400a21a86c14e3afb637441f8682c0">TIMER_ENABLED</a>, 
-<a class="el" href="door_8h.html#a4805ac658f5672fc7f938a3622962948a7314652df30c259bec1d360788aef62c">NUM_T_TAGS</a>
+<a class="el" href="door_8h.html#a4805ac658f5672fc7f938a3622962948ad1344d700843c27bf39b37c07a5426fd">N_TIMER_TAGS</a>
  }</td></tr>
 <tr class="separator:a4805ac658f5672fc7f938a3622962948"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -153,7 +153,7 @@ Functions</h2></td></tr>
 <p>A struct that holds information regarding the door's state and timer. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">door_timer</td><td>Array of length NUM_T_TAGS, with variables used to control the door timer. </td></tr>
+    <tr><td class="paramname">door_timer</td><td>Array of length N_TIMER_TAGS, with variables used to control the door timer. </td></tr>
     <tr><td class="paramname">door_is_open</td><td>Keeps track of the door's state. 1 if the door is open, 0 if closed. </td></tr>
   </table>
   </dd>
@@ -180,7 +180,7 @@ Functions</h2></td></tr>
 </td></tr>
 <tr><td class="fieldname"><a id="a4805ac658f5672fc7f938a3622962948a81400a21a86c14e3afb637441f8682c0"></a>TIMER_ENABLED&#160;</td><td class="fielddoc"><p>1 if the timer is enabled, 0 if not. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a4805ac658f5672fc7f938a3622962948a7314652df30c259bec1d360788aef62c"></a>NUM_T_TAGS&#160;</td><td class="fielddoc"><p>Number of variables in <code>door_timer</code> array. </p>
+<tr><td class="fieldname"><a id="a4805ac658f5672fc7f938a3622962948ad1344d700843c27bf39b37c07a5426fd"></a>N_TIMER_TAGS&#160;</td><td class="fielddoc"><p>Number of variables in <code>door_timer</code> array. </p>
 </td></tr>
 </table>
 

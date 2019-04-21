@@ -25,7 +25,7 @@ typedef struct \mbox{\hyperlink{structDoor}{Door}} \mbox{\hyperlink{door_8h_a0d7
 \item 
 enum \mbox{\hyperlink{door_8h_a4805ac658f5672fc7f938a3622962948}{tag\+\_\+timer}} \{ \mbox{\hyperlink{door_8h_a4805ac658f5672fc7f938a3622962948ae8990a8e196193c057e87125b6294aaa}{S\+T\+A\+R\+T\+\_\+\+T\+I\+M\+ER}}, 
 \mbox{\hyperlink{door_8h_a4805ac658f5672fc7f938a3622962948a81400a21a86c14e3afb637441f8682c0}{T\+I\+M\+E\+R\+\_\+\+E\+N\+A\+B\+L\+ED}}, 
-\mbox{\hyperlink{door_8h_a4805ac658f5672fc7f938a3622962948a7314652df30c259bec1d360788aef62c}{N\+U\+M\+\_\+\+T\+\_\+\+T\+A\+GS}}
+\mbox{\hyperlink{door_8h_a4805ac658f5672fc7f938a3622962948ad1344d700843c27bf39b37c07a5426fd}{N\+\_\+\+T\+I\+M\+E\+R\+\_\+\+T\+A\+GS}}
  \}
 \end{DoxyCompactItemize}
 \subsection*{Functions}
@@ -67,7 +67,7 @@ A struct that holds information regarding the door\textquotesingle{}s state and 
 
 
 \begin{DoxyParams}{Parameters}
-{\em door\+\_\+timer} & Array of length N\+U\+M\+\_\+\+T\+\_\+\+T\+A\+GS, with variables used to control the door timer. \\
+{\em door\+\_\+timer} & Array of length N\+\_\+\+T\+I\+M\+E\+R\+\_\+\+T\+A\+GS, with variables used to control the door timer. \\
 \hline
 {\em door\+\_\+is\+\_\+open} & Keeps track of the door\textquotesingle{}s state. 1 if the door is open, 0 if closed. \\
 \hline
@@ -93,8 +93,8 @@ S\+T\+A\+R\+T\+\_\+\+T\+I\+M\+ER&Timestamp at which the door opens. \\
 T\+I\+M\+E\+R\+\_\+\+E\+N\+A\+B\+L\+ED&1 if the timer is enabled, 0 if not. \\
 \hline
 
-\raisebox{\heightof{T}}[0pt][0pt]{\index{NUM\_T\_TAGS@{NUM\_T\_TAGS}!door.h@{door.h}}\index{door.h@{door.h}!NUM\_T\_TAGS@{NUM\_T\_TAGS}}}\mbox{\Hypertarget{door_8h_a4805ac658f5672fc7f938a3622962948a7314652df30c259bec1d360788aef62c}\label{door_8h_a4805ac658f5672fc7f938a3622962948a7314652df30c259bec1d360788aef62c}} 
-N\+U\+M\+\_\+\+T\+\_\+\+T\+A\+GS&Number of variables in {\ttfamily door\+\_\+timer} array. \\
+\raisebox{\heightof{T}}[0pt][0pt]{\index{N\_TIMER\_TAGS@{N\_TIMER\_TAGS}!door.h@{door.h}}\index{door.h@{door.h}!N\_TIMER\_TAGS@{N\_TIMER\_TAGS}}}\mbox{\Hypertarget{door_8h_a4805ac658f5672fc7f938a3622962948ad1344d700843c27bf39b37c07a5426fd}\label{door_8h_a4805ac658f5672fc7f938a3622962948ad1344d700843c27bf39b37c07a5426fd}} 
+N\+\_\+\+T\+I\+M\+E\+R\+\_\+\+T\+A\+GS&Number of variables in {\ttfamily door\+\_\+timer} array. \\
 \hline
 
 \end{DoxyEnumFields}

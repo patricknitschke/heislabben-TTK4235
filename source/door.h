@@ -20,24 +20,24 @@
 *@var TIMER_ENABLED
 *1 if the timer is enabled, 0 if not.
 *
-*@var NUM_T_TAGS 
+*@var N_TIMER_TAGS 
 *Number of variables in @p door_timer array.
 *
 */
 typedef enum tag_timer {
-    START_TIMER, TIMER_ENABLED, NUM_T_TAGS
+    START_TIMER, TIMER_ENABLED, N_TIMER_TAGS
 } timer_t;
 
 
 /**
 *@brief A struct that holds information regarding the door's state and timer.
 *
-*@param door_timer Array of length NUM_T_TAGS, with variables used to control the door timer. 
+*@param door_timer Array of length N_TIMER_TAGS, with variables used to control the door timer. 
 *@param door_is_open Keeps track of the door's state. 1 if the door is open, 0 if closed.
 *@sa ::tag_timer enum for variables in @p door_timer.
 */
 typedef struct Door {
-    int door_timer[NUM_T_TAGS];
+    int door_timer[N_TIMER_TAGS];
     int door_is_open;
 } Door;
 
